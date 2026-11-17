@@ -73,6 +73,12 @@ jobs:
               headers: {Authorization:'Bearer ' + token,Accept:'application/json'}
             });
             console.log('Apple API ' + name + ': HTTP ' + response.status);
+            if (!response.ok) {
+              const problem = await response.json().catch(() => ({}));
+              for (const issue of (Array.isArray(problem.errors) ? problem.errors.slice(0,2) : [])) {
+                console.log('Detalle Apple: ' + String(issue.code||'') + ' / ' + String(issue.title||'').slice(0,120));
+              }
+            }
             if (response.status === 401) {
               console.error('::error::Apple rechazo la clave API (401). Verificar que sea Team Key activa y coincidan Key ID, Issuer ID y archivo .p8.');
               process.exitCode = 1;
@@ -85,9 +91,11 @@ jobs:
             }
             return response.ok;
           }
-          if (await test('autenticacion y bundle IDs', 'bundleIds?limit=1')) {
-            await test('certificados de firma', 'certificates?limit=1');
-            await test('perfiles de firma', 'profiles?limit=1');
+          if (await test('autenticacion general', 'apps?limit=1')) {
+            if (await test('bundle IDs', 'bundleIds?limit=1')) {
+              await test('certificados de firma', 'certificates?limit=1');
+              await test('perfiles de firma', 'profiles?limit=1');
+            }
           }
           CHECKAPPLE
 
@@ -123,7 +131,8 @@ jobs:
             -authenticationKeyPath "$ASC_KEY_PATH" \
             -authenticationKeyID "$ASC_KEY_ID" \
             -authenticationKeyIssuerID "$ASC_ISSUER_ID" \
-            DEVELOPMENT_TEAM="$APPLE_TEAM_ID" CODE_SIGN_STYLE=Automatic archive
+            DEVELOPMENT_TEAM="$APPLE_TEAM_ID" CODE_SIGN_STYLE=Automatic \
+            CODE_SIGN_IDENTITY="Apple Distribution" archive
 
       - name: Generar IPA de App Store Connect
         env:
