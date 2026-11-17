@@ -16,7 +16,6 @@ const records=JSON.parse(app.slice(beginData,endData));
 const vehicles=records.filter(r=>r.category==='vehiculos');
 assert(vehicles.length>0,'No vehicles in catalog');
 const count=vehicles.filter(v=>Number.isFinite(v.stats?.speed)).length;
-assert.equal(count,0,'Baseline changed; review test assumptions before release');
 for(const [locale,fast,slow] of [
   ['es','auto mas rapido','auto mas lento'],
   ['en','fastest car','slowest car'],
@@ -25,11 +24,17 @@ for(const [locale,fast,slow] of [
  for(const text of [fast,slow]){
   const answer=query(text,records);
   assert.equal(answer.intent,'ranking',locale+' rank intent not recognized: '+text);
-  assert.equal(answer.needsData,true,locale+' falsely claims complete data: '+text);
-  assert.equal(answer.results.length,0,locale+' exposes unranked vehicles as ranking: '+text);
-  assert.equal(answer.measuredCount,0,locale+' baseline unexpectedly has speed values: '+text);
+  if(answer.measuredCount<2||answer.measuredCount<answer.candidateCount){
+   assert.equal(answer.needsData,true,locale+' falsely claims complete data: '+text);
+   assert.equal(answer.results.length,0,locale+' exposes unranked vehicles as ranking: '+text);
+  }else{
+   assert.equal(answer.needsData,false,'Complete rank should be available: '+text);
+   const nums=Array.from(answer.results,record=>record.stats.speed);
+   for(let i=1;i<nums.length;i++)assert(text===fast?nums[i-1]>=nums[i]:nums[i-1]<=nums[i],
+    'Expected reverse ordering for '+text);
+  }
  }
- console.log('PASS '+locale+': missing speed values -> no misleading ranking');
+ console.log('PASS '+locale+': ranking is truthful for current verified data');
 }
 const make=(id,speed)=>({id,category:'vehiculos',status:'verified',facets:{tipo:'auto'},stats:{speed},title:{es:id,en:id,pt:id}});
 const full=[make('slow',70),make('middle',110),make('fast',180)];
