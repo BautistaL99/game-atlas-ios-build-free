@@ -1451,7 +1451,7 @@ window.viIosSearchItems=()=>records.filter(r=>r.status==='verified'&&r.recordTyp
 /* iOS V241: give native autocomplete real verified entries and mapped names.
    The same catalog engine still determines ranking and what is verifiable. */
 window.viIosSearchCardsFor=(query,limit=5)=>detectIntent(query).results.slice(0,limit)
- .map(r=>({id:r.id,title:tr(r.title),category:tr(cat(r.category).label)}));
+ .map(r=>({id:r.id,title:tr(r.title),category:cat(r.category)?.label?tr(cat(r.category).label):String(r.category||'')}));
 window.viIosMapNames=()=>allMapPins().map(p=>({id:p.id,name:p.title,category:p.category}));
 window.viRefreshApp=()=>render();
 window.viRefreshComparison=()=>{
