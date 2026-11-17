@@ -36,7 +36,7 @@ function category(lang){
 }
 const en=category('en'),pt=category('pt'),es=category('es');
 for(const word of ['All','Missing','Registered','Favorites','personal progress'])assert(en.includes(word),'English category label: '+word);
-for(const word of ['Todos','Faltando','Registrados','Favoritos','progresso pessoal'])assert(pt.includes(word),'Portuguese category label: '+word);
+for(const word of ['Todos','Faltam','Registrados','Favoritos','progresso pessoal'])assert(pt.includes(word),'Portuguese category label: '+word);
 for(const word of ['Todos','Me faltan','Registrados','Favoritos','seguimiento personal'])assert(es.includes(word),'Spanish category label: '+word);
 assert(!en.includes('seguimiento personal')&&!en.includes('Me faltan'),'Spanish leaked into English category');
 assert(!pt.includes('seguimiento personal')&&!pt.includes('Me faltan'),'Spanish leaked into Portuguese category');
