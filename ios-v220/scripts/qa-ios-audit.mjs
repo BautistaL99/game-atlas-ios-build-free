@@ -21,6 +21,7 @@ assert(new Set(ids).size===ids.length,'Duplicate IDs');
 const categories=[...new Set(records.map(r=>r.category))].sort();
 assert(config.enabled===true&&config.manifestUrl.startsWith('https://'),'Signed catalog not configured');
 assert(updates.includes('crypto.subtle.verify')&&community.includes('crypto.subtle.verify'),'Missing signed feed verification');
+for(const category of ['misiones','secretos','coleccionables','economia','actividades','mundo'])assert(community.includes("'"+category+"'")&&main.includes("'"+category+"'"),'Signed wiki category missing: '+category);
 assert(updates.includes('validMapVersion')&&main.includes('window.viCurrentMapVersion'),'Signed basemap transition unsupported');
 assert(main.includes('viIosApplyRemoteMap')&&get('ios-v242-remote-map.js').includes('SHA-256'),'Remote map integrity validation missing');
 assert(main.includes('viApplyCommunityFeed')&&main.includes('viApplySignedCatalog'),'Catalog integration missing');
