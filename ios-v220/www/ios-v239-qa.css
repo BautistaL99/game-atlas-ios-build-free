@@ -1,0 +1,76 @@
+/* Game Atlas V239 - iOS only. Never load this stylesheet in the web/Android releases. */
+@media (max-width:700px), (orientation:landscape) and (max-height:600px) and (pointer:coarse) {
+  /* A WKWebView may expose a zero safe-area inset while displaying under the status bar. */
+  html.vi-ios-app #root .topbar {
+    box-sizing:border-box!important;
+    padding-top:calc(max(48px, env(safe-area-inset-top, 0px)) + 9px)!important;
+    top:0!important;
+    position:sticky!important;
+    z-index:95!important;
+  }
+  html.vi-ios-app #root .topbar .mobile-brand { min-height:42px!important; }
+  /* Safari zooms the entire viewport when the focused form control is below 16px. */
+  html.vi-ios-app input, html.vi-ios-app textarea, html.vi-ios-app select,
+  html.vi-ios-app #root .home-smart-search input,
+  html.vi-ios-app #root .atlas-v119 .atlas-search-label input,
+  html.vi-ios-app #root .top-search-wrap input,
+  html.vi-ios-app #root .search-box input,
+  html.vi-ios-app #root .vi-route-manager input,
+  html.vi-ios-app #root .atlas-pin-editor input {
+    font-size:16px!important;
+    -webkit-text-size-adjust:100%!important;
+  }
+  html.vi-ios-app #root .atlas-v119.vi-map-has-focus:not(.vi-fullscreen-map) .atlas-layout .atlas-map {
+    /* A selected POI must not change the canvas height on a normal map page. */
+    height:clamp(440px, 62dvh, 640px)!important;
+    min-height:0!important;
+  }
+  html.vi-ios-app #root .atlas-v119:not(.vi-fullscreen-map) .atlas-map>.atlas-popup {
+    /* Compact bottom sheet, keeping the top filter chips and map tools uncovered. */
+    top:auto!important;
+    bottom:8px!important;
+    left:8px!important;
+    right:8px!important;
+    width:auto!important;
+    max-height:min(38%, 260px)!important;
+    overflow-y:auto!important;
+    z-index:26!important;
+    padding:10px!important;
+  }
+  html.vi-ios-app #root .atlas-v119 .atlas-map:has(.atlas-popup) .vi-map-filter-chips {
+    position:relative!important;
+    z-index:45!important;
+  }
+  html.vi-ios-app #root .vi-record-map-action {
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    gap:10px!important;
+    align-items:stretch!important;
+  }
+  html.vi-ios-app #root .vi-record-map-action>* {position:static!important;min-width:0!important;max-width:100%!important;}
+  html.vi-ios-app #root .vi-record-map-action .vi-record-map-button {display:block!important;width:100%!important;}
+  /* Results precede optional filter-builder while a search is underway. */
+  html.vi-ios-app #root #searchResults {display:block;scroll-margin-top:12px;margin:14px 0 18px;}
+  html.vi-ios-app #root .vi-ios-autocomplete {
+    position:absolute;top:calc(100% + 3px);left:0;right:0;
+    z-index:260;max-height:min(38dvh,240px);overflow-y:auto;
+    border:1px solid #5ad7cc;border-radius:12px;background:#102534fa;
+    box-shadow:0 9px 28px #061018dd;padding:4px;
+  }
+  html.vi-ios-app #root .vi-ios-autocomplete[hidden]{display:none!important}
+  html.vi-ios-app #root .vi-ios-autocomplete button{
+    display:block!important;width:100%;box-sizing:border-box;min-height:42px;
+    padding:10px 12px;text-align:left;font-size:14px;line-height:1.25;
+    border:0;border-bottom:1px solid #ffffff24;background:transparent;color:#e8fffb;
+    cursor:pointer;white-space:normal;
+  }
+  html.vi-ios-app #root .vi-ios-autocomplete button:last-child{border-bottom:0}
+  html.vi-ios-app #root .vi-ios-autocomplete button:focus-visible{outline:2px solid #69eddd;outline-offset:-3px}
+  html.vi-ios-app #root .search-box,html.vi-ios-app #root .top-search-wrap,
+  html.vi-ios-app #root .home-smart-search,html.vi-ios-app #root .atlas-search-label{position:relative!important}
+  html.vi-ios-app #root .search-box:has(.vi-ios-autocomplete:not([hidden])){z-index:150!important}
+}
+@media (orientation:landscape) and (max-height:600px) and (pointer:coarse){
+ html.vi-ios-app #root .topbar{padding-top:calc(max(10px,env(safe-area-inset-top,0px)) + 6px)!important}
+ html.vi-ios-app #root .atlas-v119.vi-fullscreen-map .atlas-map>.atlas-popup{max-height:80%!important}
+}
