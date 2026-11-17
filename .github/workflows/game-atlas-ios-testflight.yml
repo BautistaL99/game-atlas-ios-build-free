@@ -1,4 +1,4 @@
-name: Game Atlas V238 - iOS a TestFlight
+name: Game Atlas iOS V246 - TestFlight
 
 # Se ejecuta SOLAMENTE al pulsar Run workflow en GitHub.
 # El repositorio es publico, pero NUNCA guarda certificados, claves ni IPA como artefactos.
@@ -10,6 +10,14 @@ on:
         required: true
         default: '1.0'
         type: string
+      runner:
+        description: 'Compilador macOS (Intel recomendado si Apple Silicon queda en cola)'
+        required: true
+        default: 'macos-26-intel'
+        type: choice
+        options:
+          - macos-26-intel
+          - macos-26
 
 permissions:
   contents: read
@@ -20,13 +28,29 @@ concurrency:
 
 jobs:
   enviar-testflight:
-    runs-on: macos-26
+    # Usa un grupo de máquinas diferente para evitar la cola arm64 sin runner.
+    # El usuario puede elegir Apple Silicon manualmente como alternativa.
+    runs-on: ${{ inputs.runner == 'macos-26' && 'macos-26' || 'macos-26-intel' }}
     timeout-minutes: 75
     steps:
       - name: Obtener codigo iOS
         uses: actions/checkout@v4
         with:
           persist-credentials: false
+
+      - name: Verificar entorno Xcode 26 y máquina macOS
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "Máquina asignada: $RUNNER_NAME"
+          echo "Sistema macOS:"
+          sw_vers -productVersion
+          xcodebuild -version
+          MAJOR="$(xcodebuild -version | awk '/^Xcode / {split($2,n,"."); print n[1]; exit}')"
+          if [[ -z "$MAJOR" || "$MAJOR" -lt 26 ]]; then
+            echo "::error::Capacitor 8 requiere Xcode 26 o superior. Cambiá el runner del workflow."
+            exit 1
+          fi
 
       - name: Configurar Node 22
         uses: actions/setup-node@v4
