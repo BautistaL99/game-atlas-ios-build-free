@@ -197,6 +197,8 @@
   }else scheduleResultVisibility();
  }
  function show(input){
+  // V241 owns the unified native suggestions; avoid competing panels.
+  if(window.viIosV241Enabled)return;
   if(suppressDisplay||!activeIds.has(input?.id)||!input?.isConnected)return;
   currentField=input;
   const data=suggest(input.value,lang());
