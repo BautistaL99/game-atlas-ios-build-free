@@ -115,6 +115,7 @@ jobs:
           node scripts/qa-marker-switch.mjs
           node scripts/qa-ios-audit.mjs
           node scripts/qa-ranking-truth.mjs
+          node scripts/qa-ios-v245-map-and-samples.mjs
           npm install --no-audit --no-fund
           npx cap add ios
           npx cap sync ios
