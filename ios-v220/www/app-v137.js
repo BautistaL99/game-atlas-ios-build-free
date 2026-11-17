@@ -1228,23 +1228,32 @@ function searchCatalogCore(query,items,completed=[]){const q=normalizeSearch(que
  let pool=verified.filter(i=>(!category||i.category===category)&&(!subtype||facetMatches(i,{field:'tipo',value:subtype}))&&parsed.filters.every(f=>facetMatches(i,f))&&matchesDynamic(i,dynamic.filters));
  const words=residualWords(parsed.remaining,subtype,metric).filter(w=>!(location&&['consigo','conseguir','consegue','consegui','obtener','obter','get','buy','obtain'].includes(w)));
  if(missing)pool=pool.filter(i=>isTrackable(i)&&!completed.includes(i.id));
- if(ranking){const order=lowerDirection(q,metric)?'asc':'desc';const measured=pool.filter(i=>typeof i.stats?.[metric.key]==='number'&&Number.isFinite(i.stats[metric.key]));
- measured.sort((a,b)=>order==='asc'?a.stats[metric.key]-b.stats[metric.key]:b.stats[metric.key]-a.stats[metric.key]);
- // Missing speed stats is a data limitation, not a lack of available models.
- // Present a clearly UNRANKED shortlist with links to verified records.
- const noData=!measured.length;
- return{intent:'ranking',category,subtype,metric:metric.key,order,filters:[...parsed.filters,...dynamic.filters.map(f=>({field:f.key,value:f.value}))],
-  results:noData?pool.slice(0,24):measured,needsData:noData,unrankedFallback:noData,
-  reason:noData?'stats-missing':undefined};}
+ if(ranking){
+  const order=lowerDirection(q,metric)?'asc':'desc';
+  const measured=pool.filter(i=>typeof i.stats?.[metric.key]==='number'&&Number.isFinite(i.stats[metric.key]));
+  const total=pool.length;
+  // A worldwide 'fastest/slowest' claim is not defensible when even one
+  // candidate has no comparable verified measurement. Never show an
+  // unranked alphabetical list as if it answered a ranking question.
+  const enough=measured.length>=2&&measured.length===total;
+  if(enough)measured.sort((a,b)=>order==='asc'
+    ?a.stats[metric.key]-b.stats[metric.key]
+    :b.stats[metric.key]-a.stats[metric.key]);
+  return{intent:'ranking',category,subtype,metric:metric.key,order,
+    filters:[...parsed.filters,...dynamic.filters.map(f=>({field:f.key,value:f.value}))],
+    results:enough?measured:[],needsData:!enough,unrankedFallback:false,
+    measuredCount:measured.length,candidateCount:total,
+    reason:enough?undefined:'insufficient-comparable-stats'};
+ }
  const scored=pool.map(i=>({i,score:matchScore(i,words)})).filter(v=>v.score>0).sort((a,b)=>b.score-a.score).map(v=>v.i);
  return{intent:missing?'missing':comparison?'comparison':location?'location':'text',category,subtype,filters:[...parsed.filters,...dynamic.filters.map(f=>({field:f.key,value:f.value}))],results:scored,needsData:scored.length===0,reason:scored.length===0?'no-matches':undefined};
 }
 
 /* SHARED_SEARCH_ENGINE_END */
 const searchResultCopy={
- es:{ranking:'Ranking',location:'Ubicación',comparison:'Comparación',search:'Búsqueda',noRanking:'Sin ranking hasta tener estadísticas verificadas.',noStats:'Entendí que querés ordenar por',noStatsAfter:', pero todavía no hay estadísticas comparables verificadas. Abajo podés consultar fichas de vehículos sin un orden confirmado.',sorted:'Ranking por',highest:'mayor a menor',lowest:'menor a mayor',data:'con cifras disponibles',missing:'Elementos sin registrar',mark:'Podés marcarlos directamente desde la lista.',locationNote:'Mostramos fichas relacionadas; no inventamos ubicaciones ni coordenadas.',comparisonNote:'Fichas relacionadas; solo comparamos estadísticas verificadas.',matches:'coincidencias verificadas.',filters:'Filtros:',empty:'No hay fichas verificadas que cumplan esos filtros.',recognized:'Filtros reconocidos:'},
- en:{ranking:'Ranking',location:'Location',comparison:'Comparison',search:'Search',noRanking:'No ranking until verified statistics are available.',noStats:'I understood you want to sort by',noStatsAfter:', but there are no comparable verified stats yet. The entries below are NOT ranked.',sorted:'Ranking by',highest:'highest to lowest',lowest:'lowest to highest',data:'verified values',missing:'Untracked items',mark:'You can mark them directly in the list.',locationNote:'These entries are related; we do not invent locations or coordinates.',comparisonNote:'Related entries; we compare verified stats only.',matches:'verified matches.',filters:'Filters:',empty:'No verified entries match these filters.',recognized:'Recognized filters:'},
- pt:{ranking:'Classificação',location:'Localização',comparison:'Comparação',search:'Busca',noRanking:'Não há classificação sem estatísticas verificadas.',noStats:'Entendi que você quer ordenar por',noStatsAfter:', mas ainda não existem estatísticas verificadas comparáveis. As fichas abaixo NÃO estão ordenadas.',sorted:'Classificação por',highest:'do maior para o menor',lowest:'do menor para o maior',data:'valores verificados',missing:'Itens ainda não registrados',mark:'Você pode marcá-los diretamente na lista.',locationNote:'Mostramos fichas relacionadas; não inventamos locais nem coordenadas.',comparisonNote:'Fichas relacionadas; comparamos somente estatísticas verificadas.',matches:'resultados verificados.',filters:'Filtros:',empty:'Nenhuma ficha verificada corresponde a esses filtros.',recognized:'Filtros reconhecidos:'}
+ es:{ranking:'Ranking',location:'Ubicación',comparison:'Comparación',search:'Búsqueda',noRanking:'Sin ranking hasta tener estadísticas verificadas.',noStats:'Entendí que querés ordenar por',noStatsAfter:', pero todavía faltan estadísticas comparables verificadas. No puedo identificar el primero ni el último; no voy a mostrar una lista sin ordenar como si fuera el resultado. Datos disponibles',sorted:'Ranking por',highest:'mayor a menor',lowest:'menor a mayor',data:'con cifras disponibles',missing:'Elementos sin registrar',mark:'Podés marcarlos directamente desde la lista.',locationNote:'Mostramos fichas relacionadas; no inventamos ubicaciones ni coordenadas.',comparisonNote:'Fichas relacionadas; solo comparamos estadísticas verificadas.',matches:'coincidencias verificadas.',filters:'Filtros:',empty:'No hay fichas verificadas que cumplan esos filtros.',recognized:'Filtros reconocidos:'},
+ en:{ranking:'Ranking',location:'Location',comparison:'Comparison',search:'Search',noRanking:'No ranking until verified statistics are available.',noStats:'I understood you want to sort by',noStatsAfter:', but comparable verified statistics are missing. I cannot identify the fastest or slowest; I will not present an unranked list as an answer. Available data',sorted:'Ranking by',highest:'highest to lowest',lowest:'lowest to highest',data:'verified values',missing:'Untracked items',mark:'You can mark them directly in the list.',locationNote:'These entries are related; we do not invent locations or coordinates.',comparisonNote:'Related entries; we compare verified stats only.',matches:'verified matches.',filters:'Filters:',empty:'No verified entries match these filters.',recognized:'Recognized filters:'},
+ pt:{ranking:'Classificação',location:'Localização',comparison:'Comparação',search:'Busca',noRanking:'Não há classificação sem estatísticas verificadas.',noStats:'Entendi que você quer ordenar por',noStatsAfter:', mas faltam estatísticas comparáveis verificadas. Não posso identificar o mais rápido ou o mais lento e não vou mostrar uma lista sem ordem como resposta. Dados disponíveis',sorted:'Classificação por',highest:'do maior para o menor',lowest:'do menor para o maior',data:'valores verificados',missing:'Itens ainda não registrados',mark:'Você pode marcá-los diretamente na lista.',locationNote:'Mostramos fichas relacionadas; não inventamos locais nem coordenadas.',comparisonNote:'Fichas relacionadas; comparamos somente estatísticas verificadas.',matches:'resultados verificados.',filters:'Filtros:',empty:'Nenhuma ficha verificada corresponde a esses filtros.',recognized:'Filtros reconhecidos:'}
 };
 const searchMetricNames={
  speed:{es:'velocidad',en:'speed',pt:'velocidade'},price:{es:'precio',en:'price',pt:'preço'},
@@ -1258,7 +1267,7 @@ function detectIntent(query){
  const t=searchResultCopy[locale]||searchResultCopy.es;
  const metric=searchMetricNames[answer.metric]?.[locale]||answer.metric||'atributo';
  const criteria=(answer.filters||[]).map(f=>f.field.replaceAll('_',' ')+': '+f.value.replaceAll('_',' ')).join(' · ');
- const explanation=answer.intent==='ranking'?(answer.needsData?`${t.noStats} ${metric}${t.noStatsAfter}`:`${t.sorted} ${metric} (${answer.order==='asc'?t.lowest:t.highest}), ${t.data} (${answer.results.length}).`):answer.intent==='missing'?`${t.missing} (${answer.results.length}). ${t.mark}`:answer.intent==='location'?t.locationNote:answer.intent==='comparison'?t.comparisonNote:answer.results.length?`${answer.results.length} ${t.matches}${criteria?' '+t.filters+' '+criteria+'.':''}`:`${t.empty}${criteria?' '+t.recognized+' '+criteria+'.':''}`;
+ const explanation=answer.intent==='ranking'?(answer.needsData?`${t.noStats} ${metric}${t.noStatsAfter} (${answer.measuredCount||0}/${answer.candidateCount||0})`:`${t.sorted} ${metric} (${answer.order==='asc'?t.lowest:t.highest}), ${t.data} (${answer.results.length}).`):answer.intent==='missing'?`${t.missing} (${answer.results.length}). ${t.mark}`:answer.intent==='location'?t.locationNote:answer.intent==='comparison'?t.comparisonNote:answer.results.length?`${answer.results.length} ${t.matches}${criteria?' '+t.filters+' '+criteria+'.':''}`:`${t.empty}${criteria?' '+t.recognized+' '+criteria+'.':''}`;
  return {...answer,kind:answer.intent,explanation};
 }
 function showResults(){const target=document.getElementById('searchResults');if(!target)return;const query=searchText.trim();const answer=detectIntent(query);const ct=cat(answer.category);const t=searchResultCopy[locale]||searchResultCopy.es;const badge=answer.kind==='ranking'?'↗ '+t.ranking:answer.kind==='location'?'⌖ '+t.location:answer.kind==='comparison'?'⇄ '+t.comparison:'⌕ '+t.search;const note=query&&answer.explanation?`<div class="search-intent"><strong>${badge}</strong><p>${esc(answer.explanation)}</p>${ct?`<a ${href('/explorar/'+ct.id)}>↗ ${esc(tr(ct.label))}</a>`:''}${answer.kind==='location'?`<button type="button" class="primary-btn" data-search-map="${esc(query)}">${esc(tr({es:'Buscar en el mapa',en:'Search on map',pt:'Buscar no mapa'}))} ↗</button>`:''}</div>`:'';
@@ -1475,8 +1484,25 @@ window.viCatalogRouteItems=()=>records.filter(r=>r.mapPoint?.mapVersion===MAP_VE
 window.viIosSearchItems=()=>records.filter(r=>r.status==='verified'&&r.recordType!=='story_overview')
  .map(r=>({id:r.id,category:r.category,title:r.title,tags:Array.isArray(r.tags)?r.tags.slice(0,12):[]}));
 /* iOS V241 verified search result suggestions */
-window.viIosSearchCardsFor=(query,limit=5)=>detectIntent(query).results.slice(0,limit)
- .map(r=>({id:r.id,title:tr(r.title),category:cat(r.category)?.label?tr(cat(r.category).label):String(r.category||'')}));
+window.viIosSearchCardsFor=(query,limit=5)=>{
+ const answer=detectIntent(query);
+ if(answer.intent==='ranking'&&answer.needsData)return [];
+ return answer.results.slice(0,limit).map(r=>({
+  id:r.id,title:tr(r.title),
+  category:cat(r.category)?.label?tr(cat(r.category).label):String(r.category||'')
+ }));
+};
+window.viIosRankingAvailability=query=>{
+ const answer=detectIntent(query);
+ return answer.intent!=='ranking'?null:{
+  available:!answer.needsData,
+  metric:searchMetricNames[answer.metric]?.[locale]||answer.metric,
+  measured:answer.measuredCount||0,
+  total:answer.candidateCount||0,
+  order:answer.order,
+  explanation:answer.explanation
+ };
+};
 window.viIosMapNames=()=>allMapPins().map(p=>({id:p.id,name:p.title,category:p.category}));
 window.viIosMapLiveMatches=(query,limit=12)=>{
  if(!query?.trim())return [];
