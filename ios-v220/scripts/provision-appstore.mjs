@@ -52,19 +52,7 @@ console.log('Bundle ID confirmado en Apple: '+bundle);
 const existing = await api('certificates?limit=200');
 const distribution = (existing.data||[]).filter(c => c.attributes?.certificateType==='DISTRIBUTION' && c.attributes?.activated!==false);
 console.log('Certificados Apple Distribution activos de la cuenta: '+distribution.length);
-// Before the first attempt there were zero distribution certificates. The last two CI
-// attempts created exactly two, with GameAtlas-AppStore-* profiles, but the runners
-// were destroyed before importing their keys. Revoke ONLY those two known orphans.
-if (distribution.length === 2) {
-  const allProfiles = await api('profiles?limit=200');
-  const generated = (allProfiles.data || []).filter(v =>
-    v.attributes?.name?.startsWith('GameAtlas-AppStore-') &&
-    v.attributes?.profileType === 'IOS_APP_STORE');
-  if (generated.length !== 2) throw Error('No puedo confirmar los dos perfiles de prueba anteriores; no se revocó ningún certificado.');
-  console.log('Limpiando exclusivamente los dos perfiles y certificados huérfanos creados por estas pruebas.');
-  for (const obj of generated) await api('profiles/'+obj.id,'DELETE');
-  for (const obj of distribution) await api('certificates/'+obj.id,'DELETE');
-}
+// Never revoke existing distribution assets automatically: an uploaded app may depend on them.
 if(distribution.length >= 3) throw Error('La cuenta tiene 3 certificados Distribution activos. No se revocó ninguno. Se necesita usar un .p12 existente o liberar uno con autorización.');
 const openssl = fs.existsSync('/opt/homebrew/opt/openssl@3/bin/openssl') ? '/opt/homebrew/opt/openssl@3/bin/openssl' : 'openssl';
 const version = run(openssl,['version']).trim();
