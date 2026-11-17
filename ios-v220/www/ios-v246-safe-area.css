@@ -1,0 +1,24 @@
+/* iOS V246: keep the native status bar readable while scrolling the map and entries.
+   Scope only the native iOS class set by ios-v239-qa.js. Do not load on web/Android. */
+@media (max-width:700px) and (orientation:portrait) {
+  html.vi-ios-app body::before {
+    content:"";
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    height:max(53px,env(safe-area-inset-top,0px));
+    background:#101827;
+    z-index:1000;
+    pointer-events:none;
+  }
+  /* Avoid overlap with time / Dynamic Island when WKWebView reports safe-area=0. */
+  html.vi-ios-app #root .main .topbar {
+    box-sizing:border-box!important;
+    padding-top:calc(max(56px,env(safe-area-inset-top,0px)) + 8px)!important;
+    top:0!important;
+  }
+}
+@media (orientation:landscape) and (max-height:600px) and (pointer:coarse){
+  html.vi-ios-app body::before {display:none!important;}
+}
