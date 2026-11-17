@@ -40,3 +40,12 @@ PENDIENTE PARA ANDROID + WEB MÓVIL + WEB PC (NO MODIFICADOS)
 - Pruebas de regresión por idioma, categorías y dispositivo; preservar escritorio visualmente.
 - NO copiar ios-v246-safe-area.css: es un ajuste exclusivamente de la barra de estado nativa de iOS.
 - Transferir por separado las mejoras generales V240-V245: búsqueda incremental, autocompletado real, teclado, interacción del círculo resaltado, cambio de pines, filtros vacíos, rankings verificables y marcadores.
+
+CORRECCIÓN DEL WORKFLOW DEL 17/11/2026 (POSTERIOR A LA PRIMERA EJECUCIÓN)
+- La primera ejecución V246, run 44135577246, FALLÓ ANTES DE COMPILAR en el chequeo Apple API.
+- Apps?limit=1 respondió HTTP 200 (la autenticación fue aceptada).
+- BundleIds?limit=1 devolvió HTTP 500 UNEXPECTED_ERROR, error interno de Apple.
+- La comprobación extra de bundle IDs/certificados/perfiles se quitó del preflight porque la firma usa .p12 y .mobileprovision ya guardados y revisados por use-saved-signing.mjs.
+- La comprobación de autenticación general se mantiene, con hasta 3 intentos para errores temporales 429/5xx y fallos de red; 401/403 siguen deteniendo el proceso.
+- No se ejecutó automáticamente otro workflow ni se envió una IPA a Apple. Hay que lanzar manualmente Run workflow desde qa-ios-v246 para probar el nuevo código del workflow.
+- No sirve reintentar la ejecución antigua: la nueva configuración está en un commit posterior.
