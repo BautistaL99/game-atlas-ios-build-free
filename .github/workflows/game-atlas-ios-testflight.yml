@@ -1,0 +1,126 @@
+name: Game Atlas V238 - iOS a TestFlight
+
+# Se ejecuta SOLAMENTE al pulsar Run workflow en GitHub.
+# El repositorio es publico, pero NUNCA guarda certificados, claves ni IPA como artefactos.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: game-atlas-ios-testflight-upload
+  cancel-in-progress: false
+
+jobs:
+  enviar-testflight:
+    runs-on: macos-26
+    timeout-minutes: 75
+    steps:
+      - name: Obtener codigo iOS
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Configurar Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Comprobar credenciales Apple guardadas como GitHub Secrets
+        env:
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          for key in APPLE_TEAM_ID ASC_KEY_ID ASC_ISSUER_ID ASC_KEY_P8; do
+            if [[ -z "${!key:-}" ]]; then
+              echo "::error::Falta el secreto $key en Settings > Secrets and variables > Actions"
+              exit 1
+            fi
+          done
+          mkdir -p "$HOME/.appstoreconnect/private_keys"
+          printf '%s\n' "$ASC_KEY_P8" > "$HOME/.appstoreconnect/private_keys/AuthKey_${ASC_KEY_ID}.p8"
+          chmod 600 "$HOME/.appstoreconnect/private_keys/AuthKey_${ASC_KEY_ID}.p8"
+          echo "ASC_KEY_PATH=$HOME/.appstoreconnect/private_keys/AuthKey_${ASC_KEY_ID}.p8" >> "$GITHUB_ENV"
+
+      - name: Validar fuentes y generar proyecto de iPhone
+        working-directory: ios-v220
+        run: |
+          set -euo pipefail
+          node scripts/verify-ios.mjs
+          npm install --no-audit --no-fund
+          npx cap add ios
+          npx cap sync ios
+          node scripts/configure-ios-native.mjs
+          node scripts/ci-version.mjs
+          test -d ios/App/App.xcodeproj
+          /usr/libexec/PlistBuddy -c 'Set :CFBundleDisplayName Game Atlas' ios/App/App/Info.plist || \
+            /usr/libexec/PlistBuddy -c 'Add :CFBundleDisplayName string Game Atlas' ios/App/App/Info.plist
+
+      - name: Compilar archivo iOS firmado por Apple
+        working-directory: ios-v220
+        env:
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+        run: |
+          set -euo pipefail
+          xcodebuild \
+            -project ios/App/App.xcodeproj \
+            -scheme App \
+            -configuration Release \
+            -destination 'generic/platform=iOS' \
+            -archivePath "$RUNNER_TEMP/GameAtlas.xcarchive" \
+            -allowProvisioningUpdates \
+            -authenticationKeyPath "$ASC_KEY_PATH" \
+            -authenticationKeyID "$ASC_KEY_ID" \
+            -authenticationKeyIssuerID "$ASC_ISSUER_ID" \
+            DEVELOPMENT_TEAM="$APPLE_TEAM_ID" CODE_SIGN_STYLE=Automatic archive
+
+      - name: Generar IPA de App Store Connect
+        env:
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+        run: |
+          set -euo pipefail
+          python3 - <<'PYEXPORT'
+          import os, plistlib
+          opts = {
+              "method": "app-store-connect",
+              "destination": "export",
+              "signingStyle": "automatic",
+              "teamID": os.environ["APPLE_TEAM_ID"],
+              "manageAppVersionAndBuildNumber": False,
+          }
+          with open(os.path.join(os.environ["RUNNER_TEMP"], "GameAtlasExport.plist"), "wb") as out:
+              plistlib.dump(opts, out)
+          PYEXPORT
+          xcodebuild -exportArchive \
+            -archivePath "$RUNNER_TEMP/GameAtlas.xcarchive" \
+            -exportPath "$RUNNER_TEMP/ios-export" \
+            -exportOptionsPlist "$RUNNER_TEMP/GameAtlasExport.plist" \
+            -allowProvisioningUpdates \
+            -authenticationKeyPath "$ASC_KEY_PATH" \
+            -authenticationKeyID "$ASC_KEY_ID" \
+            -authenticationKeyIssuerID "$ASC_ISSUER_ID"
+          test -n "$(find "$RUNNER_TEMP/ios-export" -maxdepth 1 -name '*.ipa' -print -quit)"
+
+      - name: Enviar IPA directamente a TestFlight (sin hacerla publica)
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+        run: |
+          set -euo pipefail
+          IPA="$(find "$RUNNER_TEMP/ios-export" -maxdepth 1 -type f -name '*.ipa' -print -quit)"
+          test -n "$IPA"
+          xcrun altool --upload-app --file "$IPA" --type ios \
+            --apiKey "$ASC_KEY_ID" --apiIssuer "$ASC_ISSUER_ID"
+          echo "IPA enviada a App Store Connect. La compilacion aparecera en TestFlight cuando Apple termine de procesarla."
+
+# No se usan upload-artifact, releases ni adjuntos publicos.
+# La IPA firmada solo se envia a Apple desde el runner.
