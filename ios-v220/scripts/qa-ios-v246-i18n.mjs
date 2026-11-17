@@ -72,5 +72,5 @@ assert.equal(initialLocale(['pt-BR','en-US'],'pt-BR',null).locale,'pt');
 assert.equal(initialLocale(['fr-FR'],'fr-FR',null).locale,'en');
 assert.equal(initialLocale(['en-US'],'en-US','es').locale,'es');
 assert.equal(initialLocale(['es-AR'],'es-AR','pt').html,'pt');
-assert(dictionary.includes("const selected=window.viAppLocale||localStorage.getItem('vi_demo_locale')||'en';'),'Translation bridge uses first-launch locale');
+assert(dictionary.includes("const selected=window.viAppLocale||localStorage.getItem('vi_demo_locale')||'en';"),'Translation bridge uses first-launch locale');
 console.log('PASS iOS V246: first launch device language and preserved user choice');
