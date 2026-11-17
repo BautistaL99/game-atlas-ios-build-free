@@ -52,7 +52,9 @@ async function configure(){try{
  if(!window.Capacitor?.isNativePlatform?.())return;
  const bar=window.Capacitor?.Plugins?.StatusBar||window.Capacitor?.registerPlugin?.('StatusBar');
  if(!bar)return;
- const dark=matchMedia('(prefers-color-scheme: dark)').matches;
+ const ios=window.Capacitor?.getPlatform?.()==='ios';
+ const dark=ios||matchMedia('(prefers-color-scheme: dark)').matches;
+ // The iOS app UI is always dark; use white status icons even with a light system theme.
  await bar.setBackgroundColor?.({color:dark?'#101827':'#F5F6F9'});
  // On Capacitor, LIGHT means white icons (dark background), DARK means dark icons.
  await bar.setStyle?.({style:dark?'LIGHT':'DARK'});
