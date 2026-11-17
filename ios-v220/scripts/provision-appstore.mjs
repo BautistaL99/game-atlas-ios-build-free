@@ -52,12 +52,28 @@ console.log('Bundle ID confirmado en Apple: '+bundle);
 const existing = await api('certificates?limit=200');
 const distribution = (existing.data||[]).filter(c => c.attributes?.certificateType==='DISTRIBUTION' && c.attributes?.activated!==false);
 console.log('Certificados Apple Distribution activos de la cuenta: '+distribution.length);
+// Before the first attempt there were zero distribution certificates. The last two CI
+// attempts created exactly two, with GameAtlas-AppStore-* profiles, but the runners
+// were destroyed before importing their keys. Revoke ONLY those two known orphans.
+if (distribution.length === 2) {
+  const allProfiles = await api('profiles?limit=200');
+  const generated = (allProfiles.data || []).filter(v =>
+    v.attributes?.name?.startsWith('GameAtlas-AppStore-') &&
+    v.attributes?.profileType === 'IOS_APP_STORE');
+  if (generated.length !== 2) throw Error('No puedo confirmar los dos perfiles de prueba anteriores; no se revocó ningún certificado.');
+  console.log('Limpiando exclusivamente los dos perfiles y certificados huérfanos creados por estas pruebas.');
+  for (const obj of generated) await api('profiles/'+obj.id,'DELETE');
+  for (const obj of distribution) await api('certificates/'+obj.id,'DELETE');
+}
 if(distribution.length >= 3) throw Error('La cuenta tiene 3 certificados Distribution activos. No se revocó ninguno. Se necesita usar un .p12 existente o liberar uno con autorización.');
+const openssl = fs.existsSync('/opt/homebrew/opt/openssl@3/bin/openssl') ? '/opt/homebrew/opt/openssl@3/bin/openssl' : 'openssl';
+const version = run(openssl,['version']).trim();
+if(!/^OpenSSL 3\./.test(version)) throw Error('Se requiere OpenSSL 3 para generar un archivo PKCS12 compatible; no se creó certificado.');
 const keyfile = path.join(dir,'distribution.key');
 const csr = path.join(dir,'distribution.csr');
-run('openssl',['genrsa','-out',keyfile,'2048']);
+run(openssl,['genrsa','-out',keyfile,'2048']);
 fs.chmodSync(keyfile,0o600);
-run('openssl',['req','-new','-sha256','-key',keyfile,'-subj','/CN=Game Atlas CI Distribution','-out',csr]);
+run(openssl,['req','-new','-sha256','-key',keyfile,'-subj','/CN=Game Atlas CI Distribution','-out',csr]);
 const created = await api('certificates','POST',{
   data:{type:'certificates',attributes:{certificateType:'DISTRIBUTION',csrContent:fs.readFileSync(csr,'utf8')}}
 });
@@ -68,7 +84,7 @@ console.log('Certificado Apple Distribution creado para esta compilación.');
 const der = path.join(dir,'distribution.cer');
 const pem = path.join(dir,'distribution.pem');
 fs.writeFileSync(der,Buffer.from(cert64,'base64'),{mode:0o600});
-run('openssl',['x509','-inform','DER','-in',der,'-out',pem]);
+run(openssl,['x509','-inform','DER','-in',der,'-out',pem]);
 const profileName = 'GameAtlas-AppStore-'+(process.env.GITHUB_RUN_ID||Date.now());
 const createdProfile = await api('profiles','POST',{
   data:{
@@ -94,7 +110,8 @@ if(team!==process.env.APPLE_TEAM_ID) console.log('Team ID guardado no coincide; 
 fs.appendFileSync(process.env.GITHUB_ENV,'GA_APPLE_TEAM_ID='+team+'\n');
 const pass=crypto.randomBytes(32).toString('hex');
 const pkcs12=path.join(dir,'distribution.p12');
-run('openssl',['pkcs12','-export','-inkey',keyfile,'-in',pem,'-out',pkcs12,'-passout','pass:'+pass]);
+run(openssl,['pkcs12','-export','-legacy','-inkey',keyfile,'-in',pem,'-out',pkcs12,'-passout','pass:'+pass]);
+run(openssl,['pkcs12','-legacy','-info','-noout','-in',pkcs12,'-passin','pass:'+pass]);
 const keychain=path.join(dir,'build.keychain-db');
 run('security',['create-keychain','-p',pass,keychain]);
 run('security',['unlock-keychain','-p',pass,keychain]);
