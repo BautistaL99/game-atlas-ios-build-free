@@ -1,4 +1,4 @@
-name: Game Atlas V238 - Prueba iOS gratuita
+name: Game Atlas V249 - Prueba iOS (optativa)
 
 # Se ejecuta SOLO cuando el propietario pulsa Run workflow.
 on:
@@ -35,7 +35,9 @@ jobs:
 
       - name: Revisar los archivos originales de Game Atlas
         working-directory: ios-v220
-        run: node scripts/verify-ios.mjs
+        run: |
+          node scripts/verify-ios.mjs
+          node scripts/qa-ios-v249-regressions.mjs --ios
 
       - name: Instalar Capacitor y crear proyecto nativo iOS
         working-directory: ios-v220

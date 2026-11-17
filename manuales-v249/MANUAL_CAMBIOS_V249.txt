@@ -1,0 +1,122 @@
+GAME ATLAS COMPANION — V249 · FUENTES DE PRUEBA
+17 de noviembre de 2026 — NO PUBLICADA, NO APROBADA PARA TIENDAS
+================================================================
+
+BASE: V248 aportada por el propietario. Se mantienen los archivos históricos, mapa
+comunitario, fuentes verificadas y firmas de noticias/wiki, ES/EN/PT, Mi partida,
+marcadores locales, comparación y rutas. NO se ha desplegado en Firebase, GitHub
+Pages, Google Play ni App Store. NO sustituye la versión instalada.
+
+PLATAFORMAS
+  WEB: carpeta app/ funciona en escritorio y móvil.
+  ANDROID: app/ + android-v215/www/ + android-v215/prepare-android.mjs.
+  iOS: ios-v220/www/ y los preparadores/validadores de iOS.
+
+CAMBIOS APLICADOS AL CÓDIGO
+1) Buscador en el mapa: el catálogo de 926 puntos comunitarios se actualiza en la
+   lista de resultados aun cuando se carga después de empezar a escribir, sin
+   reconstruir el campo activo (importante en teclados Android). Las categorías
+   genéricas 'armas' y 'vehículos' enlazan lugares REALES que ya estaban en la
+   reconstrucción: 3 tiendas de armas y 18 comercios/servicios automotores.
+   No se inventaron spawns ni se cambiaron coordenadas. Fuente comunitaria no oficial.
+2) Los nombres del autocompletado se muestran en filas completas, con descripción
+   debajo, y no comprimidos en letras aisladas en móvil o fullscreen.
+3) La ubicación marcada en amarillo conserva su identidad aunque el usuario toque
+   otro punto, cierre su ficha, toque fuera, restablezca zoom, filtre categorías,
+   limpie o muestre todos los marcadores. Queda pálida cuando se exploran otros
+   puntos; una NUEVA selección desde el buscador reemplaza la ubicación recordada.
+   Un punto seleccionado diferente puede abrir su ficha sin borrar el recordado.
+4) Botón «Mostrar solo ruta» en el mapa cuando hay una ruta visualizada. Oculta los
+   puntos comunes, no la ruta ni las marcas numeradas de sus paradas. Al volver a
+   mostrar puntos conserva los filtros anteriores y las rutas guardadas.
+5) Web PC/móvil: botón «Descargar» (en lugar del «Valorar» impuesto erróneamente
+   por mobile-v221-polish.js), lleva a /descargas con destinos oficiales. Solo
+   se habilitarán enlaces cuando las tiendas publiquen las apps; no inventamos
+   App Store ID. El botón informativo de web ya no intenta cobrar por Mercado Pago.
+6) Apps nativas: sección «Pagos / sin publicidad» y catálogo PRELIMINAR de aportes
+   únicos USD 10/20/50/100 y mensuales USD 1/2/3/5/10/20/50/100. Son propuestas,
+   NO precios de tienda, NO productos configurados, NO se puede pagar aún.
+7) Publicidad: flag desactivado y regla de post-lanzamiento (5 días) preparada.
+   No hay anuncios ni SDK publicitario configurados. NADIE recibe anuncios ni un
+   estado falso de «sin anuncios» en esta versión.
+8) Android: launcher adaptativo corregido EN FUENTES: PNG reales para ic_launcher,
+   ic_launcher_round, ic_launcher_foreground en las cinco densidades. El APK
+   V248-R2 adjunto SÍ contenía el ic_launcher_foreground azul de Capacitor;
+   esta corrección solo podrá verse en un APK NUEVO compilado desde V249.
+9) Android: versionCode 249 / versionName 1.52.0. El paquete de producción permanece
+   com.indie.viassistant y la variante DEBUG obtiene .qa para instalar en paralelo.
+10) iOS: se copiaron los mismos cambios compartidos al www de iOS. No IPA compilada.
+
+NO ESTÁ IMPLEMENTADO TODAVÍA (DEPENDENCIAS EXTERNAS IMPRESCINDIBLES)
+A) Habilitar compras reales: definir productos y precios en Play Console y App
+   Store Connect, integrar las API de Play Billing y StoreKit mediante componentes
+   nativos, implementar un servidor de verificación de compras, restauración,
+   vencimientos, renovaciones, cancelaciones, reintegros y verificación segura.
+   Una suscripción da sin anuncios mientras está activa; la compra permanente
+   es un producto no consumible. Distintos precios para el mismo beneficio necesitan
+   revisión de estrategia/compliance antes de publicarlos.
+B) Ranking Top donaciones: recibir compras verificadas desde servidor y recopilar
+   alias/país SOLO con consentimiento expreso; no sumar recibos localmente ni
+   publicar identidades/pagos sin permiso. No existen nuevas entradas falsas.
+C) Ads: crear/activar cuentas y unidades AdMob (Android/iOS) y AdSense (web),
+   revisar políticas de anuncios, privacidad y consentimiento; fijar fecha real
+   de lanzamiento y fecha efectiva de ads. No insertar publicidad desde el día 1.
+D) Apple: crear productos/suscripciones y certificados; compilar en macOS/Xcode;
+   probar en TestFlight. Android: compilar APK y AAB en entorno con Android SDK 36.
+E) Pruebas en dispositivos: teclado Samsung, pantalla completa, links de tiendas,
+   pago sandbox, restauración y rutas en web/Android/iPhone. Los tests de Node
+   NO sustituyen esas pruebas.
+
+RECOMENDACIÓN DE PRECIOS (SOLO PARA DISCUTIR)
+Para reducir confusiones en tiendas: una compra permanente principal de alrededor
+USD 14.99–19.99 y suscripción base de alrededor USD 1.99/mes, con 1–3 niveles
+superiores de apoyo voluntario claramente explicados, antes que 12 productos
+idénticos. Precios regionales, comisiones, impuestos y revisión de ambas tiendas
+pueden modificar esa propuesta. Los importes del catálogo V249 son ilustrativos.
+
+VERIFICACIONES REALIZADAS EN EL ENTORNO
+- node --check para módulos modificados en las 3 plataformas.
+- V249 pruebas deterministas: clasificación exacta 3/18 del catálogo original,
+  reconocimiento ES/EN/PT, estado del foco, filtros, modo «solo ruta», búsqueda
+  asíncrona, ausencia de cobro ficticio y seguridad de la publicidad.
+- Validación iOS de fuentes con scripts verify-ios.mjs y prepare-ios.mjs.
+- Verificación byte a byte del APK V248-R2: el JavaScript y el JSON de POIs son
+  idénticos a la fuente V248; el recurso adaptativo ic_launcher_foreground.png
+  de ese APK era el logo azul predeterminado de Capacitor.
+- NO se ha realizado una prueba gráfica de navegador ni en dispositivos físicos.
+  El navegador de prueba de este entorno está bloqueado para navegación.
+- NO se ha compilado nuevo APK, AAB ni IPA; el entorno actual carece de Android
+  SDK y macOS/Xcode. No etiquetar o compartir la V248-R2 como si fuera V249.
+
+CÓMO COMPILAR / PROBAR CUANDO SE DECIDA
+WEB: servir app/ por HTTPS o localhost (no abrir desde file://). Para web de prueba,
+publicar solo en una carpeta aislada y no en /app/ de producción. No sobrescribir
+el sitio público hasta que esté aprobado.
+ANDROID: en la raíz del ZIP, ejecutar node qa/v249-map-monetization-regressions.mjs;
+node android-v215/prepare-android.mjs stage; instalar Capacitor 8 y SDK 36;
+npx cap add android; npx cap sync android; node android-v215/prepare-android.mjs native;
+compilar assembleDebug y probar el icono en el launcher. Existe GitHub Actions
+MANUAL (workflow_dispatch) que sube los artefactos al propio job, no los publica
+en GitHub Releases automáticamente. No ejecutarlo si querés ahorrar minutos.
+iOS: cd ios-v220; node scripts/verify-ios.mjs;
+node scripts/qa-ios-v249-regressions.mjs --ios;
+node prepare-ios.mjs; continuar con macOS/Xcode y pruebas TestFlight.
+No publicar ningún build que muestre pagos no disponibles como si fueran activos.
+
+CHECKLIST DE ACEPTACIÓN EN DISPOSITIVOS
+[ ] Web móvil y desktop + APK nuevo + iPhone: buscar armas, armas de fuego,
+    gun stores, lojas de armas; mostrar 3 tiendas reales (si el dataset cargó).
+[ ] Limpiar filtros y buscar vehículos; aparecen servicios comunitarios, no spawns.
+[ ] Abrir Ammu-Nation desde las sugerencias -> pin y ficha.
+[ ] Cerrar ficha, tocar el fondo, abrir otra ficha y activar filtros: el primer
+    marcador queda pálido hasta realizar OTRA búsqueda.
+[ ] Crear/mostrar ruta -> «Mostrar solo ruta» -> ocultar puntos, restaurarlos.
+[ ] Rotación y mapa fullscreen: resultados legibles y clicables, sin recortes.
+[ ] Web: «Descargar» no se convierte en «Valorar».
+[ ] APK nuevo: verificar icono VI, no icono azul de Capacitor.
+[ ] Native: Pagos muestra estado desactivado (no fake checkout).
+[ ] La V249 no muestra publicidad; simular anuncio solo tras integración y fecha.
+[ ] Favoritos, marcadores, rutas, copias de Mi partida, traducciones y fuentes
+    automáticas continúan funcionando y sin pérdidas.
+
+FIN · CANDIDATA V249 FUENTES DE PRUEBA, NO PUBLICACIÓN

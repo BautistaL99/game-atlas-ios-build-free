@@ -1,4 +1,4 @@
-name: Game Atlas iOS V246 - TestFlight
+name: Game Atlas iOS V249 - TestFlight (optativo)
 
 # Se ejecuta SOLAMENTE al pulsar Run workflow en GitHub.
 # El repositorio es publico, pero NUNCA guarda certificados, claves ni IPA como artefactos.
@@ -30,7 +30,7 @@ jobs:
   # Fail fast on free/low-cost Linux before reserving a macOS runner.
   # Catches JavaScript syntax and localization regressions without Apple secrets.
   validar-fuentes:
-    name: Validar Game Atlas V246 (Linux)
+    name: Validar Game Atlas V249 (Linux)
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -50,6 +50,7 @@ jobs:
           set -euo pipefail
           node --check scripts/qa-ios-v246-i18n.mjs
           node scripts/verify-ios.mjs
+          node scripts/qa-ios-v249-regressions.mjs --ios
           node scripts/qa-marker-switch.mjs
           node scripts/qa-ios-audit.mjs
           node scripts/qa-ranking-truth.mjs

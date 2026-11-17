@@ -8,6 +8,7 @@
   pt:{rate:'Avaliar',rateHelp:'Avaliar Game Atlas no Google Play',compare:'Comparar',scroll:'Deslize para baixo para completar o formulário ↓'}
  };
  const isIOS=()=>window.Capacitor?.getPlatform?.()==='ios';
+ const isNative=()=>Boolean(window.Capacitor?.isNativePlatform?.());
  const playUrl='https://play.google.com/store/apps/details?id=com.indie.viassistant';
  const iosWords={es:{label:'Descargas',hint:'Descargas y estado de Game Atlas para iOS'},en:{label:'Downloads',hint:'Game Atlas iOS downloads and status'},pt:{label:'Downloads',hint:'Downloads e estado do Game Atlas para iOS'}};
  const language=()=>words[(document.documentElement.lang||'es').slice(0,2)]||words.es;
@@ -16,7 +17,11 @@
   const t=language();
   const rate=root.querySelector('.topbar .mobile-download');
   if(rate){
-   if(isIOS()){
+   if(!isNative()){
+    rate.href='#/descargas';rate.removeAttribute('target');rate.removeAttribute('rel');
+    rate.setAttribute('aria-label',({'es':'Descargar para Android o iOS','en':'Download for Android or iOS','pt':'Baixar para Android ou iOS'})[(document.documentElement.lang||'es').slice(0,2)]||'Descargar aplicaciones');
+    rate.innerHTML='⬇ <span>'+({'es':'Descargar','en':'Download','pt':'Baixar'})[(document.documentElement.lang||'es').slice(0,2)]+'</span>';
+   }else if(isIOS()){
     const io=iosWords[(document.documentElement.lang||'es').slice(0,2)]||iosWords.es;
     rate.href='#/descargas';rate.removeAttribute('target');rate.removeAttribute('rel');
     rate.setAttribute('aria-label',io.hint);rate.title=io.hint;
