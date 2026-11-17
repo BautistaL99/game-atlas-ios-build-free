@@ -73,3 +73,12 @@ CI / GitHub Actions — corrección de cola 17/11/2026
 - Versión del código: primera apertura usa idioma preferido del dispositivo en/es/pt, otro => inglés. Un idioma elegido manualmente se mantiene en localStorage. No se infiere idioma por geolocalización.
 - Importante: capturas de App Store deben hacerse en un iPhone con la compilación actualizada y sin superposición con la hora o TestFlight. Apple acepta PNG/JPG nativos de resolución del teléfono. Ejemplos aceptados: 1179x2556 o 1206x2622 (Dynamic Island mediano); 1290x2796 o 1320x2868 (Dynamic Island grande). Revisar dimensiones reales en Fotos > información, y transferir originales por iCloud Fotos, AirDrop o USB; evitar WhatsApp y ediciones que reduzcan resolución.
 - Dejar anotado para Android/web: detectar idioma preferido de navegador/dispositivo en primer inicio; permitir idioma manual persistente, fallback EN y asegurar actualización ES/EN/PT en todo el catálogo.
+
+CORRECCIÓN DE LA EJECUCIÓN 44142131673 (17/11/2026 ~14:54 ARG)
+- La ejecución usó exitosamente macos-26-intel, Xcode 26 y autenticación Apple HTTP 200.
+- El paso "Validar fuentes y generar proyecto de iPhone" falló por SyntaxError en scripts/qa-ios-v246-i18n.mjs, línea 75: falta de cierre de comillas en un assert del puente de traducción.
+- Se corrigió esa línea en rama qa-ios-v246. La sintaxis del script corregido pasó node --check.
+- Se agregó un job inicial validar-fuentes con ubuntu-latest y Node 22 que ejecuta TODAS las pruebas de código antes de reservar el macOS; enviar-testflight necesita que ese job termine bien.
+- Las pruebas previas de ranking, mapa, fichas y feeds habían pasado; no llegó a firmar ni enviar la IPA.
+- Importante: se necesita una ejecución NUEVA desde la punta actual de qa-ios-v246; reintentar el workflow antiguo mantiene su commit defectuoso.
+- No se alteraron certificados, claves, noticias, datos guardados ni permisos del repositorio.
