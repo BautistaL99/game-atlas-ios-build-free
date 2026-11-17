@@ -7,9 +7,9 @@
  const L=()=>['es','en','pt'].includes(document.documentElement.lang?.slice(0,2))?document.documentElement.lang.slice(0,2):'es';
  const N=x=>String(x||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ').trim();
  const strings={
-  es:{last:'Última búsqueda',records:'Fichas verificadas',phrases:'Sugerencias de búsqueda',map:'Lugares y categorías',related:'Búsqueda relacionada',place:'Ubicación del mapa'},
-  en:{last:'Last search',records:'Verified entries',phrases:'Search suggestions',map:'Places and categories',related:'Related search',place:'Map location'},
-  pt:{last:'Última busca',records:'Fichas verificadas',phrases:'Sugestões de busca',map:'Lugares e categorias',related:'Busca relacionada',place:'Local do mapa'}
+  es:{last:'Última búsqueda',records:'Fichas verificadas',rankingUnavailable:'Ranking no verificable',rankingAvailable:'Ranking por datos verificados',phrases:'Sugerencias de búsqueda',map:'Lugares y categorías',related:'Búsqueda relacionada',place:'Ubicación del mapa'},
+  en:{last:'Last search',records:'Verified entries',rankingUnavailable:'Ranking not verifiable',rankingAvailable:'Ranking from verified data',phrases:'Search suggestions',map:'Places and categories',related:'Related search',place:'Map location'},
+  pt:{last:'Última busca',records:'Fichas verificadas',rankingUnavailable:'Classificação não verificável',rankingAvailable:'Classificação com dados verificados',phrases:'Sugestões de busca',map:'Lugares e categorias',related:'Busca relacionada',place:'Local do mapa'}
  };
  const geo={
   es:['playa','playas','vice city','leonida','regiones','ciudades','aeropuertos','puentes','garajes','talleres','hospitales','hoteles','misiones','autos','motos','armas','lugares','tiendas','ríos','islas','parques','policía'],
@@ -107,9 +107,22 @@
     if(matches.length)title(panel,({es:'Ubicaciones encontradas',en:'Matching locations',pt:'Locais encontrados'})[g]);
     for(const m of matches){option(panel,m.title,m.category,()=>{close();input.blur();window.viIosMapFocusFromSearch?.(m.id)},true);count++}
    }else{
-    let cards=[];
-    try{cards=window.viIosSearchCardsFor?.(q,5)||[]}catch{}
-    if(cards.length)title(panel,lbl.records);
+    let cards=[],ranking=null;
+    try{
+      ranking=window.viIosRankingAvailability?.(q)||null;
+      cards=window.viIosSearchCardsFor?.(q,5)||[];
+    }catch{}
+    // Show an explicit, truthful answer while typing; the same text appears
+    // in the descriptive search page when the user submits the query.
+    if(ranking&&!ranking.available){
+      title(panel,lbl.rankingUnavailable);
+      const notice=document.createElement('div');
+      notice.className='vi-v244-ranking-notice';
+      notice.setAttribute('role','status');
+      notice.textContent=ranking.explanation;
+      panel.append(notice);count++;
+    }
+    if(cards.length)title(panel,ranking?lbl.rankingAvailable:lbl.records);
     for(const r of cards){option(panel,r.title,r.category,()=>{
       remember(q);close();input.blur();window.location.hash='#/ficha/'+encodeURIComponent(r.id);
     },true);count++}
