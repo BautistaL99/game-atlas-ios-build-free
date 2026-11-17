@@ -113,6 +113,7 @@ jobs:
           set -euo pipefail
           node scripts/verify-ios.mjs
           node scripts/qa-marker-switch.mjs
+          node scripts/qa-ios-audit.mjs
           npm install --no-audit --no-fund
           npx cap add ios
           npx cap sync ios
