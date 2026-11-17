@@ -6,8 +6,9 @@
  const LANG=['es','en','pt'];
  // V219: source-approved map points/routes must match the actual Yanis V17 basemap.
  const CURRENT_MAP_VERSION='map-v216-yanis17';
- // V243: Once a signed map is installed, accept catalog coordinates/routes
- // for that map, while keeping compatibility with the previous baseline.
+ // V243: After a separately signed map replacement, allow catalog coordinates
+ // and reviewed routes for that map while still accepting old signed data.
+ // Only a map loaded through the Ed25519/SHA-256 validator can change this ID.
  const validMapVersion=version=>version===CURRENT_MAP_VERSION||
   (typeof window.viCurrentMapVersion==='function'&&version===window.viCurrentMapVersion());
  const CATEGORIES=new Set(['personajes','vehiculos','armas','misiones','economia','mapa-lugares','coleccionables','secretos','actividades','mundo','actualizaciones','herramientas']);
@@ -226,7 +227,8 @@
   if(!periodicTimer)periodicTimer=setInterval(()=>{if(!document.hidden)void refresh();},cfg.interval);
  }catch(e){console.warn('Signed updater disabled:',e.message)}}
  addEventListener('online',()=>void refresh());document.addEventListener('visibilitychange',()=>{if(!document.hidden)void refresh()});
- // A signed map can arrive after the catalog poll. Recheck to load matching coordinates.
+ // A new signed basemap may arrive after the catalog poll: retry the signed
+ // catalog immediately so new mapPoint/route records are not delayed 30 min.
  addEventListener('vi:map-basemap-updated',()=>{
   if(busy)setTimeout(()=>void refresh(true),2000);
   else void refresh(true);
