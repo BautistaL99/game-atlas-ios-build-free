@@ -4,6 +4,12 @@ name: Game Atlas V238 - iOS a TestFlight
 # El repositorio es publico, pero NUNCA guarda certificados, claves ni IPA como artefactos.
 on:
   workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version publica iOS (1.0 para corregir la actual; 1.1 para una actualizacion tras publicar)'
+        required: true
+        default: '1.0'
+        type: string
 
 permissions:
   contents: read
@@ -36,7 +42,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          for key in APPLE_TEAM_ID ASC_KEY_ID ASC_ISSUER_ID ASC_KEY_P8; do
+          for key in ASC_KEY_ID ASC_ISSUER_ID ASC_KEY_P8; do
             if [[ -z "${!key:-}" ]]; then
               echo "::error::Falta el secreto $key en Settings > Secrets and variables > Actions"
               exit 1
@@ -100,6 +106,8 @@ jobs:
           CHECKAPPLE
 
       - name: Validar fuentes y generar proyecto de iPhone
+        env:
+          APP_STORE_VERSION: ${{ inputs.version }}
         working-directory: ios-v220
         run: |
           set -euo pipefail
@@ -113,15 +121,16 @@ jobs:
           /usr/libexec/PlistBuddy -c 'Set :CFBundleDisplayName Game Atlas' ios/App/App/Info.plist || \
             /usr/libexec/PlistBuddy -c 'Add :CFBundleDisplayName string Game Atlas' ios/App/App/Info.plist
 
-      - name: Crear certificado Apple Distribution y perfil App Store para este runner
+      - name: Importar firma Apple guardada para futuras actualizaciones
         env:
-          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
-          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
-          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          GA_DIST_P12_B64: ${{ secrets.GA_DIST_P12_B64 }}
+          GA_DIST_P12_PASSWORD: ${{ secrets.GA_DIST_P12_PASSWORD }}
+          GA_PROFILE_B64: ${{ secrets.GA_PROFILE_B64 }}
+          GA_APPLE_TEAM_ID: ${{ secrets.GA_APPLE_TEAM_ID }}
         working-directory: ios-v220
         run: |
           set -euo pipefail
-          node scripts/provision-appstore.mjs
+          node scripts/use-saved-signing.mjs
 
       - name: Compilar archivo iOS firmado por Apple
         working-directory: ios-v220
