@@ -229,7 +229,7 @@ Object.assign(VI_UI_DICTIONARY,{
    return value.slice(0,value.indexOf(trimmed))+translated+value.slice(value.indexOf(trimmed)+trimmed.length);
  }
  window.viApplyI18n=function(){
-  const selected=localStorage.getItem('vi_demo_locale')||'es';
+  const selected=window.viAppLocale||localStorage.getItem('vi_demo_locale')||'en';
   const lang=['es','en','pt'].includes(selected)?selected:'es';
   document.documentElement.lang=lang;
   const root=document.getElementById('root');if(!root)return;
