@@ -27,7 +27,37 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  # Fail fast on free/low-cost Linux before reserving a macOS runner.
+  # Catches JavaScript syntax and localization regressions without Apple secrets.
+  validar-fuentes:
+    name: Validar Game Atlas V246 (Linux)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Obtener código
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Configurar Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Ejecutar todas las pruebas antes de usar macOS
+        working-directory: ios-v220
+        run: |
+          set -euo pipefail
+          node --check scripts/qa-ios-v246-i18n.mjs
+          node scripts/verify-ios.mjs
+          node scripts/qa-marker-switch.mjs
+          node scripts/qa-ios-audit.mjs
+          node scripts/qa-ranking-truth.mjs
+          node scripts/qa-ios-v245-map-and-samples.mjs
+          node scripts/qa-ios-v246-i18n.mjs
+
   enviar-testflight:
+    needs: validar-fuentes
     # Usa un grupo de máquinas diferente para evitar la cola arm64 sin runner.
     # El usuario puede elegir Apple Silicon manualmente como alternativa.
     runs-on: ${{ inputs.runner == 'macos-26' && 'macos-26' || 'macos-26-intel' }}
