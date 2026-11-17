@@ -1,0 +1,45 @@
+GAME ATLAS iOS V248 — CAMBIOS DE MAPA Y BÚSQUEDA, PARA PRÓXIMA IPA
+17/11/2026 · NO COMPILADO, NO ENVIADO A TESTFLIGHT NI APP STORE
+==============================================================
+Base: qa-ios-v246 · nueva rama de código: qa-ios-v248-map-fixes.
+Mantiene Bundle ID com.indie.viassistant, scripts de firma Apple y datos locales.
+NO contiene certificados, contraseñas, perfil de provisión ni IPA.
+
+PROBLEMAS ANOTADOS DESDE WEB/ANDROID Y PORTADOS EN LA FUENTE iOS
+1. Buscar una ubicación concreta desde sugerencias del mapa debe invocar el foco del pin y abrir ficha: elige la opción por ID real, no solo copiar texto.
+2. Después de Limpiar, una nueva búsqueda revive marcadores y el filtro relacionado automáticamente, sin pulsar Mostrar todo ni reconstituir el input cada tecla.
+3. Categorías armas/vehículos: el mapa comunitario contiene 926 POIs, 866 en lugares y 60 en economía. Se derivan de nombres/tags reales 3 tiendas de armas y 18 servicios o comercios de vehículos; NO son spawns oficiales ni se inventan coordenadas.
+4. "Ocultar todo" debe eliminar todos los pins visibles aun si había consulta/foco anterior; rutas guardadas siguen en pantalla.
+5. Último destino marcado en amarillo: X cierra SOLO ficha, conserva el punto y banner; primer toque de fondo cierra ficha/banner y conserva punto PÁLIDO, restaurando otros pins; tocarlo reabre ficha y banner; segundo toque fuera limpia todo sin desplazar zoom ni mapa.
+6. CSS V248 evita superposiciones en mapa y muestra sugerencias legibles en fullscreen PC; en iPhone comprobar teclado, portrait/landscape y punto destacado.
+7. Las traducciones y rankings V246 se conservan: ES/EN/PT, idioma inicial preferido del teléfono si soportado, otro inglés, y preferencia manual recordada.
+8. Cambio de mapa remoto sigue requiriendo revisión/firma; nunca se eliminan marcadores o rutas de usuarios sin su consentimiento.
+9. NO se cambió la clave del publicador Ed25519 ni se forzaron noticias/fichas Wiki ni estadísticas inventadas.
+
+ARCHIVOS TOCADOS
+ios-v220/www/app-v137.js
+ios-v220/www/ios-v241-qa.js
+ios-v220/www/map-v248-focus-search.css
+ios-v220/www/index.html
+ios-v220/scripts/qa-marker-switch.mjs
+ios-v220/scripts/qa-ios-v245-map-and-samples.mjs
+ios-v220/scripts/qa-ios-v248-map-regressions.mjs
+(Se conservan los archivos y TXT previos V241-V246.)
+
+PRUEBAS
+El workflow Linux del repositorio web/Android verifica que el motor y CSS compartidos sean idénticos con iOS; corre Node.js verify-ios, marker-switch, ranking-truth, V245, V246 idioma y V248 map regressions. No reemplaza prueba manual en iPhone.
+Para construir: GitHub Actions > game-atlas-ios-testflight.yml > Run workflow, rama qa-ios-v248-map-fixes SOLO cuando la cuenta Apple esté disponible y se confirme que se quiere compilar; versión de App Store Connect y número de build deben verificarse antes.
+No iniciar compilaciones macOS solo para validar sintaxis. NO enviar V248 a revisión final hasta comprobar en TestFlight.
+Capturas de App Store deben ser originales en resolución admitida, sin solapamiento con hora o TestFlight.
+
+PRUEBAS MANUALES EN iOS PENDIENTES
+[ ] Buscar tienda desde sugerencias y entrar en la ficha naranja.
+[ ] "Limpiar" -> buscar tienda real -> recuperar punto sin Mostrar todo.
+[ ] Armas en ES, weapons EN, armas PT -> 3 puntos asociados en mapa actual.
+[ ] Vehículos/vehicles/veículos -> 18 servicios relacionados, sin afirmar spawns.
+[ ] X ficha / fondo 1 / pin pálido / fondo 2 sin mover mapa.
+[ ] Rutas con "Ocultar todo"; fullscreen normal/horizontal; teclado y filtros.
+[ ] Reiniciar dispositivo conserva progreso/idioma, exportar copia Mi partida.
+[ ] Noticias firmadas siguen cargando sin alterar sus categorías.
+
+IMPORTANTE: este es un respaldo de CÓDIGO CANDIDATO de iOS V248, no una IPA.
