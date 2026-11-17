@@ -146,7 +146,7 @@ jobs:
             -authenticationKeyPath "$ASC_KEY_PATH" \
             -authenticationKeyID "$ASC_KEY_ID" \
             -authenticationKeyIssuerID "$ASC_ISSUER_ID" \
-            DEVELOPMENT_TEAM="$APPLE_TEAM_ID" \
+            DEVELOPMENT_TEAM="$GA_APPLE_TEAM_ID" \
             CODE_SIGN_STYLE=Manual \
             CODE_SIGN_IDENTITY="Apple Distribution" \
             PROVISIONING_PROFILE_SPECIFIER="$GA_PROFILE_NAME" archive
@@ -164,7 +164,7 @@ jobs:
               "method": "app-store-connect",
               "destination": "export",
               "signingStyle": "manual",
-              "teamID": os.environ["APPLE_TEAM_ID"],
+              "teamID": os.environ["GA_APPLE_TEAM_ID"],
               "signingCertificate": "Apple Distribution",
               "provisioningProfiles": {"com.indie.viassistant": os.environ["GA_PROFILE_NAME"]},
               "manageAppVersionAndBuildNumber": False,
