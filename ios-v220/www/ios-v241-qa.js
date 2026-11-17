@@ -103,6 +103,9 @@
     const options=mapProposals(q);
     if(options.length)title(panel,lbl.map);
     for(const x of options){option(panel,x.label,x.kind==='pin'?lbl.place:lbl.related,()=>commit(input,x.label));count++}
+    const matches=window.viIosMapLiveMatches?.(q,12)||[];
+    if(matches.length)title(panel,({es:'Ubicaciones encontradas',en:'Matching locations',pt:'Locais encontrados'})[g]);
+    for(const m of matches){option(panel,m.title,m.category,()=>{close();input.blur();window.viIosMapFocusFromSearch?.(m.id)},true);count++}
    }else{
     let cards=[];
     try{cards=window.viIosSearchCardsFor?.(q,5)||[]}catch{}
