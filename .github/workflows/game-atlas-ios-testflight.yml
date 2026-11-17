@@ -18,7 +18,7 @@ concurrency:
 
 jobs:
   enviar-testflight:
-    if: github.event_name == 'workflow_dispatch' || github.event.head_commit.message == 'Fix signing and run one-time Apple release build'
+    if: github.event_name == 'workflow_dispatch' || github.event.head_commit.message == 'One-time App Store distribution provisioning and TestFlight attempt'
     runs-on: macos-26
     timeout-minutes: 75
     steps:
