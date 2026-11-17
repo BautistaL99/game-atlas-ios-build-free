@@ -1,0 +1,49 @@
+GAME ATLAS iOS V244 — CORRECCIÓN DE RANKINGS Y COMPROBACIÓN DE NOTICIAS
+Fecha: 17/11/2026 — Rama: qa-ios-v244
+Repositorio: https://github.com/BautistaL99/game-atlas-ios-build-free/tree/qa-ios-v244
+
+OBJETIVO
+Corregir el comportamiento engañoso del buscador superior y del buscador descriptivo cuando se pregunta "auto más rápido" o "auto más lento" sin contar con estadísticas numéricas verificadas. NO se cargaron velocidades inventadas.
+
+ERROR ORIGINAL
+"Auto más rápido" y "auto más lento" mostraban vehículos en el mismo orden porque el buscador devolvía un listado de fichas sin estadísticas, y la barra superior lo presentaba bajo "Fichas verificadas", como si fuera un ranking.
+
+CAMBIOS EN V244
+1) searchCatalogCore exige al menos dos registros comparables y que todos los candidatos incluidos tengan la estadística de clasificación antes de ordenar. Si hay datos suficientes, ordena numéricamente ascendente para «más lento» o descendente para «más rápido».
+2) Si faltan datos, el motor devuelve CERO resultados de ranking. Muestra una explicación con cantidad de fichas con datos / candidatas, en lugar de una lista arbitraria.
+3) El buscador de la barra superior deja de recomendar modelos como respuesta a un ranking que no puede comprobar y muestra el mensaje "Ranking no verificable" / "Ranking not verifiable" / "Classificação não verificável".
+4) El buscador descriptivo conserva una explicación visible al pulsar Buscar; no atribuye puestos falsos.
+5) Se agregaron pruebas automáticas en español, inglés y portugués: datos completos, incompletos y sin estadísticas, incluyendo orden de mayor a menor y menor a mayor.
+6) El workflow de TestFlight ejecutará estas pruebas antes de compilar la IPA.
+
+DATOS ACTUALES
+El paquete base de iOS tiene 55 fichas, incluidas 7 de vehículos, pero ninguna de esas siete fichas contiene velocidad numérica verificada. El catálogo comunitario publica muchas fichas adicionales, que NO constituyen automáticamente estadísticas verificadas. No sería riguroso nombrar un ganador basándose solo en nombres.
+
+NOTICIAS — COMPROBACIÓN EN GITHUB
+Repositorio: https://github.com/BautistaL99/game-atlas-privacidad
+Flujo: Game Atlas - novedades GRATIS y fichas recuperables V210
+Confirmado: existen ejecuciones de tipo "schedule" exitosas el 16 y 17/11/2026, y commits de github-actions[bot] en updates/community-envelope-v205.json. También existieron ejecuciones manuales de ese flujo. El feed comunitario firmado tiene 26 noticias y 406 fichas; incluye noticias del 16/11/2026. El feed oficial contiene 19 registros.
+Esto prueba actividad de actualización programada real, pero sin rastrear cada artículo hasta su commit no se debe afirmar que cada noticia individual fue descubierta en modo automático.
+
+PASOS PARA INSTALAR EN TESTFLIGHT
+1) Ir a https://github.com/BautistaL99/game-atlas-ios-build-free/actions/workflows/game-atlas-ios-testflight.yml
+2) Hacer clic en Run workflow.
+3) Elegir la rama qa-ios-v244 (NO main).
+4) Mantener la versión pública 1.0.
+5) Pulsar Run workflow. Deberán pasar verify-ios, qa-marker-switch, qa-ios-audit y qa-ranking-truth.
+6) Con compilación verde, ir a App Store Connect > Game Atlas > TestFlight.
+7) Resolver la declaración de cifrado/exportación si aparece; agregar al grupo de pruebas internas.
+8) En el iPhone abrir TestFlight > Game Atlas > Actualizar.
+
+PRUEBAS ESPECÍFICAS EN IPHONE
+- ES: «Auto más rápido» y «Auto más lento»: no se deben mostrar los mismos modelos como respuestas, sino un aviso claro de que faltan datos numéricos verificables.
+- EN: «fastest car» y «slowest car»: misma conducta.
+- PT: «carro mais rápido» y «carro mais lento»: misma conducta.
+- «auto» sin ranking: debe seguir encontrando fichas existentes para abrirlas.
+- Comparador y cambio entre marcadores: revisar brevemente que continúen funcionando.
+- Noticias: abrir la sección y verificar que carga entradas del feed firmado. La existencia de un feed no prueba por sí sola la conectividad en ese iPhone.
+
+RESPALDOS Y ALCANCE
+No se modificó Android, web, servidor de noticias, main ni las compilaciones ya instaladas.
+Este ZIP contiene el directorio ios-v220 preparado para respaldo local y sus scripts de QA, pero NO incluye secretos, certificados ni la clave .p8. El workflow actualizado está guardado en GitHub, en la rama qa-ios-v244.
+No publicar a App Store sin la prueba real en el iPhone.
