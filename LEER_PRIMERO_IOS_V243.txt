@@ -1,0 +1,84 @@
+GAME ATLAS — IOS V243 | REVISIÓN DE CÓDIGO Y CORRECCIÓN DE MARCADORES
+17 de noviembre de 2026 | Candidata de prueba interna, NO publicada
+
+RAMA: qa-ios-v243
+REPOSITORIO: https://github.com/BautistaL99/game-atlas-ios-build-free
+CÓDIGO: https://github.com/BautistaL99/game-atlas-ios-build-free/tree/qa-ios-v243
+WORKFLOW: https://github.com/BautistaL99/game-atlas-ios-build-free/actions/workflows/game-atlas-ios-testflight.yml
+
+CAMBIOS REALIZADOS EXCLUSIVAMENTE EN IOS:
+1) CORRECCIÓN DEL ÚNICO ERROR NUEVO: cambiar de marcador A a marcador B.
+   Antes: touchend/pointerup cerraban la ficha A antes de llegar el click del pin B; se necesitaban dos toques.
+   Ahora: un toque sobre otro pin o agrupación conserva el click de selección y puede abrir la siguiente ficha inmediatamente.
+   Tocar el fondo del mapa sigue cerrando la ficha. Arrastrar sobre un marcador sigue permitido y no debe abrirlo por accidente.
+2) ACTUALIZACIONES FIRMADAS DEL MAPA: el validador de fichas y recorridos admite el ID del mapa firmado activo,
+   además del provisional. Cuando se activa una nueva cartografía firmada, solicita un nuevo control del catálogo.
+   No se ha reemplazado la imagen ni las posiciones actuales y NO existe aún un mapa definitivo publicado.
+3) FICHAS WIKI: el cliente iOS quedó preparado para categorías comunitarias firmadas adicionales:
+   misiones, secretos, coleccionables, economía, actividades y mundo.
+   Ya admitía personajes, vehículos, armas y lugares. El PUBLICADOR EXTERNO debe generar esos nuevos datos,
+   de fuentes permitidas y con las tres traducciones; aquí NO se inventaron fichas ni se cambiaron firmas.
+4) PRUEBAS AUTOMÁTICAS: scripts/qa-marker-switch.mjs y scripts/qa-ios-audit.mjs.
+   El workflow TestFlight las ejecuta antes de compilar. Una regresión impedirá enviar una IPA sin advertencia.
+
+RESULTADOS DE AUDITORÍA:
+- 29 archivos JavaScript comprobados, sin errores de sintaxis; recursos locales y gestos nativos comprobados por los scripts.
+- 55 fichas base con ID único y título/resumen en español, inglés y portugués.
+- Feed oficial público: esquema 1, revisión 4, 19 entradas, más reciente 10/11/2026.
+- Feed independiente público: esquema 205, revisión 18, 26 noticias y 406 fichas; noticias hasta 16/11/2026.
+  Distribución de fichas: 250 vehículos, 95 personajes, 47 armas y 14 lugares.
+- Ambos feeds se consumen mediante firma Ed25519 con validadores de fuentes, pero esta auditoría NO prueba
+  que cada actualización se esté recibiendo correctamente dentro del iPhone.
+- Rutas: se pueden crear, ordenar, guardar y representar como líneas; todavía NO siguen las calles del juego.
+- Mapa: el paquete remoto requiere imagen permitida, SHA-256, esquema válido y firma, pero actualmente no hay
+  manifiesto nuevo de mapa publicado. No completar ni afirmar ubicaciones que no estén verificadas.
+- Buscadores ES/EN/PT: estructura disponible, NO se comprobó cada frase semántica ni cada modelo en un dispositivo.
+  Las fichas base de vehículos no incluyen velocidades numéricas para rankings auténticos.
+- Donaciones Mercado Pago: paymentEnabled=false y enlace público no configurado. Ranking de donaciones sin datos.
+- Publicidad: no se implementó. Versión sin anuncios por pago: tampoco; requeriría compras dentro de la app.
+- Enlaces públicos App Store / Google Play en la sección Descargas: actualmente vacíos, se activan al publicar.
+- Marca: la UI muestra Game Atlas GTA 6 y la ficha Apple Game Atlas: Wiki & Map; revisar consistencia antes de capturas.
+- SEO de Google, Google Play, web PC/móvil y subir a Drive NO se modificaron: están fuera del alcance iOS.
+
+PRUEBA REAL OBLIGATORIA EN IPHONE (DOS MODOS: MAPA NORMAL Y PANTALLA COMPLETA):
+[ ] Tocar marcador A y luego marcador B: se abre B CON UN SOLO TOQUE, sin cerrar antes ni desplazar el mapa.
+[ ] Tocar sucesivamente cinco marcadores diferentes: cinco fichas distintas.
+[ ] Tocar la zona vacía: se cierra la ficha sin saltos de zoom.
+[ ] Tocar una agrupación: agrupa/acerca como antes; no requiere toque doble.
+[ ] Arrastrar con el dedo desde un marcador: mueve el mapa sin abrir accidentalmente fichas.
+[ ] Crear, editar, guardar y cerrar un marcador; probar abrir/cerrar teclado.
+[ ] Buscar "play" / "playa", "beac" / "beach" y "prai" / "praia"; comprobar sugerencias y fichas.
+[ ] Buscar "auto más lento": ver fichas relacionadas y aviso si no hay estadísticas verificadas.
+[ ] Seleccionar tres vehículos para Comparar: abre pantalla comparativa, no Explorar.
+[ ] Cambiar Todos / Me faltan / Registrados / Favoritos en Explorar sin saltos involuntarios.
+[ ] Cambiar idioma ES/EN/PT y revisar Noticias, Explorar, Mapa, Mi partida y Más.
+[ ] Crear ruta, reordenar paradas, guardar; recordar que la línea es aproximada, no ruta vial.
+[ ] Exportar copia de Mi partida; comprobar que no se pierden favoritos ni marcadores.
+[ ] Alternar Wi-Fi/4G o reconectar, abrir noticias/fichas y verificar carga sin mensajes de error.
+[ ] Rotar dispositivo y repetir mapa, filtros y acceso a Más.
+
+INSTALACIÓN EN TESTFLIGHT:
+1. Abrir el enlace WORKFLOW indicado arriba, clic en Run workflow.
+2. Seleccionar Use workflow from = qa-ios-v243. NO seleccionar main.
+3. Dejar versión pública iOS = 1.0 y pulsar Run workflow.
+4. Si GitHub termina en verde, abrir App Store Connect > Apps > Game Atlas > TestFlight.
+5. Esperar al procesamiento de la nueva build; completar información de exportación si Apple la pide.
+6. Añadir nueva build al grupo Game Atlas - Pruebas internas si hace falta.
+7. En el iPhone, TestFlight > Game Atlas > Actualizar. Repetir la lista de pruebas.
+8. NO enviar a revisión final si el error persiste o aparecen fallos nuevos.
+
+PASO SIGUIENTE: FICHA DE APP STORE.
+Con V243 aprobada por vos en TestFlight, preparar capturas reales sin teclados, notificaciones ni superposiciones;
+texto de descripción y palabras clave ES/EN/PT; URL de soporte y privacidad, derechos de imágenes,
+clasificación de edad, notas para revisión y selección de publicación manual. Apple pide al menos una
+captura iPhone Dynamic Island de tamaño admitido y capturas de iPad si esa plataforma está habilitada.
+Consultá tamaños vigentes: https://developer.apple.com/help/app-store-connect/reference/app-information/screenshot-specifications
+
+LIMITACIÓN DE ESTA REVISIÓN:
+No se pudo abrir la interfaz de Chromium en esta sesión porque el navegador del entorno bloquea la navegación
+(localhost: ERR_BLOCKED_BY_ADMINISTRATOR). Las pruebas de eventos son simulaciones del controlador real,
+no sustituyen la verificación con un iPhone mediante TestFlight.
+
+RESPALDO: Este ZIP incluye solo archivos cambiados y documentación. Para guardar el repositorio entero:
+https://github.com/BautistaL99/game-atlas-ios-build-free/tree/qa-ios-v243 > Code > Download ZIP.
+No guardes claves Apple (.p8, .p12) en GitHub público ni en este ZIP. Guardá tu firma privada por separado.
