@@ -50,8 +50,11 @@ jobs:
         working-directory: ios-v220
         run: |
           set -euo pipefail
+          # Capacitor 8 crea App.xcodeproj y usa Swift Package Manager.
+          # No requiere App.xcworkspace (solo presente en algunos proyectos con CocoaPods).
+          test -d ios/App/App.xcodeproj
           xcodebuild \
-            -workspace ios/App/App.xcworkspace \
+            -project ios/App/App.xcodeproj \
             -scheme App \
             -configuration Debug \
             -destination 'generic/platform=iOS Simulator' \
