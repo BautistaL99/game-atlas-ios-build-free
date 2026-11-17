@@ -1,0 +1,50 @@
+GAME ATLAS V243 | AUDITORÍA DE LA LISTA DEL 15-16/11/2026 | SOLO IOS
+
+CRITERIO: "Comprobado" significa que se revisó un mecanismo o dato concreto; NO implica prueba funcional
+exhaustiva en hardware real. Se separa la revisión de código, el estado del servidor y la prueba TestFlight.
+
+01. SEO Google, posicionamiento por wiki/mapa: FUERA DE ALCANCE. Es un trabajo de la WEB, no de la IPA iOS.
+    Para iOS habrá que optimizar título, subtítulo, descripción, palabras clave y capturas de App Store (ASO).
+02. Completar mapa y locaciones: PENDIENTE DEL LANZAMIENTO. Existe imagen comunitaria provisional y cargador
+    de mapas remotos firmado. NO existe aún mapa definitivo listo ni coordenadas completas confirmadas.
+03. Fichas de categorías: PARCIAL. 55 fichas de base + 406 fichas Wiki independientes en feed público.
+    Se amplió la compatibilidad de categorías futuras, pero el publicador deberá incorporar nuevas fichas.
+    Contenido comunitario se identifica como tal: fuente verificada ≠ confirmación oficial.
+04. Noticias/fichas automáticas: IMPLEMENTACIÓN PRESENTE, AUDITORÍA ESTÁTICA FAVORABLE.
+    Feed oficial: revisión 4, 19 entradas, última fecha 10/11/2026.
+    Feed independiente: revisión 18, 26 noticias + 406 fichas, últimas noticias 16/11/2026.
+    Firmas Ed25519, orígenes autorizados, controles de tamaño/tipos y caché local.
+    La actualización se consulta al estar activa/en línea; NO implica proceso continuo con la app cerrada.
+    FALTA PRUEBA FUNCIONAL EN IPHONE: abrir con red, refrescar, salir/entrar, ver revisión.
+05. Rutas que sigan calles reales: NO IMPLEMENTADO. Falta red vial/grafo, algoritmo y mapa verificado.
+    Las rutas existentes son una línea ilustrativa entre paradas y así se describen.
+06. Traducción y buscadores por frases: PARCIAL. 55 fichas base con es/en/pt completos en título y resumen.
+    Los 406 registros Wiki también traen esas tres traducciones en el feed público. No prueba cada componente
+    de interfaz ni cada frase libre. Probar en TestFlight expresiones variadas en los tres idiomas.
+07. Web PC/celu, ZIP Drive, pruebas web: FUERA DE ALCANCE. No se alteró web ni Android.
+08. Mercado Pago y top donaciones: PENDIENTE. paymentEnabled=false, publicUrl=null.
+    No hay cobros reales verificados ni ranking publicado. Nunca presentar pagos ficticios.
+09. Publicidad: PENDIENTE (no implementada). No introducir un SDK de anuncios sin revisar privacidad/consentimiento.
+10. Pago para quitar anuncios: PENDIENTE. Es una funcionalidad digital que normalmente requiere In-App Purchase.
+11. Imágenes/descripción Google Play: FUERA DE ALCANCE iOS.
+12. Botones Descargar Google Play/App Store: PENDIENTE DE URL PUBLICADA. iosAppStore, androidPlay en null.
+    Activar posteriormente con URLs reales, sin inventar IDs de App Store.
+13. Unificar nombres web/app: DIFERENCIA DETECTADA. UI: "GAME ATLAS GTA 6"; App Store Connect:
+    "Game Atlas: Wiki & Map". Definir nombre comercial final antes de capturas y metadatos.
+14. Navegación, gestos atrás, comparación: existen validadores de source y correcciones anteriores; pendiente
+    prueba con iPhone real. No se modificaron estos módulos en V243.
+15. Marcadores al cambiar de punto: CORREGIDO EN V243.
+    Causa: touchend/pointerup de fondo destruían la ficha y el DOM antes del click del pin nuevo.
+    Corrección: los objetivos .atlas-pin y .atlas-cluster pasan directamente a su manejador de click.
+    Test antes V242: FALLA. Test después V243: PASA en touch y pointer, tanto selección como cierre de fondo.
+16. Mapas definitivos y feed de coordenadas: AJUSTADO EN V243: el catálogo firmado acepta la versión activa
+    del nuevo mapa ya autenticado, permite los registros nuevos y refresca tras el evento de cambio de mapa.
+    Sin datos oficiales/comunitarios licenciados nuevos, sigue el mapa provisional.
+
+PUBLICACIÓN APP STORE:
+Antes de enviar revisión final, probar V243 en TestFlight y preparar capturas reales; datos de privacidad;
+URL de soporte; licencia/permisos de las imágenes/mapa; marca no oficial; clasificación de edad;
+metadatos de locales ES/EN/PT y notas para App Review. Aprobación no garantizada.
+
+NO SE MODIFICARON: Android, web PC/móvil, rama main, contenido del feed público o fichas de terceros.
+NO SE IMPLEMENTARON: anuncios, IAP, rutas reales, nuevo mapa o automatización del publicador.
