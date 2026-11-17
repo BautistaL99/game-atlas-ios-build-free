@@ -1,0 +1,42 @@
+GAME ATLAS — iOS V246 · Auditoría de idiomas y barra de estado
+17/11/2026 · SOLO iOS · Rama: qa-ios-v246
+Base conservada: qa-ios-v245
+Repositorio: https://github.com/BautistaL99/game-atlas-ios-build-free/tree/qa-ios-v246
+
+EVIDENCIA: CAPTURAS DE PRUEBA
+1) En ficha de vehículo con inglés seleccionado aparecían "MI SEGUIMIENTO", "✓ Descubierto" y "Quitar del progreso".
+2) En Explorar/Armas con inglés seleccionado aparecían "seguimiento personal", "Todos", "Me faltan", "Registrados" y "Favoritos".
+3) En las capturas la hora y los iconos de estado iOS pueden superponerse con el logo o las imágenes superiores.
+
+CAMBIOS EN CÓDIGO
+- La función itemStatusLabel entrega estados específicos de categoría e idioma ES/EN/PT; ya no devuelve siempre etiquetas en español.
+- La ficha traduce encabezado del panel personal, estado, acción de progreso, avisos y etiqueta accesible.
+- Las pestañas de Explorar y el contador de seguimiento se generan directamente en ES/EN/PT, con mensajes vacíos y títulos de progreso.
+- El panel de Mi partida traduce título de lista y estado sin elementos; títulos del progreso toman la categoría local.
+- Los botones rápidos de registrar tienen etiquetas específicas de vehículos, armas, misiones, lugares, etc. en los tres idiomas.
+- Los botones de favoritos exponen title y aria-label en el idioma seleccionado.
+- vi-i18n amplía el puente de traducción exacta, con fallback para textos de progreso no cubiertos.
+- ios-v246-safe-area.css añade una protección de color detrás de la hora/iconos de iOS y distancia superior del encabezado en vertical. El resultado VISUAL no está validado en un iPhone real.
+- Script scripts/qa-ios-v246-i18n.mjs con pruebas de estado y pestañas en 3 idiomas; se integra al workflow.
+
+LIMITACIONES
+No se ha ejecutado el workflow, compilado IPA ni comprobado en iPhone desde este cambio. Los tests de código NO sustituyen QA visual. Otras frases fuera de los flujos auditados podrían requerir revisión adicional. No se han modificado estadísticas, noticias, fuentes, mapas ni partidas.
+
+LISTA PARA TESTFLIGHT (obligatoria antes de enviar revisión)
+[ ] En ES: Explorar/Armas y ficha individual no muestran textos en inglés/portugués inesperados.
+[ ] En EN: ficha > MY PROGRESS, Discovered/Registered, Remove from progress; Explorar > All, Missing, Registered, Favorites, personal progress.
+[ ] En PT: ficha > MEU PROGRESSO, Descoberto/Registrada, Remover do progresso; Explorar > Todos, Faltando, Registrados, Favoritos, progresso pessoal.
+[ ] Tocar estado/favorito, volver a entrar y verificar texto tras actualizar la vista.
+[ ] Revisar Inicio, Buscar, todas las categorías, ficha, Comparar, Noticias, Mapa, Mi partida y Más en ES/EN/PT.
+[ ] iPhone con Dynamic Island y iPhone sin Dynamic Island: portada, al desplazarse por una ficha y al volver a inicio, la hora no debe tapar el logo ni los botones.
+[ ] En horizontal y teclado abierto no deben aparecer paneles cortados; en iOS antiguo revisar márgenes superiores.
+[ ] Buscar por prefijos "vi", "vice", "donde encontrar au" y ES/EN/PT; revisar resultados y teclado.
+[ ] Revisar marcadores, filtros vacíos, rutas y ranking honesto V244/V245.
+[ ] Hacer backup de Mi partida y confirmar que el progreso no se pierde.
+
+PENDIENTE PARA ANDROID + WEB MÓVIL + WEB PC (NO MODIFICADOS)
+- Aplicar itemStatusLabel, quickProgress, categorías de Explorar, seguimiento personal, botones de favoritos y textos de Mi partida como lógica ES/EN/PT compartida.
+- Auditar títulos/aria-label/title/placeholder, estados nuevos desde fichas automáticas y textos de estados vacíos.
+- Pruebas de regresión por idioma, categorías y dispositivo; preservar escritorio visualmente.
+- NO copiar ios-v246-safe-area.css: es un ajuste exclusivamente de la barra de estado nativa de iOS.
+- Transferir por separado las mejoras generales V240-V245: búsqueda incremental, autocompletado real, teclado, interacción del círculo resaltado, cambio de pines, filtros vacíos, rankings verificables y marcadores.
