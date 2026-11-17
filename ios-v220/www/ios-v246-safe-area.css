@@ -1,5 +1,5 @@
 /* iOS V246: keep the native status bar readable while scrolling the map and entries.
-   Scope only the native iOS class set by ios-v239-qa.js. Do not load on web/Android. */
+   Scope only the native iOS class set by ios-v240-qa.js. Do not load on web/Android. */
 @media (max-width:700px) and (orientation:portrait) {
   html.vi-ios-app body::before {
     content:"";
