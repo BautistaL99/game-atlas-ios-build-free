@@ -57,3 +57,20 @@ console.log('PASS iOS V246: ES EN PT vehicle, weapon and mission status semantic
 console.log('PASS iOS V246: category navigation/filters and progress translations');
 console.log('PASS iOS V246: detail, accessibility and favorites text available');
 console.log('PASS iOS V246: map and verified ranking safeguards still included');
+
+/* First launch must follow the device language; never override a saved choice. */
+const boot=app.slice(app.indexOf('// Native iOS/WebView V246:'),app.indexOf("let searchText="));
+function initialLocale(languages,language,saved){
+ const stored={getItem:()=>saved};
+ const ctx={localStorage:stored,navigator:{languages,language},window:{},document:{documentElement:{}},strings:{es:{},en:{},pt:{}}};
+ vm.runInNewContext(boot,ctx);
+ return {locale:ctx.window.viAppLocale,html:ctx.document.documentElement.lang};
+}
+assert.equal(initialLocale(['en-US','es-AR'],'en-US',null).locale,'en');
+assert.equal(initialLocale(['es-AR','en-US'],'es-AR',null).locale,'es');
+assert.equal(initialLocale(['pt-BR','en-US'],'pt-BR',null).locale,'pt');
+assert.equal(initialLocale(['fr-FR'],'fr-FR',null).locale,'en');
+assert.equal(initialLocale(['en-US'],'en-US','es').locale,'es');
+assert.equal(initialLocale(['es-AR'],'es-AR','pt').html,'pt');
+assert(dictionary.includes("const selected=window.viAppLocale||localStorage.getItem('vi_demo_locale')||'en';'),'Translation bridge uses first-launch locale');
+console.log('PASS iOS V246: first launch device language and preserved user choice');
