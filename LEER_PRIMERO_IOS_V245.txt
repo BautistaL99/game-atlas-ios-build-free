@@ -1,0 +1,55 @@
+GAME ATLAS iOS V245 - Cambios y prueba en TestFlight
+Fecha: 17/11/2026
+Repositorio: https://github.com/BautistaL99/game-atlas-ios-build-free
+Rama: qa-ios-v245
+Base: qa-ios-v244
+Alcance: EXCLUSIVAMENTE IOS. No se modificaron Android, web ni main.
+
+CAMBIOS
+1) Ejemplos de busqueda:
+ - Eliminados "personaje negro", "personaje empresario negro" y sus
+   equivalentes en ingles y portugues de los ejemplos visibles.
+ - Reemplazados en Inicio y Buscar por ejemplos neutrales:
+   ES: "personaje con pelo largo", "donde encontrar motos", etc.
+   EN: "character with long hair", "where to find motorcycles", etc.
+   PT: "personagem com cabelo comprido", "onde encontrar motos", etc.
+ - El motor de busqueda NO se ha limitado: solo cambiaron los ejemplos.
+
+2) Mapa con filtros voluntariamente vacios:
+ - Al pulsar Ocultar todo (o deseleccionar todas las categorias), no
+   se muestra el aviso molesto "Abri los filtros para mostrar puntos".
+ - La ruta seleccionada sigue dibujandose de forma independiente de los
+   marcadores visibles; no se ha modificado el motor de rutas.
+ - Si hay filtros activos pero no devuelven ningun punto, se muestra
+   un mensaje correcto ("No hay puntos visibles con estos filtros")
+   en el idioma elegido.
+
+3) Pruebas de regresion:
+ - Script nuevo: ios-v220/scripts/qa-ios-v245-map-and-samples.mjs
+ - El workflow de TestFlight ejecuta este script antes de compilar.
+ - Prueba que los ejemplos se eliminaron en los tres idiomas y que
+   el aviso no aparece con las categorias vacias.
+
+NO CAMBIO
+- Noticias o fichas automaticas, datos del mapa, cartografia, posiciones,
+  rutas guardadas, favoritos, datos personales y comparador.
+- No se publico ni se envio ningun build a Apple desde esta correccion.
+
+COMO PROBARLO
+A) En GitHub, Actions -> Game Atlas V238 - iOS a TestFlight -> Run workflow.
+   Rama: qa-ios-v245. Version: 1.0. Ejecutar.
+   En App Store Connect -> TestFlight, completar exportacion si hace falta,
+   agregar al grupo de testers internos y actualizar en el iPhone.
+B) En Inicio y en Buscar, cambiar ES/EN/PT y comprobar que ninguno de
+   los ejemplos visibles contiene referencias raciales.
+C) Mapa -> Rutas: crear/seleccionar una ruta visible con al menos dos paradas.
+   Abrir Filtros -> Ocultar todo o desmarcar todas las categorias.
+   Esperado: no aparece el aviso de mostrar puntos y la ruta sigue visible.
+D) Abrir Filtros -> Mostrar todo: los marcadores vuelven a aparecer.
+E) Comprobar que el mapa sigue respondiendo, las rutas siguen guardadas
+   y los cambios de marcador de V243 siguen correctos.
+
+ESTADO
+La rama y los cambios de codigo estan en GitHub. La prueba automatica esta
+configurada para correr en el proximo workflow. El comportamiento real en iPhone
+esta pendiente de TestFlight; no se afirma que este validado en el dispositivo.
