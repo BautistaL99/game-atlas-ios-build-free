@@ -118,6 +118,16 @@ jobs:
           /usr/libexec/PlistBuddy -c 'Set :CFBundleDisplayName Game Atlas' ios/App/App/Info.plist || \
             /usr/libexec/PlistBuddy -c 'Add :CFBundleDisplayName string Game Atlas' ios/App/App/Info.plist
 
+      - name: Crear certificado Apple Distribution y perfil App Store para este runner
+        env:
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+        working-directory: ios-v220
+        run: |
+          set -euo pipefail
+          node scripts/provision-appstore.mjs
+
       - name: Compilar archivo iOS firmado por Apple
         working-directory: ios-v220
         env:
@@ -136,7 +146,10 @@ jobs:
             -authenticationKeyPath "$ASC_KEY_PATH" \
             -authenticationKeyID "$ASC_KEY_ID" \
             -authenticationKeyIssuerID "$ASC_ISSUER_ID" \
-            DEVELOPMENT_TEAM="$APPLE_TEAM_ID" CODE_SIGN_STYLE=Automatic archive
+            DEVELOPMENT_TEAM="$APPLE_TEAM_ID" \
+            CODE_SIGN_STYLE=Manual \
+            CODE_SIGN_IDENTITY="Apple Distribution" \
+            PROVISIONING_PROFILE_SPECIFIER="$GA_PROFILE_NAME" archive
 
       - name: Generar IPA de App Store Connect
         env:
@@ -150,8 +163,10 @@ jobs:
           opts = {
               "method": "app-store-connect",
               "destination": "export",
-              "signingStyle": "automatic",
+              "signingStyle": "manual",
               "teamID": os.environ["APPLE_TEAM_ID"],
+              "signingCertificate": "Apple Distribution",
+              "provisioningProfiles": {"com.indie.viassistant": os.environ["GA_PROFILE_NAME"]},
               "manageAppVersionAndBuildNumber": False,
           }
           with open(os.path.join(os.environ["RUNNER_TEMP"], "GameAtlasExport.plist"), "wb") as out:
