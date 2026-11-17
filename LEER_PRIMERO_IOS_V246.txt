@@ -49,3 +49,14 @@ CORRECCIÓN DEL WORKFLOW DEL 17/11/2026 (POSTERIOR A LA PRIMERA EJECUCIÓN)
 - La comprobación de autenticación general se mantiene, con hasta 3 intentos para errores temporales 429/5xx y fallos de red; 401/403 siguen deteniendo el proceso.
 - No se ejecutó automáticamente otro workflow ni se envió una IPA a Apple. Hay que lanzar manualmente Run workflow desde qa-ios-v246 para probar el nuevo código del workflow.
 - No sirve reintentar la ejecución antigua: la nueva configuración está en un commit posterior.
+
+ACTUALIZACIÓN LOCALIZACIÓN + CAPTURAS APP STORE — 17/11/2026
+- Antes, el primer inicio hacía localStorage.getItem('vi_demo_locale') || 'es': arrancaba en español incluso en iPhones en inglés.
+- Ahora la primera ejecución consulta navigator.languages / navigator.language y elige ES, EN o PT en orden de preferencia disponible. Si no hay idioma disponible, usa EN. Si existe una selección manual válida guardada, ésta prevalece.
+- window.viAppLocale se comparte con vi-i18n.js para que el render inicial y el puente de traducción coincidan. El botón de idioma sigue guardando la selección expresamente elegida.
+- Test de regresión añadido para en-US, es-AR, pt-BR, fr-FR y selección guardada.
+- Corregidos también los mensajes dinámicos de Mi partida: porcentaje de categorías con datos y próximo hito, previamente visibles en español dentro del modo inglés.
+- PENDIENTE de prueba en un iPhone real después de compilar un commit actualizado.
+- IMPORTANTE: Las ejecuciones de Actions anteriores a estos commits no incluyen esta corrección; iniciar una ejecución nueva con la rama qa-ios-v246 para obtener los cambios.
+- Android y web móvil/PC: aplicar detección inicial de idioma preferido y respetar la preferencia persistida, además de corregir las cadenas dinámicas de Mi partida.
+- Capturas de App Store: repetir las que muestran solapamiento TestFlight/hora o cualquier frase en español dentro de EN. Las diez imágenes recibidas en chat son de 739x1600; usar las originales del iPhone con resolución admitida en App Store Connect.
