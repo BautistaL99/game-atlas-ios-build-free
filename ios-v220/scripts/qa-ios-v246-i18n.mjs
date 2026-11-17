@@ -45,7 +45,7 @@ const required=[
   "en:'Remove from progress'", "pt:'Remover do progresso'",
   "en:'MISSION PROGRESS'", "pt:'PROGRESSO DA MISSÃO'",
   "en:'Personal status'", "pt:'Estado pessoal'",
-  "en:'Mark completed'", "pt:'Marcar concluída'",
+  "en:'Mark as completed'", "pt:'Marcar como concluída'",
   "en:'Add to favorites'", "pt:'Adicionar aos favoritos'"
 ];
 for(const word of required)assert(app.includes(word)||dictionary.includes(word),'Missing translation: '+word);
