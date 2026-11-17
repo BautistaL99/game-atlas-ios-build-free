@@ -1,4 +1,6 @@
-/** iOS V243 regression: marker touch/pointer selection is not swallowed by map gestures. */
+/** iOS V243 regression: marker selection must not be consumed by a map gesture.
+ * Extract and exercise the ACTUAL mapBind event handlers without native tooling.
+ * No network, Apple credentials, or source rewrites in this test. */
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
@@ -26,8 +28,7 @@ function scenario(eventType,pointType){
   viMapFit(){return 1},MAP_WIDTH:1200,MAP_HEIGHT:1600,
  };
  vm.createContext(scope);vm.runInContext(handler+'; mapBind();',scope);
- assert(events.touchstart?.length&&events.touchend?.length&&events.pointerdown?.length&&events.pointerup?.length,
-  'Manejadores no registrados');
+ assert(events.touchstart?.length&&events.touchend?.length&&events.pointerdown?.length&&events.pointerup?.length,'Manejadores no registrados');
  if(eventType==='touch'){
   const point={clientX:100,clientY:100};
   events.touchstart[0]({touches:[point],target:pointType==='pin'?marker:background,cancelable:true,preventDefault(){}});
@@ -42,11 +43,11 @@ function scenario(eventType,pointType){
 for(const type of ['touch','pointer']){
  const pin=scenario(type,'pin');
  assert.equal(pin.updateCount,0,type+': el gesto sobre un segundo marcador cerró la ficha anterior');
- assert.equal(pin.active,'pin-A',type+': la ficha se borró antes del click del nuevo marcador');
+ assert.equal(pin.active,'pin-A',type+': la ficha activa se borró antes del click del nuevo marcador');
  const bg=scenario(type,'background');
  assert.equal(bg.updateCount,1,type+': tocar el fondo no cerró la ficha');
  assert.equal(bg.active,null,type+': la ficha siguió abierta al tocar el fondo');
  console.log('OK '+type+': segundo marcador conserva click; fondo cierra ficha');
 }
-assert(code.includes("else if(a==='pin'){"),'El controlador de pin desapareció');
-console.log('PASSED: marcador A a B con un toque, cierre al tocar el fondo (touch/mouse)');
+assert(code.includes("else if(a==='pin'){"),'El controlador principal de pin desapareció');
+console.log('PASSED: marcador A → B con un toque, y cierre al tocar el fondo (touch/mouse)');
