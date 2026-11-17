@@ -1448,6 +1448,11 @@ window.viCatalogRouteItems=()=>records.filter(r=>r.mapPoint?.mapVersion===MAP_VE
 // Read-only autocomplete index for the iOS UI; uses the same verified catalog.
 window.viIosSearchItems=()=>records.filter(r=>r.status==='verified'&&r.recordType!=='story_overview')
  .map(r=>({id:r.id,category:r.category,title:r.title,tags:Array.isArray(r.tags)?r.tags.slice(0,12):[]}));
+/* iOS V241: give native autocomplete real verified entries and mapped names.
+   The same catalog engine still determines ranking and what is verifiable. */
+window.viIosSearchCardsFor=(query,limit=5)=>detectIntent(query).results.slice(0,limit)
+ .map(r=>({id:r.id,title:tr(r.title),category:tr(cat(r.category).label)}));
+window.viIosMapNames=()=>allMapPins().map(p=>({id:p.id,name:p.title,category:p.category}));
 window.viRefreshApp=()=>render();
 window.viRefreshComparison=()=>{
  const previous=document.querySelector('.vi-compare-page');
