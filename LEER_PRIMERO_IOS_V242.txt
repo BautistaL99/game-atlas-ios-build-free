@@ -1,0 +1,63 @@
+GAME ATLAS — iOS V242 / QA y mapa remoto preparado
+17/11/2026
+
+QUÉ CORRIGE ESTA VERSIÓN
+1) Buscador del mapa: muestra sugerencias de categorías y UBICACIONES reales EN EL MISMO PANEL debajo del input.
+   Ejemplo: Playa -> sugerencias "playa"/"playas" y, a continuación, resultados existentes como Beach Volleyball, si siguen en el conjunto de datos.
+   Al tocar un resultado real se enfoca ese marcador. No se inventaron coordenadas.
+2) Buscador descriptivo: ahora reconoce "auto más lento", "slowest car" y "carro mais lento" y entiende que es velocidad ASCENDENTE.
+   Con números verificados: muestra vehículos ordenados. Sin estadísticas de velocidad: muestra fichas verificadas SIN RANKING, con aviso claro.
+3) Mapa preparado para un manifiesto remoto firmado y una imagen autenticada por SHA-256. No hay una imagen nueva ni un catálogo de puntos definitivos publicados todavía.
+4) Si se publica una cartografía con un ID distinto, los marcadores personales antiguos se conservan (no se proyectan sobre posiciones incorrectas).
+   "Mis marcadores" permite reubicarlos manualmente en el nuevo mapa. Rutas que refieren puntos ausentes no se dibujan como válidas.
+
+QUÉ ESTÁ PENDIENTE
+- Verificar el teclado, ubicación visual de paneles y reubicación en iPhone real. No se ha validado con una IPA V242.
+- Contar con una imagen con PERMISO para su redistribución, nuevas coordenadas referenciadas a esa imagen y los IDs de fichas correctos.
+- Confirmar acceso a la clave privada Ed25519 que usa el catálogo firmado actual; NO es la .p8 de Apple. Sin esa clave no se puede activar un nuevo mapa en este mecanismo.
+- Registrar un nuevo ID de cartografía al reemplazar imagen o reubicar puntos y aumentar revision.
+- Las rutas de calles reales no están implementadas. Mantienen líneas entre puntos, siempre que las posiciones sean compatibles.
+
+INSTALACIÓN POR GITHUB / TESTFLIGHT
+Este ZIP es respaldo. El código está publicado en la rama qa-ios-v242 de
+https://github.com/BautistaL99/game-atlas-ios-build-free/tree/qa-ios-v242
+NO subir este ZIP ni mezclar ramas.
+1. En PC: https://github.com/BautistaL99/game-atlas-ios-build-free/actions/workflows/game-atlas-ios-testflight.yml
+2. Run workflow -> Use workflow from: qa-ios-v242 -> version: 1.0 -> Run workflow.
+3. Esperar ejecución VERDE. Si aparece error, compartir captura/log NO SECRETO.
+4. App Store Connect > Apps > Game Atlas > TestFlight. Buscar nueva build (número superior a 13 si V241 se compiló).
+5. Si Apple pide declaración de cifrado, responder conforme a funcionalidades reales de la app.
+6. Agregar build a grupo de pruebas internas si no quedó añadida.
+7. En iPhone: TestFlight -> Game Atlas -> Actualizar. Probar y NO enviar a revisión pública todavía.
+
+CHECKLIST DE TESTS EN IPHONE
+A. Mapa normal -> escribir Playa -> sugerencias y ubicaciones juntas bajo barra. Tocar ubicación debe enfocar.
+B. Mapa pantalla completa -> misma búsqueda, panel desplazable sin tapar teclado.
+C. Buscar -> "auto más lento" -> si no hay velocidades, ver vehículos con aviso "sin orden confirmado"; nunca ranking inventado.
+D. "slowest car" en inglés y "carro mais lento" en portugués, mismo comportamiento.
+E. Comprobar favoritos/partida/rutas antiguos. El mapa NO debe cambiar todavía.
+F. Marcadores personales y editor con teclado, por regresión.
+
+ACTIVACIÓN FUTURA DEL MAPA (NO REALIZAR HOY)
+- Usar MAPA_V242_EJEMPLO_NO_PUBLICAR.json como guía; completarlo con DATOS REALES, licencias verificadas, IDs de fichas estables y coordenadas porcentuales sobre la imagen elegida.
+- imageUrl permitido: https://bautistal99.github.io/game-atlas-privacidad/updates/maps/NOMBRE.webp (o .png).
+- Subir primero la imagen al repositorio que publica esta URL. La página debe servirla como image/webp o image/png y CORS accesible al iPhone.
+- Firmar el JSON con ios-v220/scripts/sign-map-release.mjs. Requiere clave privada Ed25519 que COINCIDA con online-config.json (es de catálogo, NO la Apple AuthKey_.p8).
+  En Windows PowerShell:
+    $env:GAME_ATLAS_MAP_SIGNING_KEY_PATH='C:\RUTA-PRIVADA\ed25519-catalog.pem'
+    node ios-v220/scripts/sign-map-release.mjs MAPA_COMPLETO.json mapa.webp map-envelope-v242.json
+- Publicar map-envelope-v242.json en https://bautistal99.github.io/game-atlas-privacidad/updates/map-envelope-v242.json
+- La app comprueba la firma, la fuente, el SHA256 de la imagen, posiciones, ID del mapa, integridad y actualización incremental.
+- Sin sobre remoto válido / red / permisos, conserva mapa instalado y evita sustituciones de datos incorrectos.
+- NUNCA incluir claves ni archivos de firma en este repositorio público.
+
+SEGURIDAD DE DATOS
+- Mantener backup de Mi partida antes del cambio real de mapa.
+- Los favoritos y progreso del catálogo usan IDs; la actualización del mapa NO los borra.
+- Los marcadores locales antiguos no se borran. Al cambiar el sistema de coordenadas requieren reubicación manual.
+- Los caminos/rutas reales siguiendo calles necesitarán otro desarrollo y revisión de Apple si cambian funciones/código.
+- Nunca asumir que el mapa físico/gratuito de terceros tiene licencia de redistribución comercial.
+
+CONTROL DE VERSIONES
+- No modificar main, web o Android sin autorización.
+- Mantener qa-ios-v241 y build anterior disponibles como respaldo.
