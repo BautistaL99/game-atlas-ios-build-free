@@ -1,0 +1,13 @@
+{
+  "appId": "com.indie.viassistant",
+  "appName": "Game Atlas Companion",
+  "webDir": "www",
+  "server": {
+    "iosScheme": "capacitor"
+  },
+  "plugins": {
+    "StatusBar": {
+      "style": "DARK"
+    }
+  }
+}

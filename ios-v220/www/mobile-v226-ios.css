@@ -1,0 +1,15 @@
+/* iOS-specific UI: preserve the native map, marker/tap fixes and 3 languages. */
+@supports (-webkit-touch-callout: none) {
+ html,body { -webkit-text-size-adjust: 100%; }
+ /* WKWebView viewport-fit=cover already supplies safe-area env values. */
+ #root .bottom-nav { padding-bottom: max(8px, env(safe-area-inset-bottom, 0px)) !important; }
+ #root .atlas-pin-editor input, #root .atlas-pin-editor textarea,
+ #root .atlas-pin-editor select { font-size: max(16px, 1rem); }
+ /* Suppress a finger-only yellow/gray flash when a pan starts on a pin. */
+ #root .atlas-v119 .atlas-map .atlas-pin,
+ #root .atlas-v119 .atlas-map .atlas-cluster,
+ #root .atlas-v119 .atlas-map .atlas-pin *,
+ #root .atlas-v119 .atlas-map .atlas-cluster * {
+   -webkit-tap-highlight-color: transparent !important;
+ }
+}

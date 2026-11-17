@@ -1,0 +1,8 @@
+node_modules/
+ios/
+.DS_Store
+*.ipa
+*.xcarchive
+*.mobileprovision
+*.p12
+.env

@@ -1,0 +1,33 @@
+{
+  "name": "Game Atlas: Guía de GTA 6",
+  "short_name": "Game Atlas",
+  "description": "Guía independiente GTA VI: mapa de Leonida, rutas, noticias y fichas actualizadas automáticamente.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0c0e18",
+  "theme_color": "#101321",
+  "lang": "es",
+  "icons": [
+    {
+      "src": "./icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "id": "/app/"
+}

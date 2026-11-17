@@ -1,0 +1,63 @@
+name: Game Atlas V238 - Prueba iOS gratuita
+
+# Se ejecuta SOLO cuando el propietario pulsa Run workflow.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: game-atlas-ios-public-simulator
+  cancel-in-progress: false
+
+jobs:
+  comprobar-ios:
+    runs-on: macos-26
+    timeout-minutes: 60
+    steps:
+      - name: Descargar fuentes de este repositorio
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Comprobar macOS y Xcode
+        run: |
+          set -euo pipefail
+          sw_vers
+          xcodebuild -version
+          command -v pod
+
+      - name: Preparar Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Revisar los archivos originales de Game Atlas
+        working-directory: ios-v220
+        run: node scripts/verify-ios.mjs
+
+      - name: Instalar Capacitor y crear proyecto nativo iOS
+        working-directory: ios-v220
+        run: |
+          set -euo pipefail
+          npm install --no-audit --no-fund
+          npx cap add ios
+          npx cap sync ios
+          node scripts/configure-ios-native.mjs
+
+      - name: Compilar para simulador de iPhone sin firma Apple
+        working-directory: ios-v220
+        run: |
+          set -euo pipefail
+          xcodebuild \
+            -workspace ios/App/App.xcworkspace \
+            -scheme App \
+            -configuration Debug \
+            -destination 'generic/platform=iOS Simulator' \
+            -derivedDataPath "$RUNNER_TEMP/GameAtlasBuild" \
+            CODE_SIGNING_ALLOWED=NO \
+            build
+          echo 'OK: Game Atlas compila para el simulador de iPhone.'
+
+# Esta etapa NO genera IPA, NO firma con Apple y NO sube artefactos públicos.
