@@ -1,0 +1,16 @@
+{
+  "schema": 242,
+  "type": "GAME_ATLAS_MAP_DATA",
+  "revision": 1,
+  "basemap": {
+    "id": "map-REEMPLAZAR-POR-VERSION-REAL",
+    "imageUrl": "https://bautistal99.github.io/game-atlas-privacidad/updates/maps/REEMPLAZAR.webp",
+    "width": 1200,
+    "height": 1600,
+    "attribution": "COMPLETAR: autor y fuente autorizada",
+    "license": "COMPLETAR: licencia o autorización escrita",
+    "sourceUrl": "https://example.com/fuente-autorizada",
+    "sha256": "SE_GENERA_CON_EL_SCRIPT"
+  },
+  "pins": []
+}
