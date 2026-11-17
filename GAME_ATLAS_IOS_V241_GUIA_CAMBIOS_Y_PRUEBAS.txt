@@ -1,0 +1,105 @@
+GAME ATLAS — iOS V241 / QA
+17 de noviembre de 2026 · Solo iPhone / TestFlight
+================================================
+
+REPOSITORIO Y RAMAS
+-------------------
+Repositorio público: https://github.com/BautistaL99/game-atlas-ios-build-free
+Nueva rama de prueba: qa-ios-v241
+Rama anterior: qa-ios-v240 (se conserva)
+Rama main: sin modificaciones por este cambio
+Código completo de la nueva candidata:
+https://github.com/BautistaL99/game-atlas-ios-build-free/tree/qa-ios-v241
+Respaldo ZIP completo del código:
+https://github.com/BautistaL99/game-atlas-ios-build-free/archive/refs/heads/qa-ios-v241.zip
+
+QUE SE CORRIGIO / QUE DEBERIA PASAR
+----------------------------------
+1. EDITOR DE MARCADORES Y TECLADO (normal y pantalla completa)
+   Antes: al escribir el nombre o descripción, el formulario subía demasiado,
+   quedaba un gran hueco frente al teclado y el buscador del mapa tapaba campos.
+   Ahora: al abrir el teclado, el formulario se ubica dentro del área visible
+   y admite desplazamiento interno. Los controles del mapa y su buscador no
+   quedan activos ni visibles encima del editor durante la edición.
+
+2. BUSCADOR DEL MAPA INCOMPLETO (ES / EN / PT)
+   Antes: escribir "play" en español devolvía "sin ubicaciones" sin ofrecer
+   "playa". Lo mismo ocurría con prefijos análogos en otros idiomas.
+   Ahora: aparece autocompletado con nombres reales de marcadores y términos
+   geográficos. Pruebas: ES "play" -> "playa"; EN "beac" -> "beach";
+   PT "prai" -> "praia". Las sugerencias no inventan coordenadas: si una
+   categoría no tiene puntos comprobados, la búsqueda puede seguir mostrando
+   que no hay una ubicación exacta registrada.
+
+3. BUSCADOR SUPERIOR: VOLVER A MOSTRAR FICHAS CONCRETAS
+   Antes: V240 sugería solo frases («auto con alerón», etc.) y ocultaba los
+   modelos concretos que el buscador descriptivo ya identificaba.
+   Ahora: la lista separa FICHAS VERIFICADAS (acceso directo a una ficha
+   real del catálogo) y SUGERENCIAS DE BÚSQUEDA. Usa el mismo motor existente
+   de búsqueda para los resultados; NO asigna estadísticas ficticias.
+
+4. AUTOCOMPLETADO MÁS NATURAL EN TRES IDIOMAS
+   Pruebas: "auto mas" -> propone "auto más rápido" y otras características;
+   "arma mas" -> alternativas pertinentes; en inglés "fastest ca";
+   en portugués "carro mais". También usa términos existentes del catálogo.
+   Una sugerencia no implica que todas las estadísticas estén verificadas.
+
+5. NUEVA BUSQUEDA SIN BORRAR LA ANTERIOR
+   Antes: tras enviar una consulta, el texto seguía en el buscador superior.
+   Ahora: el campo queda vacío para escribir otro pedido; al volver a tocarlo
+   se ofrece la última búsqueda como primer acceso. Se guarda únicamente en
+   el almacenamiento local del dispositivo, no se sincroniza entre cuentas.
+
+INSTALACION — NO HAY QUE SUBIR ZIP NI EJECUTAR BAT
+-------------------------------------------------
+1. Abrir GitHub con la cuenta del repositorio:
+   https://github.com/BautistaL99/game-atlas-ios-build-free/actions/workflows/game-atlas-ios-testflight.yml
+2. Tocar "Run workflow".
+3. En "Use workflow from" seleccionar EXACTAMENTE qa-ios-v241.
+4. En "version" escribir 1.0 (si aún estamos en pruebas de esa versión).
+5. Pulsar el botón verde "Run workflow".
+6. Abrir la nueva ejecución en Actions. Esperar a que termine verde.
+   La compilación usa los secretos de firma permanente ya configurados:
+   NO hay que crear otro certificado ni subir el .p8.
+7. Abrir https://appstoreconnect.apple.com -> Game Atlas: Wiki & Map -> TestFlight.
+8. Abrir la compilación más reciente (1.0 con número mayor que el anterior).
+   Si Apple solicita información de exportación, completar la declaración
+   correspondiente al cifrado que realmente usa la aplicación.
+9. Asegurarse de que esa compilación esté en "Game Atlas - Pruebas internas".
+10. En el iPhone de Melanie, abrir TestFlight -> Game Atlas -> Actualizar.
+11. En TestFlight, verificar el número nuevo de build antes de empezar QA.
+
+PRUEBAS CONCRETAS EN EL IPHONE
+-----------------------------
+[ ] Mapa normal: crear marcador, tocar Nombre, escribir, cerrar teclado.
+[ ] Mapa normal: editar Descripción y Categoría, guardar sin campos tapados.
+[ ] Mapa pantalla completa: repetir los dos casos con el teclado abierto.
+[ ] Buscador mapa ES: teclear "play" y tocar "playa".
+[ ] Buscador mapa EN: escribir "beac" y revisar "beach".
+[ ] Buscador mapa PT: escribir "prai" y revisar "praia".
+[ ] Barra superior ES: escribir "auto mas"; ver "auto más rápido" y fichas.
+[ ] Abrir una ficha real desde las sugerencias, volver y buscar otra cosa.
+[ ] Enviar una búsqueda; tocar la barra de nuevo: debe estar vacía y ofrecer
+    la búsqueda anterior como primera sugerencia.
+[ ] Repetir consultas principales en inglés y portugués.
+[ ] Confirmar que la barra de sugerencias no tapa los resultados de /buscar.
+[ ] Comparar 3 elementos y abrir fichas del mapa (regresión de V240).
+[ ] Revisar favoritos, progreso y marcadores guardados (no deben perderse).
+
+VALIDACION / LIMITES
+--------------------
+Se verificaron sintaxis de JavaScript y referencias a recursos con el
+verificador del proyecto; también se probaron predicciones ES/EN/PT en Node.
+No fue posible completar una prueba visual automatizada: el navegador de este
+entorno bloqueó la carga local. El diseño con teclado virtual necesita QA
+real en iPhone; esta candidata NO debe darse por aprobada sin esas pruebas.
+No se ha publicado en la App Store, ni se ha ejecutado el workflow de V241.
+
+RESPALDO Y SEGURIDAD
+--------------------
+Guardar copia del ZIP completo descargado desde la rama qa-ios-v241.
+Mantener fuera del repositorio público:
+- Carpeta privada de firma: C:\Users\bauti\GameAtlas_FIRMA_IOS_PRIVADA
+- Archivo privado AuthKey_*.p8 y credenciales de Apple.
+Nunca incluir certificados, claves o contraseñas en ZIP públicos ni en chats.
+Android, web, main y las compilaciones anteriores de TestFlight no se tocaron.
