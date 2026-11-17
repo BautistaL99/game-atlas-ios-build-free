@@ -1,0 +1,31 @@
+PRUEBAS EJECUTADAS | Game Atlas iOS V243 | 17/11/2026
+
+1) Nodo anterior V242 + mismo test de gestos:
+   FALLA esperada: touch cerraba la ficha anterior antes de procesar el click del siguiente marcador.
+   Mensaje: AssertionError "touch: el gesto sobre un segundo marcador cerró la ficha anterior".
+
+2) Nodo corregido V243 + qa-marker-switch.mjs:
+   PASS touch: toque de marcador conserva click y toque de fondo cierra.
+   PASS pointer: click de marcador conserva click y click de fondo cierra.
+
+3) node scripts/verify-ios.mjs:
+   PASS — validación de recursos, estructura, navegación nativa, backups y 29 ficheros JavaScript.
+
+4) node scripts/qa-ios-audit.mjs:
+   PASS — 55 registros empaquetados con ID único y campos título/resumen ES EN PT.
+   PASS — dos consumidores de actualizaciones con verificación de firma.
+   PASS — compatibilidad con mapa firmado, vías de datos y categorías wiki ampliadas.
+   INFO — las rutas todavía son ilustrativas, no navegación sobre calles.
+
+5) Fuentes públicas revisadas:
+   Feed oficial catálogo revision 4: 19 registros (hasta 10 de noviembre).
+   Feed independiente revision 18: 26 noticias y 406 fichas (hasta 16 de noviembre).
+   Traducciones título/resumen ES/EN/PT presentes en los registros obtenidos.
+
+6) Prueba de navegador móvil:
+   NO PUDO COMPLETARSE. El navegador de este entorno bloqueó localhost con
+   ERR_BLOCKED_BY_ADMINISTRATOR. No se afirma haber probado la interfaz ni la IPA en iPhone.
+
+7) Compilación iOS y TestFlight:
+   NO EJECUTADA EN ESTA REVISIÓN. El usuario debe ejecutar el workflow desde qa-ios-v243.
+   Los scripts de QA quedan integrados para que fallen antes de compilar si hay regresión.
