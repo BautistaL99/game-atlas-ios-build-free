@@ -440,11 +440,22 @@ function mapMatches(p,q,linkedIds){
  // after a type of place (e.g. 100 garages on 'Vice Beach').
  const strictNoun=words.length===1&&viMapNouns.has(words[0]);
  const haystack=strictNoun?titlesAndTags:(titlesAndTags+' '+related).trim();
- const allWords=words.every(word=>phrase(haystack,word));
+ // Prefix search works from two characters ("vi" -> "Vice City") while
+ // retaining complete-word matching for full natural-language phrases.
+ // Do not infer coordinates: suggestions only refer to existing map pins.
+ const matchWord=word=>phrase(haystack,word)||(word.length>=2&&haystack.split(' ').some(part=>part.startsWith(word)));
+ const allWords=words.every(matchWord);
  return wholeCategory||allWords||!!(p.itemId&&linkedIds?.has(p.itemId));
 }
 function mapCatalogMatches(q){return new Set(searchCatalogCore(q,records,store('done')).results.map(i=>i.id))}
-const mapResults=()=>{if(!mapQuery.trim())return [];const linked=mapCatalogMatches(mapQuery);return allMapPins().filter(p=>mapMatches(p,mapQuery,linked)).slice(0,15)};
+const mapResults=()=>{if(!mapQuery.trim())return [];
+ const linked=mapCatalogMatches(mapQuery),q=viMapNormalized(mapQuery.trim());
+ const rank=p=>{const name=viMapNormalized(p.title||'');
+  return name===q?0:name.startsWith(q)?1:name.split(' ').some(w=>w.startsWith(q))?2:3;};
+ return allMapPins().filter(p=>mapMatches(p,mapQuery,linked))
+   .sort((a,b)=>rank(a)-rank(b)||String(a.title||'').localeCompare(String(b.title||'')))
+   .slice(0,15);
+};
 const mapShown=()=>{if(mapSpotlightId){const target=allMapPins().find(p=>p.id===mapSpotlightId);if(target)return [target];mapSpotlightId=null;}
  const linked=mapQuery.trim()?mapCatalogMatches(mapQuery):new Set();return allMapPins().filter(p=>{
  const found=mapQuery.trim()&&mapMatches(p,mapQuery,linked);
@@ -736,13 +747,13 @@ function mapBind(){const el=document.getElementById('mapCanvas');if(!el)return;m
  else if(ev.touches.length===1 && !hadPinch && !blocksMapDrag(ev.target)){const t=ev.touches[0];tap={x:t.clientX,y:t.clientY};if(mapPanEnabled)touchDrag={x:t.clientX,y:t.clientY,ox:mapDX,oy:mapDY,moved:false}}},{passive:false});
  el.addEventListener('touchmove',ev=>{if(ev.touches.length===2&&pinch){const a=ev.touches[0],b=ev.touches[1],d=Math.hypot(a.clientX-b.clientX,a.clientY-b.clientY),p=pointFromTouch({clientX:(a.clientX+b.clientX)/2,clientY:(a.clientY+b.clientY)/2}),wanted=Math.max(.85,Math.min(6,pinch.zoom*d/Math.max(1,pinch.distance)));if(wanted!==mapZoom)mapChangeZoom(wanted/mapZoom,p.x,p.y);if(ev.cancelable)ev.preventDefault();return}if(ev.touches.length===1&&!hadPinch&&touchDrag&&mapPanEnabled){const t=ev.touches[0],dx=t.clientX-touchDrag.x,dy=t.clientY-touchDrag.y;if(Math.hypot(dx,dy)>6)touchDrag.moved=true;if(touchDrag.moved){if(isMarkerHandle(ev.target))suppressMarkerClickUntil=Date.now()+650;mapDX=touchDrag.ox+dx;mapDY=touchDrag.oy+dy;mapTransform();tap=null;if(ev.cancelable)ev.preventDefault();return}}if(tap && ev.touches.length===1 && Math.hypot(ev.touches[0].clientX-tap.x,ev.touches[0].clientY-tap.y)>12)tap=null},{passive:false});
  el.addEventListener('touchend',ev=>{if(ev.touches.length<2)pinch=null;if(ev.touches.length===0){touchDrag=null;if(hadPinch){hadPinch=false;tap=null;return}}if(ev.touches.length||!tap)return;const t=ev.changedTouches[0];if(!t||Math.hypot(t.clientX-tap.x,t.clientY-tap.y)>12){tap=null;return}tap=null;
- if(!mapAdd){if(mapActive){mapActive=null;mapSpotlightId=null;mapUpdate()}return}const p=pointFromTouch(t),fit=viMapFit(el),scale=fit*mapZoom,cx=(el.clientWidth-MAP_WIDTH*fit)/2,cy=(el.clientHeight-MAP_HEIGHT*fit)/2;
+ if(!mapAdd){if(mapSpotlightId&&isMarkerHandle(ev.target))return;if(mapActive||mapSpotlightId){mapActive=null;mapSpotlightId=null;mapQuery='';mapUpdate()}return}const p=pointFromTouch(t),fit=viMapFit(el),scale=fit*mapZoom,cx=(el.clientWidth-MAP_WIDTH*fit)/2,cy=(el.clientHeight-MAP_HEIGHT*fit)/2;
  mapDraft={x:Math.max(0,Math.min(100,(p.x-mapDX-cx)/scale/(MAP_WIDTH/100))),y:Math.max(0,Math.min(100,(p.y-mapDY-cy)/scale/(MAP_HEIGHT/100)))};mapActive=null;mapUpdate()},{passive:true});
  el.addEventListener('touchcancel',()=>{pinch=null;tap=null;touchDrag=null;hadPinch=false},{passive:true});
  el.addEventListener('wheel',e=>{e.preventDefault();const r=el.getBoundingClientRect();mapChangeZoom(e.deltaY<0?1.16:1/1.16,e.clientX-r.left,e.clientY-r.top)},{passive:false});
  el.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse')suppressMarkerClickUntil=0;if(e.pointerType==='touch'||e.button!==0||blocksMapDrag(e.target))return;mouseDrag={x:e.clientX,y:e.clientY,ox:mapDX,oy:mapDY,moved:false,onMarker:isMarkerHandle(e.target),pointerId:e.pointerId};if(!mouseDrag.onMarker)try{el.setPointerCapture(e.pointerId)}catch(_){}});
  el.addEventListener('pointermove',e=>{if(!mouseDrag)return;const dx=e.clientX-mouseDrag.x,dy=e.clientY-mouseDrag.y;if(Math.abs(dx)+Math.abs(dy)>5)mouseDrag.moved=true;if(mouseDrag.moved){if(mouseDrag.onMarker){suppressMarkerClickUntil=Date.now()+650;try{el.setPointerCapture(mouseDrag.pointerId)}catch(_){}}mapDX=mouseDrag.ox+dx;mapDY=mouseDrag.oy+dy;mapTransform()}});
- el.addEventListener('pointerup',e=>{if(e.pointerType==='touch'||!mouseDrag)return;const d=mouseDrag;mouseDrag=null;if(d.moved)return;if(!mapAdd){if(mapActive){mapActive=null;mapSpotlightId=null;mapUpdate()}return}const r=el.getBoundingClientRect(),fit=viMapFit(el),scale=fit*mapZoom,cx=(el.clientWidth-MAP_WIDTH*fit)/2,cy=(el.clientHeight-MAP_HEIGHT*fit)/2;mapDraft={x:Math.max(0,Math.min(100,(e.clientX-r.left-mapDX-cx)/scale/(MAP_WIDTH/100))),y:Math.max(0,Math.min(100,(e.clientY-r.top-mapDY-cy)/scale/(MAP_HEIGHT/100)))};mapActive=null;mapUpdate()});
+ el.addEventListener('pointerup',e=>{if(e.pointerType==='touch'||!mouseDrag)return;const d=mouseDrag;mouseDrag=null;if(d.moved)return;if(!mapAdd){if(mapSpotlightId&&isMarkerHandle(e.target))return;if(mapActive||mapSpotlightId){mapActive=null;mapSpotlightId=null;mapQuery='';mapUpdate()}return}const r=el.getBoundingClientRect(),fit=viMapFit(el),scale=fit*mapZoom,cx=(el.clientWidth-MAP_WIDTH*fit)/2,cy=(el.clientHeight-MAP_HEIGHT*fit)/2;mapDraft={x:Math.max(0,Math.min(100,(e.clientX-r.left-mapDX-cx)/scale/(MAP_WIDTH/100))),y:Math.max(0,Math.min(100,(e.clientY-r.top-mapDY-cy)/scale/(MAP_HEIGHT/100)))};mapActive=null;mapUpdate()});
  el.addEventListener('pointercancel',()=>{mouseDrag=null});
 }
 /* V233: focus the selected POI in the VISIBLE part of the map, between the
@@ -866,7 +877,7 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-map]');if(
    const field=document.getElementById('mapSearchText');
    if(!viMapFullscreen)field?.scrollIntoView({behavior:'smooth',block:'center'});
    field?.focus({preventScroll:true});return;
-  }if(a==='clear'){mapSpotlightId=null;mapCategories=[];}else if(a==='all'){mapSpotlightId=null;mapCategories=mapCategories.length===mapFilterCategories.length?[]:mapFilterCategories.map(x=>x.id);}else if(a==='focus'){mapFocusPin(v);return}else if(a==='focus-custom'){mapMarkerManagerOpen=true;mapFocusPin(v);document.getElementById('mapCanvas')?.scrollIntoView({behavior:'smooth',block:'center'});return}else if(a==='pin'){mapActive=v;mapDraft=null;mapNoPositionRecord=null;}else if(a==='add'){mapSpotlightId=null;mapNoPositionRecord=null;mapAdd=!mapAdd;mapDraft=null;mapActive=null;mobileMapFiltersOpen=false;}else if(a==='abort-marker'){mapAdd=false;mapDraft=null;mapActive=null;mobileMapFiltersOpen=false;}else if(a==='close'){mapActive=null;mapSpotlightId=null;}else if(a==='cancel'){mapDraft=null;mapAdd=false;mobileMapFiltersOpen=false;}else if(a==='reset'){mapSpotlightId=null;mapZoom=1;mapDX=0;mapDY=0;}else if(a==='zoom'){mapChangeZoom(Number(v),document.getElementById('mapCanvas').clientWidth/2,document.getElementById('mapCanvas').clientHeight/2);return}
+  }if(a==='clear'){mapSpotlightId=null;mapCategories=[];}else if(a==='all'){mapSpotlightId=null;mapCategories=mapCategories.length===mapFilterCategories.length?[]:mapFilterCategories.map(x=>x.id);}else if(a==='focus'){mapFocusPin(v);return}else if(a==='focus-custom'){mapMarkerManagerOpen=true;mapFocusPin(v);document.getElementById('mapCanvas')?.scrollIntoView({behavior:'smooth',block:'center'});return}else if(a==='pin'){if(mapSpotlightId&&v===mapSpotlightId)return;mapActive=v;mapDraft=null;mapNoPositionRecord=null;}else if(a==='add'){mapSpotlightId=null;mapNoPositionRecord=null;mapAdd=!mapAdd;mapDraft=null;mapActive=null;mobileMapFiltersOpen=false;}else if(a==='abort-marker'){mapAdd=false;mapDraft=null;mapActive=null;mobileMapFiltersOpen=false;}else if(a==='close'){mapActive=null;mapSpotlightId=null;}else if(a==='cancel'){mapDraft=null;mapAdd=false;mobileMapFiltersOpen=false;}else if(a==='reset'){mapSpotlightId=null;mapZoom=1;mapDX=0;mapDY=0;}else if(a==='zoom'){mapChangeZoom(Number(v),document.getElementById('mapCanvas').clientWidth/2,document.getElementById('mapCanvas').clientHeight/2);return}
  else if(a==='delete'){const owned=mapCustom(),target=owned.find(p=>p.id===v&&p.kind==='personal');if(!target)return;const prompt=tr({es:`¿Eliminar el marcador «${target.title}»? No se puede deshacer.`,en:`Delete marker “${target.title}”? This cannot be undone.`,pt:`Excluir o marcador “${target.title}”? Esta ação não pode ser desfeita.`});if(!window.confirm(prompt))return;try{localStorage.setItem(MAP_LOCAL_KEY,JSON.stringify(owned.filter(p=>p.id!==v)));if(mapActive===v)mapActive=null;mapMarkerManagerOpen=true;}catch(error){console.error('Cannot delete personal marker',error);window.alert(tr({es:'No se pudo eliminar el marcador. Probá nuevamente.',en:'Could not delete the marker. Please try again.',pt:'Não foi possível excluir o marcador. Tente novamente.'}));return;}}
  else if(a==='save'){const title=document.getElementById('mapPinName')?.value.trim();if(!title||!mapDraft){const err=document.getElementById('mapPinError');if(err)err.textContent='Escribí un nombre para guardar tu punto.';document.getElementById('mapPinName')?.focus();return;}const custom=mapCustom();custom.push({id:'personal-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,6),title:title.slice(0,100),kind:'personal',category:document.getElementById('mapPinCategory').value,x:mapDraft.x,y:mapDraft.y,note:document.getElementById('mapPinNote')?.value.trim().slice(0,400),itemId:document.getElementById('mapPinLinked')?.value||undefined,mapVersion:MAP_VERSION});localStorage.setItem(MAP_LOCAL_KEY,JSON.stringify(custom));mapActive=custom.at(-1).id;mapQuery='';mapMissing=false;mapCompleted=false;mapFavOnly=false;mapCategories=[...new Set([...mapCategories,custom.at(-1).category])];mapDraft=null;mapAdd=false}
  mapUpdate();});
@@ -1434,6 +1445,9 @@ window.viMapRouteState=()=>mapRouteDisplay?.id||null;
 window.viRouteContext=()=>({locale,mapVersion:MAP_VERSION,pins:allMapPins().map(p=>({id:p.id,title:p.title,note:p.note||'',x:p.x,y:p.y,kind:p.kind,itemId:p.itemId||null})),done:store('done')});
 window.viRouteFocusPin=(id)=>{mapFocusPin(id,{spotlight:false});document.getElementById('mapCanvas')?.scrollIntoView({behavior:'smooth',block:'center'});};
 window.viCatalogRouteItems=()=>records.filter(r=>r.mapPoint?.mapVersion===MAP_VERSION&&r.status==='verified').map(r=>r.id);
+// Read-only autocomplete index for the iOS UI; uses the same verified catalog.
+window.viIosSearchItems=()=>records.filter(r=>r.status==='verified'&&r.recordType!=='story_overview')
+ .map(r=>({id:r.id,category:r.category,title:r.title,tags:Array.isArray(r.tags)?r.tags.slice(0,12):[]}));
 window.viRefreshApp=()=>render();
 window.viRefreshComparison=()=>{
  const previous=document.querySelector('.vi-compare-page');
