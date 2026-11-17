@@ -1368,7 +1368,7 @@ window.viApplyCommunityFeed=function(feed){
  }
  for(const wiki of feed.fiches){
   if(!/^wiki-community-[a-f0-9]{24}$/.test(wiki?.id||'')||
-     !['personajes','vehiculos','armas','mapa-lugares'].includes(wiki.category)||
+     !['personajes','vehiculos','armas','mapa-lugares','misiones','coleccionables','secretos','economia','actividades','mundo'].includes(wiki.category)||
      !viWikiGoodLang(wiki.title,160)||!viWikiGoodLang(wiki.summary,450)||
      !/^https:\/\/gta\.wiki\/w\//.test(wiki.sourceUrl||''))continue;
   // The signed publisher may not yet have translated every technical key.
