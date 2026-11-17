@@ -60,3 +60,16 @@ ACTUALIZACIÓN LOCALIZACIÓN + CAPTURAS APP STORE — 17/11/2026
 - IMPORTANTE: Las ejecuciones de Actions anteriores a estos commits no incluyen esta corrección; iniciar una ejecución nueva con la rama qa-ios-v246 para obtener los cambios.
 - Android y web móvil/PC: aplicar detección inicial de idioma preferido y respetar la preferencia persistida, además de corregir las cadenas dinámicas de Mi partida.
 - Capturas de App Store: repetir las que muestran solapamiento TestFlight/hora o cualquier frase en español dentro de EN. Las diez imágenes recibidas en chat son de 739x1600; usar las originales del iPhone con resolución admitida en App Store Connect.
+
+CI / GitHub Actions — corrección de cola 17/11/2026
+- Ejecución 44136473092: job de macos-26 creado a las 17:23:36Z y cancelado a las 17:38:37Z. runner_id=0, runner_name vacío, steps=[]; no llegó a ejecutar checkout, validación, firma ni subida de IPA. No fue error de la app.
+- Modificado workflow .github/workflows/game-atlas-ios-testflight.yml:
+  * por defecto usa macos-26-intel, grupo separado del pool macos-26 arm64 que quedó sin runner;
+  * se puede seleccionar macos-26 si se desea volver a arm64;
+  * verifica la versión Xcode 26+ antes de invertir tiempo en la compilación; es requisito de Capacitor 8;
+  * conserva Apple Secrets, firma reutilizable y subida directa a TestFlight. No publica IPA ni certificados.
+- La reserva de ejecutor depende de la infraestructura de GitHub: cambiar a Intel mitiga este problema concreto, sin garantizar disponibilidad ni éxito de Apple.
+- Para compilar: Actions > Game Atlas iOS - TestFlight > Run workflow, seleccionar rama qa-ios-v246, versión 1.0 (si corresponde a la versión ya existente) y macos-26-intel (si el selector aparece); en caso de no aparecer, el workflow en esa rama usa Intel por defecto. Ejecutar uno solo y comprobar logs. NO reejecutar jobs de las corridas fallidas viejas.
+- Versión del código: primera apertura usa idioma preferido del dispositivo en/es/pt, otro => inglés. Un idioma elegido manualmente se mantiene en localStorage. No se infiere idioma por geolocalización.
+- Importante: capturas de App Store deben hacerse en un iPhone con la compilación actualizada y sin superposición con la hora o TestFlight. Apple acepta PNG/JPG nativos de resolución del teléfono. Ejemplos aceptados: 1179x2556 o 1206x2622 (Dynamic Island mediano); 1290x2796 o 1320x2868 (Dynamic Island grande). Revisar dimensiones reales en Fotos > información, y transferir originales por iCloud Fotos, AirDrop o USB; evitar WhatsApp y ediciones que reduzcan resolución.
+- Dejar anotado para Android/web: detectar idioma preferido de navegador/dispositivo en primer inicio; permitir idioma manual persistente, fallback EN y asegurar actualización ES/EN/PT en todo el catálogo.
