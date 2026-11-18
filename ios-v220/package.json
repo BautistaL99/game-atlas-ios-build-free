@@ -1,6 +1,6 @@
 {
   "name": "game-atlas-companion-ios-v220",
-  "version": "1.55.0",
+  "version": "1.56.0",
   "private": true,
   "description": "V220 iOS native build source from reviewed Android V220 client — requires macOS/Xcode for build",
   "scripts": {

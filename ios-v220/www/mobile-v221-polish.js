@@ -2,6 +2,10 @@
    signed catalogs, filters, favorites or routes. Idempotent on SPA rerenders. */
 (()=>{'use strict';
  const root=document.getElementById('root');if(!root)return;
+ const disabledStyle=document.createElement('style');
+ disabledStyle.textContent='.vi-support-v253-disabled{opacity:.43!important;cursor:not-allowed!important;pointer-events:none!important;filter:grayscale(.5)!important}';
+ document.head.append(disabledStyle);
+
  const words={
   es:{rate:'Valorar',rateHelp:'Valorar Game Atlas en Google Play',compare:'Comparar',scroll:'Deslizá hacia abajo para completar los campos ↓'},
   en:{rate:'Rate app',rateHelp:'Rate Game Atlas on Google Play',compare:'Compare',scroll:'Scroll down to complete the form ↓'},
@@ -10,11 +14,37 @@
  const isIOS=()=>window.Capacitor?.getPlatform?.()==='ios';
  const isNative=()=>Boolean(window.Capacitor?.isNativePlatform?.());
  const playUrl='https://play.google.com/store/apps/details?id=com.indie.viassistant';
- const iosWords={es:{label:'Descargas',hint:'Descargas y estado de Game Atlas para iOS'},en:{label:'Downloads',hint:'Game Atlas iOS downloads and status'},pt:{label:'Downloads',hint:'Downloads e estado do Game Atlas para iOS'}};
+ const iosWords={es:{label:'Valorar',hint:'Valorar Game Atlas en App Store'},en:{label:'Rate app',hint:'Rate Game Atlas on the App Store'},pt:{label:'Avaliar',hint:'Avaliar Game Atlas na App Store'}};
  const language=()=>words[(document.documentElement.lang||'es').slice(0,2)]||words.es;
  const isExplore=()=>decodeURIComponent((location.hash||'').slice(1)).split('?')[0]==='/explorar';
+ // Release V253: support / payments are intentionally disabled until verified billing exists.
+ const supportsOpen=()=>/^#\/(?:pagos|apoyar)(?:$|[/?])/.test(location.hash||'');
+ document.addEventListener('click',event=>{
+  const link=event.target?.closest?.('a[href]');
+  const href=link?.getAttribute('href')||'';
+  if(/^#\/(?:pagos|apoyar)(?:$|[/?])/.test(href)){
+   event.preventDefault();event.stopImmediatePropagation();
+  }
+ },true);
+ if(supportsOpen())location.replace('#/informacion');
+ addEventListener('hashchange',()=>{if(supportsOpen())location.replace('#/informacion');});
+
  function update(){
   const t=language();
+
+  if(isNative()){
+   const support=root.querySelector('.topbar .mobile-donate');
+   if(support){
+    support.removeAttribute('href');support.removeAttribute('target');support.removeAttribute('rel');
+    support.classList.add('vi-support-v253-disabled');
+    support.setAttribute('aria-disabled','true');support.setAttribute('tabindex','-1');
+    support.setAttribute('title',({'es':'Apoyar: próximamente','en':'Support: coming soon','pt':'Apoiar: em breve'})[(document.documentElement.lang||'es').slice(0,2)]);
+   }
+  }
+  root.querySelectorAll('.mobile-more-panel a[href="#/pagos"],.mobile-more-panel a[href="#/apoyar"],.support-hero-button[href="#/apoyar"]').forEach(el=>{
+   el.classList.add('vi-support-v253-disabled');el.removeAttribute('href');
+   el.setAttribute('aria-disabled','true');el.setAttribute('tabindex','-1');
+  });
   const rate=root.querySelector('.topbar .mobile-download');
   if(rate){
    if(!isNative()){
@@ -23,9 +53,12 @@
     rate.innerHTML='⬇ <span>'+({'es':'Descargar','en':'Download','pt':'Baixar'})[(document.documentElement.lang||'es').slice(0,2)]+'</span>';
    }else if(isIOS()){
     const io=iosWords[(document.documentElement.lang||'es').slice(0,2)]||iosWords.es;
-    rate.href='#/descargas';rate.removeAttribute('target');rate.removeAttribute('rel');
+    // Until the App Store listing is live, open Apple's search rather than a false product URL.
+    // A direct write-review URL can be configured after Apple assigns/activates the store listing.
+    rate.href=window.viAppStoreReviewURL||'https://apps.apple.com/search?term=Game%20Atlas%20GTA%206';
+    rate.target='_blank';rate.rel='noopener noreferrer';
     rate.setAttribute('aria-label',io.hint);rate.title=io.hint;
-    rate.innerHTML='↧ <span>'+io.label+'</span>';
+    rate.innerHTML='☆ <span>'+io.label+'</span>';
    }else{
     rate.href=playUrl;rate.target='_blank';rate.rel='noopener noreferrer';
     rate.setAttribute('aria-label',t.rateHelp);rate.title=t.rateHelp;

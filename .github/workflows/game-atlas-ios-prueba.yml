@@ -1,4 +1,4 @@
-name: Game Atlas V252 - Prueba iOS (optativa)
+name: Game Atlas V253 - Prueba iOS (optativa)
 
 # Se ejecuta SOLO cuando el propietario pulsa Run workflow.
 on:
@@ -41,6 +41,7 @@ jobs:
           node scripts/qa-ios-v250-live-map-billing.mjs www
           node scripts/qa-ios-v251-store-ui-and-route.mjs www
           node scripts/qa-ios-v252-store-prices.mjs www
+          node scripts/qa-ios-v253-launch-controls.mjs www
 
       - name: Instalar Capacitor y crear proyecto nativo iOS
         working-directory: ios-v220
