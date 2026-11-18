@@ -1,8 +1,12 @@
 name: Game Atlas iOS V250 - TestFlight (optativo)
 
-# Se ejecuta SOLAMENTE al pulsar Run workflow en GitHub.
+# V250: disparo controlado UNA VEZ por push en rama QA, para enviar a TestFlight.
+# La activación por push se retirará una vez iniciada la ejecución.
 # El repositorio es publico, pero NUNCA guarda certificados, claves ni IPA como artefactos.
 on:
+  push:
+    branches:
+      - qa-ios-v250-testflight
   workflow_dispatch:
     inputs:
       version:
