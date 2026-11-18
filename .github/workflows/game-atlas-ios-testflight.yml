@@ -1,11 +1,8 @@
 name: Game Atlas iOS V251 - TestFlight (optativo)
 
-# V251: disparo único de TestFlight en rama temporal QA. Revertir luego.
+# Se ejecuta SOLAMENTE al pulsar Run workflow en GitHub.
 # El repositorio es publico, pero NUNCA guarda certificados, claves ni IPA como artefactos.
 on:
-  push:
-    branches:
-      - qa-ios-v251-testflight
   workflow_dispatch:
     inputs:
       version:
