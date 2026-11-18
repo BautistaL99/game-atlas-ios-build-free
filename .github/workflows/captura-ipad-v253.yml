@@ -1,0 +1,103 @@
+name: Game Atlas V253 - Captura iPad 13 para App Store
+
+# Ejecución exclusivamente manual. No modifica la aplicación publicada.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: game-atlas-v253-ipad-screenshot
+  cancel-in-progress: false
+
+jobs:
+  captura-ipad:
+    runs-on: macos-26
+    timeout-minutes: 60
+    steps:
+      - name: Descargar exactamente los archivos de iOS V253 enviados a TestFlight
+        uses: actions/checkout@v4
+        with:
+          ref: f9639d86338e016899d866e9723e25ab8fb4451d
+          persist-credentials: false
+
+      - name: Preparar Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Validar V253 y compilar para simulador sin firma Apple
+        working-directory: ios-v220
+        shell: bash
+        run: |
+          set -euo pipefail
+          node scripts/verify-ios.mjs
+          node scripts/qa-ios-v253-launch-controls.mjs www
+          npm install --no-audit --no-fund
+          npx cap add ios
+          npx cap sync ios
+          node scripts/configure-ios-native.mjs
+          xcodebuild             -project ios/App/App.xcodeproj             -scheme App             -configuration Debug             -destination 'generic/platform=iOS Simulator'             -derivedDataPath "$RUNNER_TEMP/GameAtlasBuild"             CODE_SIGNING_ALLOWED=NO             build
+
+      - name: Crear y arrancar simulador de iPad 13 pulgadas
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json, os, subprocess, sys, re
+          def run(*args):
+              return json.loads(subprocess.check_output(args, text=True))
+          devices = run('xcrun', 'simctl', 'list', 'devicetypes', '--json')['devicetypes']
+          choices = [d for d in devices if 'ipad' in d['name'].lower() and '13' in d['name']]
+          if not choices:
+              sys.exit('No se encontró un iPad de 13 pulgadas en este runner')
+          choices.sort(key=lambda d: (0 if 'pro' in d['name'].lower() else 1, 0 if 'm4' in d['name'].lower() else 1))
+          device = choices[0]
+          allr = run('xcrun', 'simctl', 'list', 'runtimes', '--json')['runtimes']
+          runtimes = [r for r in allr if r['identifier'].startswith('com.apple.CoreSimulator.SimRuntime.iOS') and r.get('isAvailable', True)]
+          if not runtimes: sys.exit('No hay runtime iOS disponible')
+          runtimes.sort(key=lambda r: tuple(int(n) for n in re.findall(r'd+', r.get('version','0'))), reverse=True)
+          runtime=runtimes[0]
+          uid=subprocess.check_output(['xcrun','simctl','create','GameAtlasV253iPad13',device['identifier'],runtime['identifier']],text=True).strip()
+          print('Simulador:', device['name'], runtime['name'], uid)
+          with open(os.environ['GITHUB_ENV'],'a',encoding='utf-8') as f:
+              f.write('SIMULATOR_UDID='+uid+'
+')
+          PY
+          xcrun simctl boot "$SIMULATOR_UDID"
+          xcrun simctl bootstatus "$SIMULATOR_UDID" -b
+          open -a Simulator --args -CurrentDeviceUDID "$SIMULATOR_UDID" || true
+
+      - name: Instalar Game Atlas, abrirla y capturar iPad
+        shell: bash
+        run: |
+          set -euo pipefail
+          APP="$RUNNER_TEMP/GameAtlasBuild/Build/Products/Debug-iphonesimulator/App.app"
+          test -d "$APP"
+          xcrun simctl install "$SIMULATOR_UDID" "$APP"
+          xcrun simctl launch "$SIMULATOR_UDID" com.indie.viassistant
+          sleep 25
+          mkdir -p ipad-capturas
+          xcrun simctl io "$SIMULATOR_UDID" screenshot ipad-capturas/GameAtlas-V253-iPad13-Inicio.png
+          python3 - <<'PY'
+          from pathlib import Path
+          import struct
+          p=Path('ipad-capturas/GameAtlas-V253-iPad13-Inicio.png')
+          a=p.read_bytes()
+          if a[:8]!=b'PNG
+
+':raise SystemExit('La captura no es PNG')
+          width,height=struct.unpack('>II',a[16:24])
+          print(f'Captura de iPad: {width} x {height} px; {len(a)} bytes')
+          if (width,height) not in [(2064,2752),(2752,2064),(2048,2732),(2732,2048)]:
+              raise SystemExit('Resolución distinta a las dimensiones admitidas para iPad grande')
+          PY
+
+      - name: Adjuntar captura PNG para descargar desde Windows
+        uses: actions/upload-artifact@v4
+        with:
+          name: GameAtlas-V253-CAPTURA-IPAD13
+          path: ipad-capturas/GameAtlas-V253-iPad13-Inicio.png
+          if-no-files-found: error
+          retention-days: 7
