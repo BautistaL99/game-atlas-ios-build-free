@@ -3,6 +3,9 @@ name: Game Atlas iOS V253 - TestFlight (optativo)
 # Se ejecuta SOLAMENTE al pulsar Run workflow en GitHub.
 # El repositorio es publico, pero NUNCA guarda certificados, claves ni IPA como artefactos.
 on:
+  push:
+    branches:
+      - qa-ios-v253-testflight
   workflow_dispatch:
     inputs:
       version:
