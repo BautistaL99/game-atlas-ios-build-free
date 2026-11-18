@@ -1,4 +1,4 @@
-name: Game Atlas iOS V251 - TestFlight (optativo)
+name: Game Atlas iOS V252 - TestFlight (optativo)
 
 # Se ejecuta SOLAMENTE al pulsar Run workflow en GitHub.
 # El repositorio es publico, pero NUNCA guarda certificados, claves ni IPA como artefactos.
@@ -30,7 +30,7 @@ jobs:
   # Fail fast on free/low-cost Linux before reserving a macOS runner.
   # Catches JavaScript syntax and localization regressions without Apple secrets.
   validar-fuentes:
-    name: Validar Game Atlas V251 (Linux)
+    name: Validar Game Atlas V252 (Linux)
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -53,6 +53,7 @@ jobs:
           node scripts/qa-ios-v249-regressions.mjs --ios
           node scripts/qa-ios-v250-live-map-billing.mjs www
           node scripts/qa-ios-v251-store-ui-and-route.mjs www
+          node scripts/qa-ios-v252-store-prices.mjs www
           node scripts/qa-marker-switch.mjs
           node scripts/qa-ios-audit.mjs
           node scripts/qa-ranking-truth.mjs
@@ -202,6 +203,20 @@ jobs:
           node scripts/configure-ios-native.mjs
           node scripts/ci-version.mjs
           test -d ios/App/App.xcodeproj
+          # Fail if Capacitor/Xcode does not contain the exact shared images and code from this commit.
+          python3 - <<'PYCHECK'
+          from pathlib import Path
+          import hashlib
+          src=Path('www')
+          bundled=Path('ios/App/App/public')
+          required=['index.html','app-v137.js','monetization-v250.js','assets/leonida-yanis-v17.webp','assets/leonida-landmarks-v216.json','icons/icon-512.png']
+          for rel in required:
+              s=src/rel
+              d=bundled/rel
+              if not s.is_file() or not d.is_file() or s.read_bytes()!=d.read_bytes():
+                  raise SystemExit('Error: el proyecto iOS no incluye el mismo archivo que se probó: '+rel)
+          print('PASS: iOS Capacitor public/ incluye JS, mapa e imágenes idénticos')
+          PYCHECK
           /usr/libexec/PlistBuddy -c 'Set :CFBundleDisplayName Game Atlas' ios/App/App/Info.plist || \
             /usr/libexec/PlistBuddy -c 'Add :CFBundleDisplayName string Game Atlas' ios/App/App/Info.plist
 
