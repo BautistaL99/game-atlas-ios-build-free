@@ -57,13 +57,12 @@ jobs:
           allr = run('xcrun', 'simctl', 'list', 'runtimes', '--json')['runtimes']
           runtimes = [r for r in allr if r['identifier'].startswith('com.apple.CoreSimulator.SimRuntime.iOS') and r.get('isAvailable', True)]
           if not runtimes: sys.exit('No hay runtime iOS disponible')
-          runtimes.sort(key=lambda r: tuple(int(n) for n in re.findall(r'd+', r.get('version','0'))), reverse=True)
+          runtimes.sort(key=lambda r: tuple(int(n) for n in re.findall(r'\d+', r.get('version','0'))), reverse=True)
           runtime=runtimes[0]
           uid=subprocess.check_output(['xcrun','simctl','create','GameAtlasV253iPad13',device['identifier'],runtime['identifier']],text=True).strip()
           print('Simulador:', device['name'], runtime['name'], uid)
           with open(os.environ['GITHUB_ENV'],'a',encoding='utf-8') as f:
-              f.write('SIMULATOR_UDID='+uid+'
-')
+              f.write('SIMULATOR_UDID='+uid+'\n')
           PY
           xcrun simctl boot "$SIMULATOR_UDID"
           xcrun simctl bootstatus "$SIMULATOR_UDID" -b
@@ -85,9 +84,7 @@ jobs:
           import struct
           p=Path('ipad-capturas/GameAtlas-V253-iPad13-Inicio.png')
           a=p.read_bytes()
-          if a[:8]!=b'PNG
-
-':raise SystemExit('La captura no es PNG')
+          if a[:8]!=bytes([137,80,78,71,13,10,26,10]):raise SystemExit('La captura no es PNG')
           width,height=struct.unpack('>II',a[16:24])
           print(f'Captura de iPad: {width} x {height} px; {len(a)} bytes')
           if (width,height) not in [(2064,2752),(2752,2064),(2048,2732),(2732,2048)]:
