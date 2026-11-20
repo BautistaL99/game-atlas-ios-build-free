@@ -1,0 +1,12 @@
+/* App Store WKWebView-only finishing: safe area, editable fields and touch pins. */
+@supports (-webkit-touch-callout: none) {
+ html,body { -webkit-text-size-adjust:100%; }
+ #root .bottom-nav { padding-bottom:max(8px,env(safe-area-inset-bottom,0px))!important; }
+ #root .atlas-pin-editor input,#root .atlas-pin-editor textarea,#root .atlas-pin-editor select {font-size:max(16px,1rem)}
+ #root .atlas-v119 .atlas-map .atlas-pin,
+ #root .atlas-v119 .atlas-map .atlas-cluster,
+ #root .atlas-v119 .atlas-map .atlas-pin *,
+ #root .atlas-v119 .atlas-map .atlas-cluster * {
+  -webkit-tap-highlight-color:transparent!important;
+ }
+}

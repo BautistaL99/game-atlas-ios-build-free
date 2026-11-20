@@ -1,0 +1,25 @@
+{
+  "name": "game-atlas-ios-v266-r18",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Game Atlas iOS V266 R18 exact Android web resources + isolated native image fix",
+  "scripts": {
+    "verify": "node scripts/verify-ios.mjs",
+    "test": "node --test scripts/test-news-ios-v266.mjs",
+    "prepare": "node prepare-ios.mjs",
+    "ios:add": "npx cap add ios",
+    "ios:sync": "npx cap sync ios",
+    "ios:configure": "node scripts/configure-ios-native.mjs"
+  },
+  "dependencies": {
+    "@capacitor/app": "8.0.0",
+    "@capacitor/core": "8.0.0",
+    "@capacitor/ios": "8.0.0",
+    "@capacitor/status-bar": "8.0.0",
+    "@capacitor/filesystem": "8.0.0",
+    "@capacitor/share": "8.0.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "8.0.0"
+  }
+}

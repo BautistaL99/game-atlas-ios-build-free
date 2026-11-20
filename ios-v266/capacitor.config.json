@@ -1,0 +1,13 @@
+{
+  "appId": "com.indie.viassistant",
+  "appName": "Game Atlas",
+  "webDir": "www",
+  "server": {
+    "iosScheme": "capacitor"
+  },
+  "plugins": {
+    "StatusBar": {
+      "style": "DARK"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+/* V266 R5 · WEB MOBILE QA ONLY: route confirmation and map credits layout.
+   All selectors scoped to existing map / route classes; desktop remains unchanged. */
+#root .ga-r5-route-saved{margin:12px 0;padding:12px 14px;border:1px solid #49caa6;border-radius:10px;background:#123d37;color:#e4fff5;font-size:13px;font-weight:750;line-height:1.5}
+#root .atlas-v119 .vi-v216-credit{box-sizing:border-box!important;display:block!important;position:relative!important;clear:both!important;width:100%!important;max-width:100%!important;height:auto!important;line-height:1.55!important;overflow-wrap:anywhere!important;word-break:break-word!important;white-space:normal!important;margin:10px 0!important;}
+#root .atlas-v119 .ga-v264-map-reference{box-sizing:border-box!important;position:relative!important;clear:both!important;display:block!important;width:100%!important;max-width:100%!important;height:auto!important;margin:14px 0 18px!important;line-height:1.5!important;overflow-wrap:anywhere!important;white-space:normal!important;}
+#root .atlas-v119 .ga-v264-map-reference>a{display:block!important;position:static!important;width:fit-content;max-width:100%!important;white-space:normal!important;line-height:1.6!important;overflow-wrap:anywhere!important;}
+#root .atlas-v119 .ga-v264-map-reference>small{display:block!important;position:static!important;margin-top:7px!important;line-height:1.5!important;white-space:normal!important;overflow-wrap:anywhere!important;}
+@media(max-width:700px){
+ #root .atlas-v119 .atlas-center{min-width:0!important;overflow:visible!important}
+ #root .atlas-v119 .vi-v216-credit{padding:9px 11px!important;border:1px solid #385c69!important;border-radius:10px!important;background:#0d1d2b!important;color:#b6cdd5!important;font-size:10px!important;}
+ #root .atlas-v119 .ga-v264-map-reference{padding:10px 12px!important;border:1px solid #375665!important;border-radius:11px!important;background:#0d1e2b!important;font-size:12px!important;}
+ #root #vi-route-create #vi-route-pin-search{font-size:16px!important;min-height:46px!important;touch-action:manipulation!important;}
+ #root #vi-route-create .vi-route-choices label{min-height:48px!important;touch-action:manipulation!important;}
+ #root #vi-route-create .vi-route-choices label input{min-width:20px!important;min-height:20px!important;}
+ #root .ga-r5-route-saved{font-size:12px}
+}

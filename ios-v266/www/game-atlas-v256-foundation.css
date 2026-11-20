@@ -1,0 +1,34 @@
+/* Game Atlas V256 - foundation preview, explicit internal-first map cards */
+#root .atlas-v119 .atlas-popup.v256-compact-popup{width:min(285px,calc(100% - 24px));max-height:178px;min-height:0;overflow-y:auto;padding:11px 13px;border-radius:12px;box-shadow:0 10px 25px #07111bbb}
+#root .atlas-v119 .v256-compact-popup h3{font-size:15px;line-height:1.2;margin:5px 22px 4px 0}
+#root .atlas-v119 .v256-compact-popup p{font-size:11px;line-height:1.3;margin:0 0 8px;max-height:30px;overflow:hidden}
+#root .atlas-v119 .v256-compact-popup .atlas-popup-actions{margin:0;padding:0;border:0}
+#root .atlas-v119 .v256-compact-popup .atlas-popup-actions a,#root .atlas-v119 .v256-compact-popup .atlas-popup-actions button{font:600 12px/1.15 inherit;background:#59cfc3;color:#082c30;border:0;padding:8px 12px;border-radius:8px;cursor:pointer}
+#root .v256-sheet-overlay{position:fixed;inset:0;z-index:2400;background:#060c16bb;display:flex;align-items:center;justify-content:center;padding:15px;overscroll-behavior:contain}
+#root .v256-place-sheet{width:min(520px,100%);max-height:min(92dvh,820px);overflow-y:auto;border:1px solid #5bada9;border-radius:18px;padding:20px;background:#122233;color:#f1f7fc;box-shadow:0 20px 70px #02060cce;font-size:14px;line-height:1.45;overscroll-behavior:contain}
+#root .v256-sheet-head{display:flex;align-items:center;justify-content:space-between;color:#7bddcb;letter-spacing:.07em;font-weight:700;font-size:11px}
+#root .v256-sheet-head button{border:0;background:#23374b;color:#eef8fa;font-size:17px;width:38px;height:38px;border-radius:9px;cursor:pointer}
+#root .v256-place-sheet h2{font-size:24px;line-height:1.2;margin:9px 0 11px;color:#efffff}
+#root .v256-place-sheet h3{font-size:15px;margin:15px 0 7px;color:#d9f6f4}
+#root .v256-sheet-meta{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:13px}
+#root .v256-sheet-meta span{background:#203d47;border:1px solid #3a6770;border-radius:99px;padding:5px 10px;font-size:11px}
+#root .v256-map-preview{height:145px;max-width:100%;border:1px solid #3b6f79;border-radius:13px;background-repeat:no-repeat;background-size:420% auto;display:grid;place-items:center;position:relative}
+#root .v256-map-preview>span{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#102735ed;border:2px solid #ffaf61;color:#ffc987;font-size:21px}
+#root .v256-preview-caption{font-size:11px;color:#b6cacf;display:block;margin-top:5px}
+#root .v256-place-sheet p{line-height:1.45;margin:7px 0}
+#root .v256-place-sheet dl{display:grid;grid-template-columns:105px 1fr;gap:8px 14px;margin:12px 0}
+#root .v256-place-sheet dt{font-weight:700;color:#a7bfc6}
+#root .v256-place-sheet dd{margin:0;color:#eaf7f7;overflow-wrap:anywhere}
+#root .v256-place-sheet a{color:#8eeade}
+#root .v256-place-sheet .v256-internal-link{display:inline-block;padding:8px 13px;border-radius:9px;background:#4dc4b8;color:#06242b;text-decoration:none;font-weight:700}
+#root .v256-credit-details{margin:14px 0;border-top:1px solid #365261;padding-top:10px}
+#root .v256-credit-details summary{cursor:pointer;color:#a7ccc9}
+#root .v256-sheet-disclaimer{font-size:12px;color:#b6ccd3;border-top:1px solid #365261;padding-top:10px}
+#root a.v256-compare-card{color:#bafff6;display:inline-flex;align-items:center;padding:6px 9px;background:#174e51;border:1px solid #399f9b;border-radius:8px;text-decoration:none;font-size:12px;font-weight:700;white-space:nowrap}
+@media(max-width:700px){#root .atlas-v119 .atlas-popup.v256-compact-popup{left:10px!important;right:10px!important;bottom:9px!important;top:auto!important;width:auto!important;max-height:166px!important}#root .v256-sheet-overlay{align-items:flex-end;padding:0}#root .v256-place-sheet{width:100%;max-height:84dvh;border-radius:17px 17px 0 0;border-bottom:0;padding:16px}}
+
+#root .v256-subfilters{display:flex;gap:7px;overflow-x:auto;align-items:center;padding:10px 2px 12px;scrollbar-width:thin}
+#root .v256-subfilter{display:inline-flex;align-items:center;gap:5px;flex:0 0 auto;padding:9px 11px;border:1px solid #385d69;border-radius:10px;background:#142938;color:#d4e7ed;font-size:12px;font-weight:600;text-decoration:none}
+#root .v256-subfilter small{font-weight:700;color:#7fabb9}
+#root .v256-subfilter.is-active{background:#155652;border-color:#54cfbb;color:#efffff}
+#root .v256-subfilter.is-active small{color:#d6fff7}

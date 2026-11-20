@@ -1,0 +1,87 @@
+/* V266 R13 – Correcciones acotadas según QA real (sin rediseñar el HUD). */
+@media (max-width:979px){
+ /* Un único contenedor desplazable: evita la guerra entre reglas antiguas
+    landscape/móvil y hace accesibles todos los tipos/estados. */
+ #root .atlas-v119 #atlas-map-filter-panel.mobile-open{
+   display:flex!important;flex-direction:column!important;overflow:hidden!important;
+ }
+ #root .atlas-v119 #atlas-map-filter-panel.mobile-open>.atlas-filter-scroll{
+   display:flex!important;flex:1 1 0!important;min-height:0!important;
+   height:auto!important;max-height:none!important;flex-direction:column!important;
+   overflow-y:auto!important;overflow-x:hidden!important;touch-action:pan-y!important;
+   overscroll-behavior:contain!important;-webkit-overflow-scrolling:touch!important;
+   scrollbar-width:thin!important;scrollbar-color:#6ce7d9 #163949!important;
+ }
+ #root .atlas-v119 #atlas-map-filter-panel.mobile-open .ga-r8-type-group,
+ #root .atlas-v119 #atlas-map-filter-panel.mobile-open .ga-r8-source-group,
+ #root .atlas-v119 #atlas-map-filter-panel.mobile-open .atlas-status-group{
+   display:block!important;flex:0 0 auto!important;min-height:43px!important;
+   max-height:none!important;visibility:visible!important;opacity:1!important;
+   overflow:visible!important;width:100%!important;position:relative!important;
+ }
+ #root .atlas-v119 #atlas-map-filter-panel.mobile-open .ga-r8-types-body,
+ #root .atlas-v119 #atlas-map-filter-panel.mobile-open .ga-r8-types-list{
+   display:block!important;max-height:none!important;height:auto!important;overflow:visible!important;
+ }
+ #root .atlas-v119 #atlas-map-filter-panel.mobile-open .ga-r8-type-row{
+   display:flex!important;flex-wrap:nowrap!important;width:100%!important;
+   min-height:43px!important;visibility:visible!important;opacity:1!important;
+ }
+ #root .atlas-v119 #atlas-map-filter-panel.mobile-open .ga-r8-type-row .atlas-filter-name{
+   display:block!important;white-space:normal!important;overflow:visible!important;
+ }
+ #root .atlas-v119 #atlas-map-filter-panel.mobile-open .atlas-filter-scroll :is(details,summary,input,label){touch-action:pan-y!important}
+ /* Alto contraste para Mis marcadores y acciones del panel. */
+ #root .atlas-v119 #atlas-map-filter-panel.mobile-open .atlas-filter-quick .atlas-check{
+   background:#1b4050!important;border:1px solid #6bd9d3!important;color:#f3ffff!important;
+ }
+ #root .atlas-v119 #atlas-map-filter-panel.mobile-open .atlas-filter-quick .atlas-filter-name{
+   color:#f5ffff!important;opacity:1!important;font-weight:800!important;
+ }
+ /* Ocultamos SOLO el encabezado redundante en fullscreen para liberar lugar;
+    los botones de Buscar, Limpiar y Rutas siguen donde estaban. */
+ #root .atlas-v119.vi-fullscreen-map #atlas-map-filter-panel .atlas-filter-head>b{display:none!important}
+ #root .atlas-v119.vi-fullscreen-map #atlas-map-filter-panel .atlas-filter-head{
+   margin-top:0!important;margin-bottom:5px!important;padding-top:0!important;min-height:0!important;
+ }
+ #root .atlas-v119.vi-fullscreen-map #atlas-map-filter-panel .atlas-filter-heading-actions{
+   margin-top:0!important;justify-content:flex-start!important;
+ }
+ /* Evitar superposición del selector «Solo ruta» con chips superiores. */
+ #root .atlas-v119.vi-fullscreen-map #mapCanvas>.vi-v249-route-only,
+ #root .atlas-v119:not(.vi-fullscreen-map) #mapCanvas>.vi-v249-route-only{
+   top:auto!important;bottom:85px!important;left:50%!important;right:auto!important;
+   transform:translateX(-50%)!important;max-width:170px!important;
+   padding:7px 9px!important;z-index:55!important;font-size:11px!important;
+ }
+}
+@media (orientation:landscape) and (max-height:600px) and (pointer:coarse){
+ #root .atlas-v119.vi-fullscreen-map #atlas-map-filter-panel.mobile-open{
+   display:flex!important;overflow:hidden!important;
+ }
+ #root .atlas-v119.vi-fullscreen-map #atlas-map-filter-panel.mobile-open>.atlas-filter-scroll{
+   display:flex!important;overflow-y:auto!important;flex:1 1 0!important;
+   height:auto!important;max-height:none!important;
+ }
+}
+/* Estado reversible visualmente distinto: desmarcar NO es un botón verde de confirmar. */
+#root .content-card .actions [data-toggle][aria-pressed="true"],
+#root .detail-actions [data-toggle="done"][aria-pressed="true"],
+#root .item-detail [data-toggle="done"][aria-pressed="true"]{border-color:#ed8c93!important}
+@media(max-width:600px){
+ /* Las acciones de «Seguir explorando» no invaden la miniatura. */
+ #root .v259-open-card .content-actions,
+ #root .v259-open-card .card-actions{
+   flex-wrap:wrap!important;min-width:0!important;max-width:100%!important;
+ }
+}
+
+/* Los botones de retirar progreso/favorito no parecen acciones de confirmar. */
+#root button.quick-complete.is-complete,
+#root button.quick-complete[aria-pressed="true"]{
+  color:#ffe9e9!important;background:#602e36!important;border-color:#ef868b!important;
+}
+#root button.quick-fav.is-fav,
+#root button.quick-fav[aria-pressed="true"]{
+  color:#fff1ca!important;background:#593919!important;border-color:#ffbd5c!important;
+}

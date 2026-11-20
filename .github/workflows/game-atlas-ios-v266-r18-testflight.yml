@@ -1,0 +1,143 @@
+name: Game Atlas V266 R18 - iOS IPA firmada y TestFlight (manual)
+
+# Manual upload only: do not spend macOS runner minutes until owner approves.
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version of App Store listing (1.0 if unreleased, or next accepted version)'
+        type: string
+        required: true
+        default: '1.0'
+      build_number:
+        description: 'Unique integer greater than previously submitted iOS builds (leave blank to use GitHub run number)'
+        type: string
+        required: false
+        default: ''
+permissions:
+  contents: read
+concurrency:
+  group: game-atlas-ios-v266-r18-signing
+  cancel-in-progress: false
+jobs:
+  ios-v266-testflight:
+    runs-on: macos-26
+    timeout-minutes: 75
+    steps:
+      - name: Checkout exact uploaded V266 R18 iOS project
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Require Apple Xcode/iOS SDK 26 or later
+        shell: bash
+        run: |
+          set -euo pipefail
+          xcodebuild -version
+          xcodebuild -showsdks | grep -E 'iOS [0-9]+'
+          MAJOR="$(xcodebuild -version | awk '/^Xcode /{split($2, parts,".");print parts[1]}')"
+          test "$MAJOR" -ge 26
+      - name: Verify source and anti-regression tests BEFORE signing
+        working-directory: ios-v266
+        run: |
+          set -euo pipefail
+          node scripts/verify-ios.mjs
+      - name: Verify existing Apple credentials configured privately
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
+          GA_DIST_P12_B64: ${{ secrets.GA_DIST_P12_B64 }}
+          GA_DIST_P12_PASSWORD: ${{ secrets.GA_DIST_P12_PASSWORD }}
+          GA_PROFILE_B64: ${{ secrets.GA_PROFILE_B64 }}
+          GA_APPLE_TEAM_ID: ${{ secrets.GA_APPLE_TEAM_ID }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          for key in ASC_KEY_ID ASC_ISSUER_ID ASC_KEY_P8 GA_DIST_P12_B64 GA_DIST_P12_PASSWORD GA_PROFILE_B64 GA_APPLE_TEAM_ID; do
+            if [[ -z "${!key:-}" ]]; then echo "::error::Missing existing Apple GitHub Actions secret $key"; exit 1; fi
+          done
+          mkdir -p "$HOME/.appstoreconnect/private_keys"
+          printf '%s\n' "$ASC_KEY_P8" > "$HOME/.appstoreconnect/private_keys/AuthKey_${ASC_KEY_ID}.p8"
+          chmod 600 "$HOME/.appstoreconnect/private_keys/AuthKey_${ASC_KEY_ID}.p8"
+          echo "ASC_KEY_PATH=$HOME/.appstoreconnect/private_keys/AuthKey_${ASC_KEY_ID}.p8" >> "$GITHUB_ENV"
+      - name: Install Capacitor 8 and generate native iOS Xcode project
+        working-directory: ios-v266
+        env:
+          APP_STORE_VERSION: ${{ inputs.version }}
+          APP_STORE_BUILD: ${{ inputs.build_number }}
+        run: |
+          set -euo pipefail
+          npm install --no-audit --no-fund
+          npx cap add ios
+          npx cap sync ios
+          if [[ -n "$APP_STORE_BUILD" ]]; then export APP_STORE_BUILD_NUMBER="$APP_STORE_BUILD"; fi
+          node scripts/configure-ios-native.mjs
+          test -d ios/App/App.xcodeproj
+      - name: Load previously approved Apple Distribution signing identity
+        env:
+          GA_DIST_P12_B64: ${{ secrets.GA_DIST_P12_B64 }}
+          GA_DIST_P12_PASSWORD: ${{ secrets.GA_DIST_P12_PASSWORD }}
+          GA_PROFILE_B64: ${{ secrets.GA_PROFILE_B64 }}
+          GA_APPLE_TEAM_ID: ${{ secrets.GA_APPLE_TEAM_ID }}
+        working-directory: ios-v266
+        run: node scripts/use-saved-signing.mjs
+      - name: Create Apple-signed iOS archive
+        working-directory: ios-v266
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+        run: |
+          set -euo pipefail
+          xcodebuild -project ios/App/App.xcodeproj -scheme App -configuration Release \
+            -destination 'generic/platform=iOS' \
+            -archivePath "$RUNNER_TEMP/GameAtlas-V266R18.xcarchive" \
+            -allowProvisioningUpdates \
+            -authenticationKeyPath "$ASC_KEY_PATH" \
+            -authenticationKeyID "$ASC_KEY_ID" \
+            -authenticationKeyIssuerID "$ASC_ISSUER_ID" \
+            DEVELOPMENT_TEAM="$GA_APPLE_TEAM_ID" \
+            CODE_SIGN_STYLE=Manual CODE_SIGN_IDENTITY='Apple Distribution' \
+            PROVISIONING_PROFILE_SPECIFIER="$GA_PROFILE_NAME" archive
+      - name: Export Apple App Store Connect IPA
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import os,plistlib
+          options={
+            'method':'app-store-connect','destination':'export','signingStyle':'manual',
+            'signingCertificate':'Apple Distribution','teamID':os.environ['GA_APPLE_TEAM_ID'],
+            'provisioningProfiles':{'com.indie.viassistant':os.environ['GA_PROFILE_NAME']},
+            'manageAppVersionAndBuildNumber':False
+          }
+          with open(os.path.join(os.environ['RUNNER_TEMP'],'GameAtlasExport.plist'),'wb') as f:
+            plistlib.dump(options,f)
+          PY
+          xcodebuild -exportArchive \
+            -archivePath "$RUNNER_TEMP/GameAtlas-V266R18.xcarchive" \
+            -exportPath "$RUNNER_TEMP/ios-export" \
+            -exportOptionsPlist "$RUNNER_TEMP/GameAtlasExport.plist" \
+            -allowProvisioningUpdates \
+            -authenticationKeyPath "$ASC_KEY_PATH" \
+            -authenticationKeyID "$ASC_KEY_ID" \
+            -authenticationKeyIssuerID "$ASC_ISSUER_ID"
+          test -n "$(find "$RUNNER_TEMP/ios-export" -maxdepth 1 -name '*.ipa' -print -quit)"
+      - name: Upload App Store IPA directly to Apple TestFlight (NOT publicly released)
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          IPA="$(find "$RUNNER_TEMP/ios-export" -maxdepth 1 -name '*.ipa' -type f -print -quit)"
+          test -n "$IPA"
+          xcrun altool --upload-app --file "$IPA" --type ios --apiKey "$ASC_KEY_ID" --apiIssuer "$ASC_ISSUER_ID"
+          echo 'V266 R18 uploaded to Apple TestFlight. App Store public submission still requires explicit owner approval.'
+# Never upload signed .ipa, Apple certificates or profiles as PUBLIC GitHub artifacts.

@@ -1,0 +1,20 @@
+/* R12: fullscreen map only; preserve V253-style lateral filters and all other UI. */
+@media (max-width:979px){
+  /* The information banner appeared underneath Search and obscured the minimise button. */
+  #root .atlas-v119.vi-fullscreen-map>.vi-map-integrity-note{display:none!important}
+  /* Reserve the right edge for the fullscreen exit icon; do not move search. */
+  #root .atlas-v119.vi-fullscreen-map>.atlas-toolbar{right:68px!important;max-width:calc(100% - 78px)!important}
+  #root .atlas-v119.vi-fullscreen-map #mapCanvas>.vi-map-fullscreen-btn{
+    position:absolute!important;top:10px!important;right:10px!important;
+    z-index:2147483000!important;display:grid!important;visibility:visible!important;opacity:1!important;
+    width:46px!important;height:46px!important;min-width:46px!important;min-height:46px!important;
+  }
+}
+@media (max-width:979px){
+  /* This reference block was floating over the search AND the fullscreen exit icon.
+     Keep the source attribution in the ordinary map, hide only in fullscreen. */
+  #root .atlas-v119.vi-fullscreen-map .ga-v264-map-reference,
+  #root .atlas-v119.vi-fullscreen-map .atlas-footer-note{
+    display:none!important;pointer-events:none!important;
+  }
+}

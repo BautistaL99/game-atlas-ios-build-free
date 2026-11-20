@@ -1,0 +1,4 @@
+/* V262 review: related entries are independent navigation links, not fake map pins. */
+.ga-v262-related{margin-top:1.4rem}.ga-v262-related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:.7rem;margin:.75rem 0}
+.ga-v262-related-card{display:flex;flex-direction:column;gap:.3rem;padding:.8rem 1rem;border:1px solid #345165;border-radius:13px;background:#122637;color:#e4fafa;text-decoration:none;min-width:0;overflow-wrap:anywhere}
+.ga-v262-related-card:hover{border-color:#56decf}.ga-v262-related-card small{color:#80dfd6}

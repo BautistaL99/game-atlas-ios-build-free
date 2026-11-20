@@ -1,0 +1,16 @@
+/* V266 R16 - single scoped button improvement, leave existing map layouts intact. */
+#root .atlas-v119 #atlas-map-filter-panel .atlas-filter-heading-actions .v220-map-clear{
+  min-width:118px!important;
+  width:auto!important;
+  padding-inline:11px!important;
+  white-space:nowrap!important;
+  font-size:clamp(11px,2.7vw,13px)!important;
+  font-weight:750!important;
+}
+@media(max-width:420px){
+  #root .atlas-v119 #atlas-map-filter-panel .atlas-filter-heading-actions .v220-map-clear{
+    min-width:102px!important;
+    padding-inline:7px!important;
+    font-size:11px!important;
+  }
+}

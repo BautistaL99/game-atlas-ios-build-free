@@ -1,0 +1,105 @@
+/* V266 R7 QA: RESTORED R5 desktop HUD + isolated crisp map markers.
+   No map positions, catalog records or personal saves are modified. */
+#root .atlas-v119 .atlas-map>.ga-r6-sharp-pins{
+ position:absolute;inset:0;z-index:7;pointer-events:none;
+ overflow:hidden;transform:none!important;
+}
+#root .atlas-v119 .atlas-map>.ga-r6-sharp-pins>.atlas-pin,
+#root .atlas-v119 .atlas-map>.ga-r6-sharp-pins>.atlas-cluster{
+ position:absolute;pointer-events:auto;
+ transform:translate(-50%,-50%)!important;
+ will-change:auto!important;
+ -webkit-font-smoothing:antialiased;text-rendering:geometricPrecision;
+}
+#root .atlas-v119 .atlas-map>.ga-r6-sharp-pins>.atlas-pin[data-shape="diamond"]{
+ transform:translate(-50%,-50%) rotate(45deg)!important;
+}
+#root .atlas-v119 .atlas-map.vi-map-placing>.ga-r6-sharp-pins{display:none!important}
+/* Only desktop fullscreen differs from R5: it keeps the original filter rail
+   on the left and reserves the rest for the map. No floating toolbar. */
+@media(min-width:980px){
+ body.vi-map-modal-active{overflow:hidden!important}
+ #root .atlas-v119.vi-fullscreen-map{
+  position:fixed!important;inset:0!important;
+  width:100vw!important;height:100dvh!important;
+  display:flex!important;flex-direction:column!important;
+  margin:0!important;padding:10px!important;
+  overflow:hidden!important;z-index:2147482100!important;
+  background:#081724!important;
+ }
+ #root .atlas-v119.vi-fullscreen-map>.atlas-toolbar,
+ #root .atlas-v119.vi-fullscreen-map>.atlas-search-results,
+ #root .atlas-v119.vi-fullscreen-map>.vi-map-integrity-note,
+ #root .atlas-v119.vi-fullscreen-map>.atlas-footer-note{display:none!important}
+ #root .atlas-v119.vi-fullscreen-map>.atlas-layout{
+  position:relative!important;display:grid!important;
+  grid-template-columns:minmax(284px,322px) minmax(0,1fr)!important;
+  gap:12px!important;flex:1 1 0!important;
+  min-width:0!important;min-height:0!important;
+  width:100%!important;height:100%!important;
+  max-height:100%!important;overflow:hidden!important;
+  margin:0!important;padding:0!important;
+ }
+ #root .atlas-v119.vi-fullscreen-map .atlas-layout>#atlas-map-filter-panel.mobile-closed,
+ #root .atlas-v119.vi-fullscreen-map .atlas-layout>#atlas-map-filter-panel.mobile-open{
+  display:flex!important;flex-direction:column!important;
+  grid-column:1!important;grid-row:1!important;order:0!important;
+  position:relative!important;inset:auto!important;
+  width:100%!important;height:100%!important;
+  min-width:0!important;min-height:0!important;max-height:100%!important;
+  align-self:stretch!important;overflow:hidden!important;
+  padding:12px!important;margin:0!important;z-index:140!important;
+ }
+ #root .atlas-v119.vi-fullscreen-map #atlas-map-filter-panel .atlas-filter-scroll{
+  flex:1 1 auto!important;min-height:0!important;max-height:none!important;
+  overflow-y:auto!important;
+ }
+ #root .atlas-v119.vi-fullscreen-map .atlas-layout>.atlas-center{
+  display:block!important;grid-column:2!important;grid-row:1!important;
+  position:relative!important;inset:auto!important;order:1!important;
+  width:100%!important;height:100%!important;min-height:0!important;
+  max-width:100%!important;max-height:100%!important;overflow:hidden!important;
+ }
+ #root .atlas-v119.vi-fullscreen-map .atlas-layout .atlas-center>.atlas-map{
+  display:block!important;position:relative!important;inset:auto!important;
+  width:100%!important;height:100%!important;min-height:0!important;
+  max-height:100%!important;max-width:100%!important;
+  overflow:hidden!important;border-radius:12px!important;
+ }
+ /* The magnifier opens search IN THE SIDEBAR, never above the map. */
+ #root .atlas-v119.vi-fullscreen-map #atlas-map-filter-panel>.atlas-toolbar{display:none!important}
+ #root .atlas-v119.vi-fullscreen-map.ga-r7-search-open #atlas-map-filter-panel>.atlas-toolbar{
+  display:flex!important;position:relative!important;z-index:180!important;
+  width:100%!important;margin:0 0 9px!important;padding:8px!important;
+  max-width:none!important;
+ }
+ #root .atlas-v119.vi-fullscreen-map #atlas-map-filter-panel>.atlas-search-results{
+  position:absolute!important;left:11px!important;right:11px!important;
+  top:72px!important;width:auto!important;max-width:none!important;
+  z-index:210!important;max-height:230px!important;overflow-y:auto!important;
+ }
+ #root .atlas-v119.vi-fullscreen-map .atlas-map>.atlas-mobile-filter-toggle,
+ #root .atlas-v119.vi-fullscreen-map #atlas-map-filter-panel>.vi-map-filter-close{
+  display:none!important;
+ }
+ #root .atlas-v119.vi-fullscreen-map .atlas-map>.vi-map-fullscreen-btn{
+  position:absolute!important;top:10px!important;right:9px!important;
+  z-index:150!important;display:grid!important;
+ }
+ #root .atlas-v119.vi-fullscreen-map .atlas-map>.atlas-controls{
+  position:absolute!important;top:60px!important;right:9px!important;z-index:150!important;
+ }
+ /* Attribution is docked in the sidebar via mapBind. Never overprint the map. */
+ #root .atlas-v119.vi-fullscreen-map #atlas-map-filter-panel>.vi-v216-credit{
+  display:block!important;position:relative!important;flex:0 0 auto!important;
+  margin:7px 0 0!important;padding:6px!important;max-height:72px!important;
+  overflow-y:auto!important;line-height:1.35!important;font-size:10px!important;
+  color:#bfdce4!important;background:#102636!important;border-radius:7px!important;
+ }
+ #root .atlas-v119.vi-fullscreen-map .atlas-center>.vi-v216-credit,
+ #root .atlas-v119.vi-fullscreen-map .atlas-center>.atlas-caption,
+ #root .atlas-v119.vi-fullscreen-map>.ga-v264-map-reference{
+  display:none!important;
+ }
+}
+/* Preserve the original R5 mobile layout, search, and filter controls. */

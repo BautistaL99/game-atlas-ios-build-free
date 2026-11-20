@@ -1,0 +1,79 @@
+/* Corrección exclusiva del panel de FILTROS móviles (reversión de la
+   expansión involuntaria de R11). Geometría lateral tomada de V253.
+   No modifica el mapa, rutas, noticias, fichas, buscadores ni datos. */
+@media (max-width:979px){
+  /* Se mantiene SIN CAMBIOS el fullscreen móvil que ya tenía R11. */
+  #root .atlas-v119.vi-fullscreen-map>.atlas-layout{
+    position:absolute!important;inset:0!important;
+    width:100%!important;height:100%!important;max-height:100%!important;
+    min-width:0!important;min-height:0!important;overflow:hidden!important;
+  }
+  #root .atlas-v119.vi-fullscreen-map>.atlas-layout>.atlas-center,
+  #root .atlas-v119.vi-fullscreen-map>.atlas-layout>.atlas-center>#mapCanvas{
+    height:100%!important;min-height:0!important;max-height:100%!important;
+  }
+  /* Conservar el bloqueo de toques al mapa mientras hay filtros abiertos. */
+  #root .atlas-v119.ga-r11-filter-sheet-open .atlas-layout>.atlas-center,
+  #root .atlas-v119.ga-r11-filter-sheet-open .atlas-layout>.atlas-center *{
+    pointer-events:none!important;
+  }
+  #root .atlas-v119.ga-r11-filter-sheet-open .atlas-layout>#atlas-map-filter-panel,
+  #root .atlas-v119.ga-r11-filter-sheet-open .atlas-layout>#atlas-map-filter-panel *{
+    pointer-events:auto!important;
+  }
+  /* Panel LATERAL dentro del mapa como antes: nunca ocupa toda la pantalla.
+     La altura sigue la superficie visible del mapa sin tapar los textos de fuera. */
+  #root .atlas-v119 .atlas-layout>#atlas-map-filter-panel.mobile-open,
+  #root .atlas-v119:not(.vi-fullscreen-map) .atlas-layout>#atlas-map-filter-panel.mobile-open,
+  #root .atlas-v119.vi-fullscreen-map .atlas-layout>#atlas-map-filter-panel.mobile-open{
+    display:flex!important;flex-direction:column!important;
+    position:absolute!important;box-sizing:border-box!important;
+    inset:auto!important;
+    left:8px!important;right:auto!important;top:8px!important;bottom:auto!important;
+    width:min(330px,calc(100% - 16px))!important;
+    max-width:calc(100% - 16px)!important;
+    height:calc(var(--ga-r11-map-height,520px) - 16px)!important;
+    min-height:0!important;max-height:calc(var(--ga-r11-map-height,520px) - 16px)!important;
+    margin:0!important;padding:10px!important;
+    border-radius:12px!important;border:1px solid #3c6877!important;
+    background:#0c2131!important;
+    overflow:hidden!important;
+    touch-action:pan-y!important;overscroll-behavior:contain!important;
+    z-index:2147482001!important;isolation:isolate!important;
+    box-shadow:0 12px 32px #000a!important;
+  }
+  #root .atlas-v119 .atlas-layout>#atlas-map-filter-panel.mobile-open>.vi-map-filter-close{
+    display:grid!important;position:sticky!important;top:0!important;
+    align-self:flex-end!important;flex:0 0 auto!important;z-index:20!important;
+  }
+  #root .atlas-v119 .atlas-layout>#atlas-map-filter-panel.mobile-open .atlas-filter-scroll{
+    flex:1 1 auto!important;min-height:0!important;max-height:none!important;
+    overflow-y:auto!important;overscroll-behavior:contain!important;
+    -webkit-overflow-scrolling:touch!important;
+  }
+  /* En fullscreen, mismo panel lateral; no tapar toda la pantalla. */
+  #root .atlas-v119.vi-fullscreen-map .atlas-layout>#atlas-map-filter-panel.mobile-open{
+    left:8px!important;top:8px!important;bottom:8px!important;
+    height:calc(100% - 16px)!important;max-height:calc(100% - 16px)!important;
+    border-radius:12px!important;
+  }
+  /* Conserva la barra de búsqueda tras el panel, sin posibilidad de tocarla
+     accidentalmente cuando los filtros están abiertos. */
+  #root .atlas-v119.vi-fullscreen-map.ga-r11-filter-sheet-open .atlas-toolbar,
+  #root .atlas-v119.vi-fullscreen-map.ga-r11-filter-sheet-open .ga-v264-map-reference,
+  #root .atlas-v119.vi-fullscreen-map.ga-r11-filter-sheet-open .atlas-footer-note{
+    visibility:hidden!important;pointer-events:none!important;
+  }
+  #root .atlas-v119.ga-r11-filter-sheet-open .atlas-map>.atlas-mobile-filter-toggle{
+    opacity:0!important;visibility:hidden!important;pointer-events:none!important;
+  }
+}
+/* El panel apaisado reproduce la proporción lateral V253. */
+@media (orientation:landscape) and (max-height:600px) and (pointer:coarse){
+  #root .atlas-v119.vi-fullscreen-map .atlas-layout>#atlas-map-filter-panel.mobile-open{
+    width:min(330px,42vw)!important;
+  }
+  #root .atlas-v119:not(.vi-fullscreen-map) .atlas-layout>#atlas-map-filter-panel.mobile-open{
+    width:min(408px,calc(100% - 85px))!important;
+  }
+}

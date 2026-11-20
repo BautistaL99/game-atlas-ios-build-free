@@ -1,0 +1,151 @@
+/* R15: only the mobile map regressions reported by QA. No desktop HUD changes. */
+@media(max-width:979px){
+  /* Re-use the map bitmap during popup/filter interactions (handled by app-v137.js).
+     Keep the search container visually transparent: old inherited rules painted
+     a solid, full-width navy rectangle around the input. */
+  #root .atlas-v119.vi-fullscreen-map>.atlas-toolbar{
+    position:absolute!important;
+    top:8px!important;left:12px!important;right:78px!important;
+    width:auto!important;max-width:calc(100% - 90px)!important;
+    min-width:0!important;height:auto!important;max-height:62px!important;
+    padding:0!important;margin:0!important;
+    border:0!important;border-radius:0!important;box-shadow:none!important;
+    background:transparent!important;transform:none!important;
+    z-index:205!important;overflow:visible!important;
+    box-sizing:border-box!important;
+  }
+  #root .atlas-v119.vi-fullscreen-map>.atlas-toolbar>.atlas-search-label,
+  #root .atlas-v119.vi-fullscreen-map>.atlas-toolbar #mapSearchText{
+    box-sizing:border-box!important;width:100%!important;min-width:0!important;max-width:100%!important;
+    margin:0!important;
+  }
+  #root .atlas-v119.vi-fullscreen-map>.atlas-toolbar #mapSearchText{
+    height:50px!important;min-height:50px!important;
+    background:#112b39!important;border:1px solid #78c6c3!important;
+    box-shadow:0 3px 9px #0003!important;border-radius:13px!important;
+    outline-offset:0!important;
+  }
+  #root .atlas-v119.vi-fullscreen-map>.atlas-toolbar #mapSearchText:focus-visible{
+    outline:2px solid #65ecdf!important;outline-offset:1px!important;
+  }
+  #root .atlas-v119.vi-fullscreen-map .atlas-map>.vi-map-fullscreen-btn{
+    top:8px!important;right:10px!important;width:52px!important;height:52px!important;
+    max-width:52px!important;max-height:52px!important;
+    z-index:206!important;
+  }
+  /* Bottom sheet ends BEFORE zoom, gesture and reset controls. Clicking the
+     popup never operates the map behind it; its own buttons stay reachable. */
+  #root .atlas-v119.vi-fullscreen-map .atlas-map>.atlas-popup{
+    left:12px!important;right:12px!important;top:auto!important;
+    bottom:86px!important;width:auto!important;max-width:none!important;
+    max-height:min(43dvh,410px)!important;overflow-y:auto!important;
+    overflow-x:hidden!important;overscroll-behavior:contain!important;
+    z-index:95!important;box-sizing:border-box!important;
+  }
+  #root .atlas-v119.vi-fullscreen-map .atlas-map:has(>.atlas-popup)>.atlas-controls{
+    position:absolute!important;right:10px!important;left:auto!important;
+    bottom:12px!important;top:auto!important;z-index:100!important;
+  }
+  #root .atlas-v119.vi-fullscreen-map .atlas-map:has(>.atlas-popup)>.atlas-mobile-filter-toggle{
+    display:none!important;
+  }
+  #root .atlas-v119.vi-fullscreen-map .atlas-map>.vi-v249-route-only{
+    top:150px!important;left:12px!important;right:auto!important;bottom:auto!important;
+    transform:none!important;z-index:75!important;max-width:180px!important;
+  }
+  /* Sidebar never extends beyond the visible map. All collapsible groups share
+     one scroll container; the footer must not grow over that container. */
+  #root .atlas-v119.vi-fullscreen-map #atlas-map-filter-panel.mobile-open{
+    min-height:0!important;max-height:calc(100% - 12px)!important;
+    height:calc(100% - 12px)!important;top:6px!important;bottom:6px!important;
+    display:flex!important;flex-direction:column!important;overflow:hidden!important;
+  }
+  #root .atlas-v119.vi-fullscreen-map #atlas-map-filter-panel.mobile-open .atlas-filter-scroll{
+    min-height:0!important;flex:1 1 0!important;overflow-y:auto!important;
+    touch-action:pan-y!important;-webkit-overflow-scrolling:touch!important;
+  }
+  #root .atlas-v119.vi-fullscreen-map #atlas-map-filter-panel.mobile-open .atlas-side-note{
+    flex:0 0 auto!important;max-height:36px!important;overflow:hidden!important;
+    font-size:10px!important;line-height:1.35!important;margin:4px 0 0!important;
+  }
+  #root .atlas-v119.vi-fullscreen-map #atlas-map-filter-panel.mobile-open .atlas-v117-sidebar-head{
+    display:none!important;
+  }
+  #root .atlas-v119.vi-fullscreen-map #atlas-map-filter-panel.mobile-open .atlas-filter-head{
+    margin:0!important;padding:0!important;min-height:0!important;
+  }
+  #root .atlas-v119.vi-fullscreen-map #atlas-map-filter-panel.mobile-open .atlas-filter-heading-actions{
+    display:flex!important;flex-wrap:nowrap!important;gap:6px!important;
+    margin:-40px 51px 4px 0!important;padding:0!important;
+    align-items:center!important;justify-content:flex-start!important;
+  }
+  #root .atlas-v119.vi-fullscreen-map #atlas-map-filter-panel.mobile-open .atlas-filter-heading-actions button{
+    min-height:36px!important;height:36px!important;max-height:36px!important;
+    padding:5px 9px!important;flex:0 0 auto!important;
+  }
+  #root .atlas-v119.vi-fullscreen-map #atlas-map-filter-panel.mobile-open>.vi-map-filter-close{
+    width:36px!important;height:36px!important;min-width:36px!important;
+    margin:0 0 5px auto!important;align-self:flex-end!important;
+  }
+  #root .atlas-v119.vi-fullscreen-map #atlas-map-filter-panel.mobile-open .atlas-filter-actions{
+    margin-top:0!important;margin-bottom:5px!important;gap:5px!important;
+  }
+  #root .atlas-v119.vi-fullscreen-map #atlas-map-filter-panel.mobile-open .atlas-filter-quick{
+    margin-bottom:4px!important;
+  }
+  #root .atlas-v119.vi-fullscreen-map #atlas-map-filter-panel.mobile-open :is(.ga-r8-type-group,.atlas-status-group){
+    flex-shrink:0!important;visibility:visible!important;
+  }
+}
+@media (orientation:portrait) and (max-width:700px){
+  #root .atlas-v119.vi-fullscreen-map .atlas-map>.atlas-popup{
+    bottom:84px!important;max-height:44dvh!important;
+  }
+}
+@media (orientation:landscape) and (max-height:620px) and (pointer:coarse){
+  /* Horizontal phone: the search must never begin at a negative X offset. */
+  #root .atlas-v119.vi-fullscreen-map>.atlas-toolbar{
+    left:10px!important;right:80px!important;
+    width:auto!important;max-width:calc(100% - 90px)!important;
+    min-width:0!important;overflow:hidden!important;
+  }
+  #root .atlas-v119.vi-fullscreen-map #mapSearchText{
+    width:100%!important;min-width:0!important;
+  }
+  #root .atlas-v119.vi-fullscreen-map .atlas-layout>#atlas-map-filter-panel.mobile-open{
+    width:min(440px,51vw)!important;
+    max-width:min(440px,51vw)!important;
+    height:calc(100% - 12px)!important;
+    max-height:calc(100% - 12px)!important;
+    top:6px!important;left:6px!important;
+    padding:8px 10px!important;
+  }
+  #root .atlas-v119.vi-fullscreen-map #atlas-map-filter-panel.mobile-open .atlas-filter-heading-actions{
+    margin:-39px 45px 1px 0!important;
+  }
+  #root .atlas-v119.vi-fullscreen-map #atlas-map-filter-panel.mobile-open .atlas-filter-actions{
+    margin:0 0 2px!important;gap:3px!important;
+  }
+  #root .atlas-v119.vi-fullscreen-map #atlas-map-filter-panel.mobile-open .atlas-filter-scroll{
+    min-height:0!important;overflow-y:auto!important;
+  }
+  #root .atlas-v119.vi-fullscreen-map #atlas-map-filter-panel.mobile-open .atlas-side-note{
+    display:none!important;
+  }
+  /* Preview on the right; map control rail remains at the far right. */
+  #root .atlas-v119.vi-fullscreen-map .atlas-map>.atlas-popup{
+    display:block!important;visibility:visible!important;
+    left:auto!important;right:82px!important;top:auto!important;bottom:8px!important;
+    width:min(380px,39vw)!important;max-width:min(380px,39vw)!important;
+    max-height:calc(100% - 84px)!important;overflow-y:auto!important;
+    box-sizing:border-box!important;z-index:90!important;
+  }
+  #root .atlas-v119.vi-fullscreen-map .atlas-map>.atlas-controls{
+    right:10px!important;top:73px!important;bottom:auto!important;
+    z-index:100!important;
+  }
+  #root .atlas-v119.vi-fullscreen-map .atlas-map>.vi-v249-route-only{
+    top:77px!important;left:12px!important;right:auto!important;bottom:auto!important;
+    max-width:170px!important;
+  }
+}

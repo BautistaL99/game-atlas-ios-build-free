@@ -1,0 +1,50 @@
+/* Game Atlas V261 - only V260 user-reported regressions. */
+/* 1. Daily cards: independent markup, never inherits the list-card two-column grid. */
+#root .home-v18 .vi-discovery-section #vi-discovery-cards{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:14px!important;align-items:stretch!important;min-width:0!important}
+#root .home-v18 #vi-discovery-cards .ga-v261-reco{display:flex!important;flex-direction:column!important;align-items:stretch!important;min-width:0!important;width:100%!important;max-width:100%!important;padding:16px!important;border:1px solid #34475d;border-radius:17px;background:#171e31;color:#eff8fc;overflow:hidden}
+#root #vi-discovery-cards .ga-v261-reco-main{display:flex!important;flex-direction:column!important;min-width:0!important;width:100%!important;flex:1;gap:12px;color:inherit;text-decoration:none}
+#root #vi-discovery-cards .ga-v261-reco-main>.thumb{flex:0 0 auto!important;display:block!important;width:100%!important;max-width:100%!important;min-width:0!important;height:auto!important;aspect-ratio:16/9!important;min-height:0!important;border-radius:12px!important;overflow:hidden!important;box-sizing:border-box!important}
+#root #vi-discovery-cards .ga-v261-reco-main>.thumb img{width:100%!important;height:100%!important;object-fit:contain!important;display:block}
+#root #vi-discovery-cards .ga-v261-reco-info{display:flex!important;flex-direction:column!important;align-items:flex-start!important;width:100%!important;min-width:0!important;gap:8px!important;overflow-wrap:anywhere!important}
+#root #vi-discovery-cards .ga-v261-reco-category{color:#a3bfca;font-size:11px;letter-spacing:.07em;text-transform:uppercase}
+#root #vi-discovery-cards .ga-v261-reco-info>strong{font-size:17px;line-height:1.3;overflow-wrap:anywhere!important;word-break:normal!important}
+#root #vi-discovery-cards .ga-v261-reco-description{font-size:13px;line-height:1.5;color:#b6c9d4;overflow-wrap:anywhere;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-clamp:3;overflow:hidden}
+#root #vi-discovery-cards .ga-v261-reco-info>.pill{position:static!important;max-width:100%!important;width:max-content!important;white-space:normal!important;font-size:10px!important;line-height:1.25!important;padding:7px 9px!important;overflow-wrap:anywhere!important;display:inline-flex!important}
+#root #vi-discovery-cards .ga-v261-reco-actions{border-top:1px solid #344358;margin-top:14px;padding-top:12px;display:flex!important;flex-wrap:wrap!important;gap:8px;align-items:center!important;justify-content:flex-start!important;min-width:0!important;width:100%!important;position:static!important}
+#root #vi-discovery-cards .ga-v261-reco-actions button{position:static!important;max-width:100%!important;flex-shrink:0!important;min-height:39px!important;white-space:normal!important;overflow-wrap:normal!important;font-size:12px!important}
+#root #vi-discovery-cards .ga-v261-reco-actions .quick-fav{width:42px!important;min-width:42px!important;flex:0 0 42px!important;margin:0!important}
+#root #vi-discovery-cards .ga-v261-reco-actions .quick-complete{flex:1 0 auto!important;min-width:105px!important}
+#root #vi-discovery-cards .ga-v261-reco-actions .vi-compare-pick{flex:1 0 auto!important;min-width:95px!important}
+@media(max-width:1050px){#root .home-v18 .vi-discovery-section #vi-discovery-cards{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:700px){#root .home-v18 .vi-discovery-section #vi-discovery-cards{grid-template-columns:minmax(0,1fr)!important}#root #vi-discovery-cards .ga-v261-reco{padding:13px!important}#root #vi-discovery-cards .ga-v261-reco-main>.thumb{aspect-ratio:16/8!important}#root #vi-discovery-cards .ga-v261-reco-actions{gap:7px}}
+/* 2. Full-place entry: facts and caveats visible before the large photo. */
+#root .ga-v261-place-intro{background:#162736;border:1px solid #38616c;border-radius:14px;padding:17px 19px;margin:10px 0 17px;max-width:100%}
+#root .ga-v261-place-intro h2{margin:0 0 8px;font-size:19px}
+#root .ga-v261-place-intro>p{margin:7px 0 12px;line-height:1.6;max-width:900px}
+#root .ga-v261-place-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+#root .ga-v261-place-summary>span{display:flex;flex-direction:column;gap:5px;padding:12px;border:1px solid #426577;background:#102433;border-radius:10px;min-width:0;overflow-wrap:anywhere;font-size:12px}
+#root .ga-v261-place-summary b{font-size:11px;letter-spacing:.02em;color:#80d5ca}
+#root .ga-v261-source-caveat{font-size:12px;color:#adc5d1}
+@media(max-width:700px){#root .ga-v261-place-intro{padding:13px}#root .ga-v261-place-summary{grid-template-columns:1fr}#root .ga-v261-place-summary>span{padding:10px}}
+/* 3. World search: label as a true grid column, center and align the input. */
+#root .v257-world-searchbox{display:grid!important;grid-template-columns:minmax(150px,180px) minmax(0,1fr)!important;align-items:center!important;gap:14px!important;justify-content:stretch!important}
+#root .v257-world-searchbox h3{margin:0!important;line-height:1.35!important;min-width:0!important}
+#root .v257-world-searchbox input{box-sizing:border-box!important;min-width:0!important;width:100%!important;max-width:100%!important;min-height:51px!important;margin:0!important;flex:none!important}
+@media(max-width:700px){#root .v257-world-searchbox{grid-template-columns:1fr!important;gap:7px!important}}
+/* 4. Restore original art of *unconfirmed* reports, never an unrelated official photo. */
+#root .vi-news-card.vi-news-community .vi-news-image-link{aspect-ratio:16/7.4!important;min-height:145px!important;max-height:none!important}
+#root .vi-news-card.vi-news-community .vi-news-image-link .vi-community-art{background-image:linear-gradient(0deg,#080e20b8,transparent 62%),url('./assets/original/community-coast-v193.webp')!important;background-position:center!important;background-size:cover!important;display:flex!important;min-height:100%!important;width:100%!important}
+#root .vi-news-card.vi-news-community .vi-news-image-link .vi-community-art-caption small{font-size:11px!important}
+/* 5. Preserve sharp overlays and stable markers while selecting a pin. */
+#root #mapStage{backface-visibility:hidden;transform-style:flat}
+#root .atlas-stage .v259-map-tile-layer .v259-map-tile{transition:none!important;image-rendering:auto!important;will-change:auto!important}
+#root .atlas-stage .atlas-pin{backface-visibility:hidden;image-rendering:auto;will-change:auto}
+/* 6. Category mission verification notice. */
+#root .ga-v261-catalog-note{padding:13px 15px;background:#162b38;border:1px solid #476777;border-radius:11px;color:#c5d8df;font-size:12px;line-height:1.5;margin:12px 0}
+/* 7. There is no decorative expand arrow inside catalog cards; cards still open on click. */
+#root .item-stack>.content-card .content-card-link>.arrow{display:none!important}
+/* 8. Keep the two covers focused on their subjects. */
+#root .category-tile[data-ga-category="mundo"] .category-art{background-position:60% center!important}
+#root .category-tile[data-ga-category="flora-fauna"] .category-art{background-position:58% 54%!important}
+#root .category-cover.v258-world-cover{background-position:center 42%!important}
+@media(prefers-reduced-motion:reduce){#root .ga-v261-reco *{transition:none!important}}

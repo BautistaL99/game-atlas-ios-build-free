@@ -1,0 +1,7 @@
+/* R9 QA only: controls INSIDE the R8 sidebar. No layout changes. */
+#root .atlas-v119 .ga-r9-source-filter{border:1px solid #416979;background:#123343;border-radius:10px;padding:9px;margin:9px 0 10px}
+#root .atlas-v119 .ga-r9-source-filter>label{display:flex;align-items:center;gap:8px;color:#e0faf6;font-size:12px;font-weight:700;cursor:pointer}
+#root .atlas-v119 .ga-r9-source-filter input{accent-color:#3ad6bf;min-width:17px;min-height:17px}
+#root .atlas-v119 .ga-r9-source-filter span{flex:1;min-width:0}
+#root .atlas-v119 .ga-r9-source-filter em{font-size:11px;color:#e4f8fb;background:#315869;border-radius:8px;font-style:normal;padding:3px 6px}
+#root .atlas-v119 .ga-r9-source-filter p{font-size:11px;line-height:1.4;color:#b7d3d8;margin:6px 0 0}

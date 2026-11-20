@@ -1,0 +1,33 @@
+/* Game Atlas V263 — Mission guide, route stop accessibility and safe photo sizing. */
+#root .atlas-v119 #mapStage > button.v217-route-stop{pointer-events:auto!important;z-index:13!important;cursor:pointer;touch-action:manipulation;appearance:none;padding:0;font-family:inherit}
+#root .atlas-v119 #mapStage > button.v217-route-stop:hover,#root .atlas-v119 #mapStage > button.v217-route-stop:focus-visible{outline:3px solid #72fce5;outline-offset:3px;box-shadow:0 0 0 5px #062b38cc,0 0 24px #56ffe888}
+#root .v257-place-photo{display:flex;align-items:center;justify-content:center;max-height:44vh;height:clamp(190px,36vh,355px);padding:10px;box-sizing:border-box;background:#102634}
+#root .v257-place-photo img{display:block;width:auto!important;height:auto!important;max-width:100%!important;max-height:100%!important;object-fit:contain!important;object-position:center!important;image-rendering:auto}
+#root .v258-world-photo>img{width:auto!important;height:auto!important;max-width:100%!important;max-height:100%!important;object-fit:contain!important;object-position:center!important}
+#root .v256-place-sheet .v257-place-photo{width:100%;max-width:100%;overflow:hidden}
+#root .v256-place-sheet img{object-position:center!important}
+#root .ga-v263-lowres-note{display:block;font-size:11px;color:#ffdca1;margin-top:6px}
+#root .ga-v263-original-title{font-size:12px;color:#a8c5cf;margin-top:0}
+#root .ga-v263-mission{border:1px solid #3d626d;background:#122739;border-radius:16px;padding:17px;margin:20px 0;line-height:1.55}
+#root .ga-v263-mission h2{font-size:20px;margin:0 0 10px}
+#root .ga-v263-mission h3{font-size:16px;margin:15px 0 8px}
+#root .ga-v263-mission .ga-v263-mode{display:flex;flex-wrap:wrap;gap:9px;margin:10px 0 13px}
+#root .ga-v263-mission button[data-v263-mode]{border:1px solid #456e78;border-radius:10px;background:#193848;color:#ebffff;padding:10px 14px;font-weight:750;cursor:pointer}
+#root .ga-v263-mission button[data-v263-mode][aria-pressed="true"]{border-color:#65e4d0;background:#167268;color:#fff}
+#root .ga-v263-mission .ga-v263-keep-safe{font-size:12px;color:#acd6db}
+#root .ga-v263-mission .ga-v263-warning{color:#ffd9a1;background:#3a3023;border:1px solid #8b693f;border-radius:8px;padding:9px 11px}
+#root .ga-v263-mission .ga-v263-meta{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+#root .ga-v263-mission .ga-v263-meta span{border:1px solid #365967;background:#173544;border-radius:8px;padding:6px 10px;font-size:12px}
+#root .ga-v263-mission ol{padding-left:23px}
+#root .ga-v263-mission li{margin:8px 0}
+#root .ga-v263-mission .ga-v263-guide-link{display:inline-flex;margin-top:12px;border:1px solid #52cdbd;padding:9px 12px;border-radius:9px;text-decoration:none;color:#7afbe4;font-weight:bold}
+#root .ga-v263-tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:13px;margin:20px 0}
+#root .ga-v263-tool{border:1px solid #3e6675;background:#152b3b;border-radius:14px;padding:18px;text-decoration:none!important;color:#ecffff!important;min-height:125px;display:flex;flex-direction:column;gap:8px;justify-content:space-between}
+#root .ga-v263-tool:hover,#root .ga-v263-tool:focus-visible{border-color:#61e5d2;background:#1b3c4a}
+#root .ga-v263-tool strong{font-size:17px}
+#root .ga-v263-tool small{color:#bfd5dc;line-height:1.4}
+#root .ga-v263-tools-info{border:1px solid #496273;border-radius:12px;padding:14px;background:#172939}
+@media(max-width:700px){#root .ga-v263-mission{padding:12px;margin:14px 0}#root .ga-v263-mission h2{font-size:18px}#root .ga-v263-mission button[data-v263-mode]{flex:1 1 135px}}
+
+/* Do not push the mission walkthrough below an empty media placeholder. */
+#root .detail-card .detail-image.ga-v263-mission-no-image{display:none!important}

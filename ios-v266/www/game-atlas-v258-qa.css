@@ -1,0 +1,81 @@
+/* Game Atlas V258 - conservative layout and QA fixes. Keep existing palette. */
+/* Cards: status text stays attached to the record; control cluster occupies a real column. */
+#root .item-stack > .content-card{position:relative!important;display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;align-items:center!important;column-gap:16px!important;row-gap:10px!important;padding:12px 15px!important;min-width:0!important}
+#root .item-stack > .content-card > .content-card-link{display:flex!important;align-items:center!important;min-width:0!important;gap:13px!important;padding:2px!important}
+#root .item-stack > .content-card > .content-card-link .content-text{display:flex;flex-direction:column;align-items:flex-start;gap:3px;min-width:0!important;flex:1}
+#root .item-stack > .content-card .content-text .pill{display:inline-flex!important;align-self:flex-start!important;margin:5px 0 0!important;max-width:100%;width:max-content!important;overflow-wrap:break-word;white-space:normal!important}
+#root .item-stack > .content-card > .card-inline-actions{position:static!important;right:auto!important;left:auto!important;top:auto!important;bottom:auto!important;transform:none!important;display:flex!important;align-items:center!important;justify-content:flex-end!important;gap:8px!important;flex-wrap:wrap!important;min-width:0!important;max-width:100%!important;margin:0!important;z-index:1!important}
+#root .item-stack > .content-card .content-card-link>.arrow{flex:0 0 auto;opacity:.75}
+/* A compact popup with controls below the image, never over it. */
+#root .atlas-v119 .atlas-popup.v257-popup{box-sizing:border-box!important;width:min(432px,calc(100% - 18px))!important;max-width:calc(100vw - 18px)!important;max-height:min(365px,58dvh)!important;overflow:auto!important;padding:13px 15px!important}
+#root .atlas-v119 .atlas-popup.v257-popup .v257-popup-body{display:flex!important;align-items:flex-start!important;gap:12px!important;min-width:0!important}
+#root .atlas-v119 .atlas-popup.v257-popup .atlas-popup-actions{position:static!important;display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1.43fr)!important;gap:7px!important;width:100%!important;margin:11px 0 0!important;align-items:stretch!important;max-width:100%!important}
+#root .atlas-v119 .atlas-popup.v257-popup .atlas-popup-actions button{position:static!important;min-width:0!important;width:100%!important;max-width:100%!important;box-sizing:border-box!important;white-space:normal!important;overflow-wrap:anywhere!important;line-height:1.22!important;padding:9px 6px!important;min-height:37px!important;font-size:11px!important;align-self:stretch!important;text-align:center!important}
+#root .atlas-v119 .atlas-popup.v257-popup .v257-popup-photo{display:block;object-fit:cover}
+#root .v257-world-thumb{position:relative;overflow:hidden}
+#root .v257-world-thumb>img{display:block;width:100%;height:100%;object-fit:cover;border-radius:inherit}
+/* Category search, keeping the current visual style and scroll position when filtering. */
+#root .v258-category-search{margin:16px 0 12px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+#root .v258-category-search label{font-size:12px;font-weight:700;color:#b7d8dd}
+#root .v258-category-search input{color:#f0f8fa;min-width:min(280px,100%);flex:1;max-width:540px;padding:11px 13px;border:1px solid #477985;border-radius:10px;background:#152b39;outline-offset:2px}
+#root .v258-category-search input:focus-visible{outline:2px solid #57c9bf}
+/* World full entry: map/photo tabs use the same visual module as V256. */
+#root .v258-world-detail{min-width:0;max-width:1040px;margin:0 auto;padding-bottom:35px}
+#root .v258-breadcrumb{margin:0 0 12px}
+#root .v258-breadcrumb a{color:#7ed7cd;font-size:13px;font-weight:650}
+#root .v258-world-entry-cover{min-height:195px!important;margin:0 0 16px!important}
+#root .v258-place-actions{display:flex;flex-wrap:wrap;gap:9px;margin:14px 0}
+#root .v258-place-actions button{border:1px solid #477b81;background:#1c3c48;color:#d9f6f5;padding:10px 13px;border-radius:10px;font-weight:650;min-height:42px}
+#root .v258-place-actions button[aria-pressed=true]{border-color:#5ecdbf;background:#19514f;color:#e5fffc}
+#root .v258-map-position,#root .v258-world-photo{position:relative;display:flex;align-items:center;justify-content:center;max-width:900px;height:clamp(220px,35vw,385px);border:1px solid #4d707b;border-radius:13px;background-color:#17313e;background-size:360% auto;background-repeat:no-repeat;overflow:hidden}
+#root .v258-world-photo>img{display:block;width:100%;height:100%;object-fit:contain;background:#152736}
+#root .v258-map-position>span{display:grid;place-items:center;width:43px;height:43px;border-radius:50%;background:#092936;color:#fff;border:3px solid #ff9b40;box-shadow:0 3px 10px #0007}
+#root .v258-world-credit{max-width:900px;color:#aac7d1;font-size:12px;margin:8px 0 20px}
+#root .v258-place-facts{display:grid;grid-template-columns:minmax(90px,190px) minmax(0,1fr);gap:12px 18px;max-width:900px;margin:17px 0 23px;padding:15px 0;border-top:1px solid #2e5665;border-bottom:1px solid #2e5665}
+#root .v258-place-facts dt{color:#a7c0cb;font-weight:650}#root .v258-place-facts dd{margin:0;min-width:0;overflow-wrap:anywhere}
+#root .v258-world-cover{min-height:238px!important}
+#root .category-cover.v258-world-cover,#root .category-cover.v258-world-entry-cover{background-size:cover!important;background-position:center 50%!important}
+/* No generic placeholder graphics pretending to be GTA VI photographic content. */
+#root .vi-news-image-link:has(.ga-v254-image-empty),#root .vi-news-image-link:has(.ga-v254-image-failed){aspect-ratio:auto!important;min-height:105px;max-height:132px}
+#root .vi-news-image-link .v258-source-news-image{display:block;width:100%;height:100%;object-fit:cover}
+/* Minimal Compare usability change: preserve headings while scrolling wider tables. */
+#root .vi-compare-page .vi-compare-scroll{overflow-x:auto;max-width:100%;scrollbar-width:thin}
+#root .vi-compare-page .vi-compare-scroll table{min-width:490px}
+#root .vi-compare-page .vi-compare-scroll th[scope=row]{position:sticky;left:0;z-index:2;background:#192337;max-width:240px;min-width:145px;box-shadow:2px 0 0 #344456}
+#root .vi-compare-page .vi-compare-scroll thead th:first-child{position:sticky;left:0;z-index:3;background:#1a2940}
+#root .vi-compare-page .vi-compare-controls{gap:11px}
+#root .vi-compare-page .vi-compare-item{min-width:0}
+/* Responsive cases: first keep content visible, then put actions on their own row. */
+@media(max-width:1050px){
+ #root .item-stack > .content-card{grid-template-columns:minmax(0,1fr)!important;row-gap:9px!important}
+ #root .item-stack > .content-card > .card-inline-actions{grid-row:2!important;justify-content:flex-end!important;border-top:1px solid #ffffff14;padding-top:9px!important}
+}
+@media(max-width:700px){
+ #root .atlas-v119 .atlas-popup.v257-popup{left:8px!important;right:8px!important;bottom:8px!important;width:auto!important;max-height:min(300px,51dvh)!important;padding:12px!important}
+ #root .atlas-v119 .atlas-popup.v257-popup .v257-popup-mapthumb,#root .atlas-v119 .atlas-popup.v257-popup .v257-popup-photo{width:72px!important;height:73px!important}
+ #root .item-stack > .content-card > .content-card-link{gap:9px!important}
+ #root .item-stack > .content-card > .card-inline-actions{justify-content:flex-start!important}
+ #root .item-stack > .content-card .content-text .pill{font-size:9px!important}
+ #root .v258-world-entry-cover{min-height:165px!important}
+ #root .v258-place-facts{grid-template-columns:minmax(88px,120px) minmax(0,1fr);font-size:13px}
+ #root .v258-category-search input{flex-basis:100%;max-width:none}
+ #root .v258-world-photo,#root .v258-map-position{height:260px}
+}
+@media(max-width:360px){
+ #root .atlas-v119 .atlas-popup.v257-popup .atlas-popup-actions{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important}
+ #root .atlas-v119 .atlas-popup.v257-popup .atlas-popup-actions .v257-full-link{grid-column:span 2!important}
+ #root .atlas-v119 .atlas-popup.v257-popup{max-height:min(320px,58dvh)!important}
+}
+
+#root .v258-compare-heading{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:7px;min-width:120px;max-width:230px;margin:auto;text-align:center;font-size:12px;line-height:1.35}
+#root .v258-compare-heading .search-thumb{width:116px;height:78px;flex:none;object-fit:contain;border-radius:9px;overflow:hidden}
+#root .v258-compare-heading>span:last-child{overflow-wrap:anywhere}
+@media(max-width:700px){#root .v258-compare-heading{min-width:105px;max-width:150px}#root .v258-compare-heading .search-thumb{width:92px;height:64px}}
+
+#root .vi-news-image-link.v258-news-photo-unavailable{aspect-ratio:auto!important;min-height:98px!important;max-height:110px!important;background:#112536!important}
+
+#root .v258-compare-selection{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;margin:17px 0 15px}
+#root .v258-compare-selection-item{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;min-width:0;min-height:118px;padding:13px 11px;border:1px solid #354e60;background:#152536;border-radius:13px;font-weight:700;font-size:13px}
+#root .v258-compare-selection-item .search-thumb{width:135px;max-width:100%;height:87px;object-fit:contain;flex:none;overflow:hidden;border-radius:9px}
+#root .v258-compare-selection-item>span:last-child{overflow-wrap:anywhere}
+@media(max-width:650px){#root .v258-compare-selection{gap:7px}#root .v258-compare-selection-item{padding:9px 6px;min-height:96px;font-size:11px}#root .v258-compare-selection-item .search-thumb{height:58px}}

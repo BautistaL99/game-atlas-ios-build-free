@@ -1,0 +1,9 @@
+{
+  "enabled": true,
+  "channel": "preview",
+  "publicKeyEd25519Base64": "+EuZiJJ/IcHB1Wi0GNyOXf50NKU+kls94Y/zvTjimxo=",
+  "previewUrl": "../updates/approved-preview-v265.json",
+  "productionUrl": "https://bautistal99.github.io/game-atlas-privacidad/updates/approved-content-v265.json",
+  "checkMinutes": 60,
+  "note": "EXCLUSIVAMENTE PRUEBA LOCAL V266 R2. Clave privada efímera descartada: no habilita publicación pública ni producción."
+}

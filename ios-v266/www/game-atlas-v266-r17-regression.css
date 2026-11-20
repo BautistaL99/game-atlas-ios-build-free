@@ -1,0 +1,80 @@
+/* V266 R17 — regressions reported on Android. Scoped selectors only. */
+/* Last opened entries are SEARCH RESULT cards, not content-card. Put actions
+   in a dedicated row, never over the thumbnail or its text. */
+@media(max-width:979px){
+ #root .home-v18 .v18-recent-zone .item-stack>.search-result{
+  display:grid!important;grid-template-columns:76px minmax(0,1fr)!important;
+  grid-template-rows:auto auto!important;gap:9px 12px!important;
+  align-items:center!important;position:relative!important;min-width:0!important;
+  padding:12px!important;
+ }
+ #root .home-v18 .v18-recent-zone .item-stack>.search-result>.search-thumb{
+  grid-row:1!important;grid-column:1!important;position:static!important;
+  width:76px!important;height:76px!important;max-width:76px!important;
+  max-height:76px!important;min-width:76px!important;object-fit:contain!important;
+  margin:0!important;transform:none!important;
+ }
+ #root .home-v18 .v18-recent-zone .item-stack>.search-result>.search-result-link{
+  grid-row:1!important;grid-column:2!important;position:static!important;
+  min-width:0!important;max-width:100%!important;min-height:76px!important;
+  padding:4px 0!important;margin:0!important;transform:none!important;
+  display:flex!important;align-items:center!important;
+ }
+ #root .home-v18 .v18-recent-zone .item-stack>.search-result>.card-inline-actions{
+  grid-row:2!important;grid-column:1/-1!important;position:static!important;
+  inset:auto!important;top:auto!important;left:auto!important;right:auto!important;bottom:auto!important;
+  transform:none!important;display:flex!important;flex-wrap:wrap!important;
+  justify-content:flex-start!important;align-items:center!important;gap:8px!important;
+  width:100%!important;min-width:0!important;max-width:100%!important;
+  padding:9px 0 0!important;margin:0!important;
+  border-top:1px solid #354257!important;
+ }
+ #root .home-v18 .v18-recent-zone .item-stack>.search-result>.card-inline-actions :is(.quick-complete,.quick-fav,.vi-compare-pick){
+  position:static!important;inset:auto!important;transform:none!important;
+  margin:0!important;min-height:38px!important;
+ }
+ /* With location preview open, only the preview has priority. The route-only
+    toggle returns as soon as it closes, avoiding covering either control. */
+ #root .atlas-v119 .atlas-map:has(>.atlas-popup)>.vi-v249-route-only,
+ #root .atlas-v119 .atlas-map:has(>.v256-sheet-overlay)>.vi-v249-route-only{display:none!important}
+}
+/* Landscape quick-view popup needs a real visible area, not portrait height
+   values inherited from old media queries. */
+@media (max-width:979px) and (orientation:landscape) and (max-height:620px){
+ #root .atlas-v119.vi-fullscreen-map .atlas-map>.atlas-popup.v257-popup{
+  display:block!important;visibility:visible!important;opacity:1!important;
+  left:auto!important;right:12px!important;top:70px!important;bottom:10px!important;
+  width:min(370px,45vw)!important;max-width:calc(100vw - 24px)!important;
+  height:auto!important;max-height:calc(100% - 80px)!important;
+  overflow-y:auto!important;overflow-x:hidden!important;z-index:190!important;
+ }
+ #root .atlas-v119.vi-fullscreen-map .v256-sheet-overlay{
+  display:flex!important;visibility:visible!important;opacity:1!important;
+  position:fixed!important;inset:0!important;z-index:3000!important;
+  align-items:center!important;justify-content:center!important;
+  padding:8px!important;
+ }
+ #root .atlas-v119.vi-fullscreen-map .v256-place-sheet{
+  width:min(700px,90vw)!important;max-width:90vw!important;
+  height:auto!important;max-height:calc(100dvh - 26px)!important;
+  overflow-y:auto!important;
+ }
+}
+
+/* The full place preview is a sibling of the map root, not a child of its
+   canvas. Prioritize it over route toggles without changing route state. */
+#root #mapApp:has(>.v256-sheet-overlay) .vi-v249-route-only,
+#root #mapApp:has(>.v256-sheet-overlay) .vi-v250-route-only-ios,
+#root #mapApp:has(.atlas-popup) .vi-v250-route-only-ios{display:none!important}
+@media(max-width:979px) and (orientation:landscape) and (max-height:620px){
+ #root #mapApp>.v256-sheet-overlay{
+  display:flex!important;visibility:visible!important;opacity:1!important;
+  position:fixed!important;inset:0!important;z-index:3000!important;
+  align-items:center!important;justify-content:center!important;padding:8px!important;
+ }
+ #root #mapApp>.v256-sheet-overlay>.v256-place-sheet{
+  width:min(700px,90vw)!important;max-width:90vw!important;
+  height:auto!important;max-height:calc(100dvh - 26px)!important;
+  overflow-y:auto!important;
+ }
+}

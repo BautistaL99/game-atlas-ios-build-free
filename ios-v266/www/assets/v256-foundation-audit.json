@@ -1,0 +1,41 @@
+{
+  "release": "v256-foundation-preview-not-live",
+  "base": "v255-actual-preview",
+  "mapSource": "GTADB YANIS V17",
+  "mapItems": 926,
+  "officialStarterItems": 57,
+  "officialStarterByCategory": {
+    "actividades": 4,
+    "actualizaciones": 10,
+    "armas": 2,
+    "coleccionables": 2,
+    "economia": 2,
+    "mapa-lugares": 12,
+    "misiones": 1,
+    "mundo": 9,
+    "personajes": 8,
+    "vehiculos": 7
+  },
+  "newContentAdded": [
+    "pesca-mount-kalaga",
+    "caza-mount-kalaga"
+  ],
+  "catalogImaging": {
+    "mainMapImage": "1500x2000 WEBP V17",
+    "verifiedInlinePhotosForAll": false,
+    "noUnlicensedPhotosAdded": true
+  },
+  "mapRestrictions": [
+    "new region boundaries not verified",
+    "YANIS V18 cannot use V17 percent coordinates without alignment",
+    "community POIs are not official"
+  ],
+  "reviewedAt": "2026-11-19",
+  "testRequired": [
+    "map popup opens sheet",
+    "clear removes highlighted pin",
+    "show all restores points",
+    "new compare cards link to compare",
+    "mobile and PC photo/data QA"
+  ]
+}

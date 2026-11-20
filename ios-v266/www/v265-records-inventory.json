@@ -1,0 +1,2935 @@
+{
+  "schema": 265,
+  "generatedFrom": "V264 files only; runtime signed feeds may add more",
+  "count": 732,
+  "items": {
+    "personalizacion-estetica": {
+      "category": "actividades",
+      "title": "Personal style: clothing, hairstyles and tattoos"
+    },
+    "personalizacion-vehiculos": {
+      "category": "actividades",
+      "title": "Vehicle customization"
+    },
+    "anuncio-ediciones": {
+      "category": "actualizaciones",
+      "title": "Announced editions and bonuses"
+    },
+    "anuncio-radio-octubre": {
+      "category": "actualizaciones",
+      "title": "Rockstar reveals radio stations · 10/08/2026"
+    },
+    "fecha-lanzamiento": {
+      "category": "actualizaciones",
+      "title": "Planned release · Nov 19, 2026"
+    },
+    "trailer-extendido": {
+      "category": "actualizaciones",
+      "title": "Extended look · 08/27/2026"
+    },
+    "trailer-lanzamiento-2026": {
+      "category": "actualizaciones",
+      "title": "Launch trailer · Oct 15, 2026"
+    },
+    "hawk-little-morgan-revolvers": {
+      "category": "armas",
+      "title": "Hawk & Little Morgan Revolvers"
+    },
+    "variantes-personalizadas-armas": {
+      "category": "armas",
+      "title": "Customized weapon variants"
+    },
+    "classic-car-collection": {
+      "category": "coleccionables",
+      "title": "Classic Car Collection"
+    },
+    "vintage-vice-city-pack": {
+      "category": "coleccionables",
+      "title": "Vintage Vice City Pack"
+    },
+    "negocios-boobie-ike": {
+      "category": "economia",
+      "title": "Boobie Ike’s businesses"
+    },
+    "only-raw-records": {
+      "category": "economia",
+      "title": "Only Raw Records"
+    },
+    "ambrosia": {
+      "category": "mapa-lugares",
+      "title": "Ambrosia"
+    },
+    "electric-fang-tattoo": {
+      "category": "mapa-lugares",
+      "title": "Electric Fang Tattoo Parlor"
+    },
+    "grassrivers": {
+      "category": "mapa-lugares",
+      "title": "Grassrivers"
+    },
+    "leonida-keys": {
+      "category": "mapa-lugares",
+      "title": "Leonida Keys"
+    },
+    "mount-kalaga": {
+      "category": "mapa-lugares",
+      "title": "Mount Kalaga"
+    },
+    "one-eyed-willies": {
+      "category": "mapa-lugares",
+      "title": "One-Eyed Willie’s Mod Shop"
+    },
+    "port-gellhorn": {
+      "category": "mapa-lugares",
+      "title": "Port Gellhorn"
+    },
+    "ptt-youngins": {
+      "category": "mapa-lugares",
+      "title": "PTT YOUNGIN$ Illegal Goods Store"
+    },
+    "rideout-customs": {
+      "category": "mapa-lugares",
+      "title": "Rideout Customs Mod Shop"
+    },
+    "saras-unisex-salon": {
+      "category": "mapa-lugares",
+      "title": "Sara’s Unisex Salon"
+    },
+    "stock-305": {
+      "category": "mapa-lugares",
+      "title": "Stock 305 Clothing Store"
+    },
+    "vice-city": {
+      "category": "mapa-lugares",
+      "title": "Vice City"
+    },
+    "premisa-jason-lucia": {
+      "category": "misiones",
+      "title": "Main story: Jason and Lucia"
+    },
+    "afro-bank-fm": {
+      "category": "musica",
+      "title": "Afro Bank FM"
+    },
+    "back-country-radio": {
+      "category": "musica",
+      "title": "Back Country"
+    },
+    "cocoteo": {
+      "category": "musica",
+      "title": "Cocoteo"
+    },
+    "dirty-south-classics": {
+      "category": "musica",
+      "title": "Dirty South Classics"
+    },
+    "flash-fm": {
+      "category": "musica",
+      "title": "Flash FM"
+    },
+    "gta-vi-the-album": {
+      "category": "musica",
+      "title": "Grand Theft Auto VI: The Album"
+    },
+    "original-score-justice": {
+      "category": "musica",
+      "title": "Justice soundtrack"
+    },
+    "radio-gta6": {
+      "category": "musica",
+      "title": "GTA VI radio stations"
+    },
+    "the-chamber": {
+      "category": "musica",
+      "title": "The Chamber"
+    },
+    "boobie-ike": {
+      "category": "personajes",
+      "title": "Boobie Ike"
+    },
+    "brian-heder": {
+      "category": "personajes",
+      "title": "Brian Heder"
+    },
+    "cal-hampton": {
+      "category": "personajes",
+      "title": "Cal Hampton"
+    },
+    "dre-quan-priest": {
+      "category": "personajes",
+      "title": "Dre’Quan Priest"
+    },
+    "jason-duval": {
+      "category": "personajes",
+      "title": "Jason Duval"
+    },
+    "lucia-caminos": {
+      "category": "personajes",
+      "title": "Lucia Caminos"
+    },
+    "raul-bautista": {
+      "category": "personajes",
+      "title": "Raul Bautista"
+    },
+    "real-dimez": {
+      "category": "personajes",
+      "title": "Real Dimez"
+    },
+    "55-vapid-stanier": {
+      "category": "vehiculos",
+      "title": "’55 Vapid Stanier"
+    },
+    "67-vapid-dominator-buggy": {
+      "category": "vehiculos",
+      "title": "’67 Vapid Dominator Buggy"
+    },
+    "95-grotti-cheetah": {
+      "category": "vehiculos",
+      "title": "’95 Grotti Cheetah"
+    },
+    "crest-kayak": {
+      "category": "vehiculos",
+      "title": "Crest Kayak"
+    },
+    "dinka-enduro": {
+      "category": "vehiculos",
+      "title": "Dinka Enduro"
+    },
+    "ganado-retro-build": {
+      "category": "vehiculos",
+      "title": "Ganado Retro Build"
+    },
+    "shitzu-squalo": {
+      "category": "vehiculos",
+      "title": "Shitzu Squalo"
+    },
+    "community-gta-vi-2026-august-leaks": {
+      "category": "actualizaciones",
+      "title": "Rumour: alleged GTA VI videos circulated in August 2026"
+    },
+    "community-gta-vi-2025-demo-reel": {
+      "category": "actualizaciones",
+      "title": "Rumour: an animation demo may have shown new GTA VI material"
+    },
+    "community-gta-vi-2025-domains": {
+      "category": "actualizaciones",
+      "title": "Rumour: registered domains sparked GTA VI theories"
+    },
+    "community-gta-vi-2025-devkit": {
+      "category": "actualizaciones",
+      "title": "Rumour: an alleged GTA VI development image circulated online"
+    },
+    "community-grandtheftwiki-leaks": {
+      "category": "actualizaciones",
+      "title": "Rumours: GTA VI reports compiled by Grand Theft Wiki"
+    },
+    "pesca-mount-kalaga": {
+      "category": "actividades",
+      "title": "Fishing in Leonida"
+    },
+    "caza-mount-kalaga": {
+      "category": "actividades",
+      "title": "Hunting in Mount Kalaga"
+    },
+    "v262-mision-prologue": {
+      "category": "misiones",
+      "title": "Prologue"
+    },
+    "v262-mision-gone-fishing": {
+      "category": "misiones",
+      "title": "Gone Fishing"
+    },
+    "v262-mision-gear-up": {
+      "category": "misiones",
+      "title": "Gear Up"
+    },
+    "v262-mision-just-a-scratch": {
+      "category": "misiones",
+      "title": "Just A Scratch"
+    },
+    "v262-mision-lab-fees": {
+      "category": "misiones",
+      "title": "Lab Fees"
+    },
+    "v262-mision-unwanted-attention": {
+      "category": "misiones",
+      "title": "Unwanted Attention"
+    },
+    "v262-mision-pipework": {
+      "category": "misiones",
+      "title": "Pipework"
+    },
+    "v262-mision-hey-arnold": {
+      "category": "misiones",
+      "title": "Hey Arnold!"
+    },
+    "v262-mision-island-dreams": {
+      "category": "misiones",
+      "title": "Island Dreams"
+    },
+    "v262-mision-feng-shui": {
+      "category": "misiones",
+      "title": "Feng Shui"
+    },
+    "v262-mision-coming-home": {
+      "category": "misiones",
+      "title": "Coming Home"
+    },
+    "v262-mision-buck-me": {
+      "category": "misiones",
+      "title": "Buck Me"
+    },
+    "v262-mision-clean-up-after-donnie": {
+      "category": "misiones",
+      "title": "Clean Up After Donnie"
+    },
+    "v262-mision-down-to-earth": {
+      "category": "misiones",
+      "title": "Down to Earth"
+    },
+    "v262-mision-clear-skies": {
+      "category": "misiones",
+      "title": "Clear Skies"
+    },
+    "v262-mision-day-release": {
+      "category": "misiones",
+      "title": "Day Release"
+    },
+    "v262-mision-swamped": {
+      "category": "misiones",
+      "title": "Swamped"
+    },
+    "v262-mision-don-gone": {
+      "category": "misiones",
+      "title": "Don Gone"
+    },
+    "v262-mision-recalibration": {
+      "category": "misiones",
+      "title": "Recalibration"
+    },
+    "v262-mision-tourist-trap": {
+      "category": "misiones",
+      "title": "Tourist Trap"
+    },
+    "v262-mision-home-sweet-home": {
+      "category": "misiones",
+      "title": "Home Sweet Home"
+    },
+    "v262-mision-discharge-time": {
+      "category": "misiones",
+      "title": "Discharge Time"
+    },
+    "v262-mision-what-s-in-the-bag": {
+      "category": "misiones",
+      "title": "What's in the Bag?"
+    },
+    "v262-mision-ambulance-chaser": {
+      "category": "misiones",
+      "title": "Ambulance Chaser"
+    },
+    "v262-mision-just-moved-in": {
+      "category": "misiones",
+      "title": "Just Moved In"
+    },
+    "v262-mision-girls-trip": {
+      "category": "misiones",
+      "title": "Girls’ Trip"
+    },
+    "v262-mision-moses": {
+      "category": "misiones",
+      "title": "Moses"
+    },
+    "v262-mision-daily-driver": {
+      "category": "misiones",
+      "title": "Daily Driver"
+    },
+    "v262-mision-slam-dunk": {
+      "category": "misiones",
+      "title": "Slam Dunk"
+    },
+    "v262-mision-breakfast-run": {
+      "category": "misiones",
+      "title": "Breakfast Run"
+    },
+    "v262-mision-coffee-break": {
+      "category": "misiones",
+      "title": "Coffee Break"
+    },
+    "v262-mision-afternoon-delight": {
+      "category": "misiones",
+      "title": "Afternoon Delight"
+    },
+    "v262-mision-checking-out": {
+      "category": "misiones",
+      "title": "Checking Out"
+    },
+    "v262-mision-welcome-to-vice-city": {
+      "category": "misiones",
+      "title": "Welcome to Vice City"
+    },
+    "v262-mision-dealers-choice": {
+      "category": "misiones",
+      "title": "Dealer’s Choice"
+    },
+    "v262-mision-meet-the-heders": {
+      "category": "misiones",
+      "title": "Meet the Heders"
+    },
+    "v262-mision-dubious-provenance": {
+      "category": "misiones",
+      "title": "Dubious Provenance"
+    },
+    "v262-mision-mami-knows-best": {
+      "category": "misiones",
+      "title": "Mami Knows Best"
+    },
+    "v262-mision-south-leonida-real-estate": {
+      "category": "misiones",
+      "title": "South Leonida Real Estate"
+    },
+    "v262-mision-tyrone": {
+      "category": "misiones",
+      "title": "Tyrone"
+    },
+    "v262-mision-here-kitty-kitty": {
+      "category": "misiones",
+      "title": "Here, Kitty Kitty"
+    },
+    "v262-mision-car-services": {
+      "category": "misiones",
+      "title": "Car Services"
+    },
+    "v262-mision-top-billing": {
+      "category": "misiones",
+      "title": "Top Billing"
+    },
+    "v262-mision-boobie-time": {
+      "category": "misiones",
+      "title": "Boobie Time"
+    },
+    "v262-mision-first-impressions": {
+      "category": "misiones",
+      "title": "First Impressions"
+    },
+    "v262-mision-caught-slipping": {
+      "category": "misiones",
+      "title": "Caught Slipping"
+    },
+    "v262-mision-crosstown-traffic": {
+      "category": "misiones",
+      "title": "Crosstown Traffic"
+    },
+    "v262-mision-credit-check": {
+      "category": "misiones",
+      "title": "Credit Check"
+    },
+    "v262-mision-steal-the-zorruso-for-randy": {
+      "category": "misiones",
+      "title": "Steal the Zorruso for Randy"
+    },
+    "v262-mision-sinfrontera-national-bank": {
+      "category": "misiones",
+      "title": "Sinfrontera National Bank"
+    },
+    "v262-mision-security-expert": {
+      "category": "misiones",
+      "title": "Security Expert"
+    },
+    "v262-mision-ride-or-die": {
+      "category": "misiones",
+      "title": "Ride or Die"
+    },
+    "v262-mision-company-property": {
+      "category": "misiones",
+      "title": "Company Property"
+    },
+    "v262-mision-the-missing-link": {
+      "category": "misiones",
+      "title": "The Missing Link"
+    },
+    "v262-mision-safe-word": {
+      "category": "misiones",
+      "title": "Safe Word"
+    },
+    "v262-mision-cooties": {
+      "category": "misiones",
+      "title": "Cooties"
+    },
+    "v262-mision-bricked-up": {
+      "category": "misiones",
+      "title": "Bricked Up"
+    },
+    "v262-mision-hidden-charges": {
+      "category": "misiones",
+      "title": "Hidden Charges"
+    },
+    "v262-mision-the-cartel-heist": {
+      "category": "misiones",
+      "title": "The Cartel Heist"
+    },
+    "v262-mision-ocean-beach": {
+      "category": "misiones",
+      "title": "Ocean Beach"
+    },
+    "v262-mision-another-life": {
+      "category": "misiones",
+      "title": "Another Life"
+    },
+    "v262-mision-company-cars": {
+      "category": "misiones",
+      "title": "Company Cars"
+    },
+    "v262-mision-lawyer-up": {
+      "category": "misiones",
+      "title": "Lawyer Up"
+    },
+    "v262-mision-party-hard": {
+      "category": "misiones",
+      "title": "Party Hard"
+    },
+    "v262-mision-heavy-lifting": {
+      "category": "misiones",
+      "title": "Heavy Lifting"
+    },
+    "v262-mision-photo-shoot": {
+      "category": "misiones",
+      "title": "Photo/Shoot"
+    },
+    "v262-mision-making-gainz": {
+      "category": "misiones",
+      "title": "Making Gainz"
+    },
+    "v262-mision-watch-it": {
+      "category": "misiones",
+      "title": "Watch It"
+    },
+    "v262-mision-cash-injections": {
+      "category": "misiones",
+      "title": "Cash Injections"
+    },
+    "v262-mision-amateur-hour": {
+      "category": "misiones",
+      "title": "Amateur Hour"
+    },
+    "v262-mision-dirty-work": {
+      "category": "misiones",
+      "title": "Dirty Work"
+    },
+    "v262-mision-too-much-baggage": {
+      "category": "misiones",
+      "title": "Too Much Baggage"
+    },
+    "v262-mision-adventures-in-babysitting": {
+      "category": "misiones",
+      "title": "Adventures in Babysitting"
+    },
+    "v262-mision-fresh-evidence": {
+      "category": "misiones",
+      "title": "Fresh Evidence"
+    },
+    "v262-mision-power-play": {
+      "category": "misiones",
+      "title": "Power Play"
+    },
+    "v262-mision-childs-play": {
+      "category": "misiones",
+      "title": "Child’s Play"
+    },
+    "v262-mision-headliners": {
+      "category": "misiones",
+      "title": "Headliners"
+    },
+    "v262-mision-close-surveillance": {
+      "category": "misiones",
+      "title": "Close Surveillance"
+    },
+    "v262-mision-delivery-method": {
+      "category": "misiones",
+      "title": "Delivery Method"
+    },
+    "v262-mision-team-building": {
+      "category": "misiones",
+      "title": "Team Building"
+    },
+    "v262-mision-fully-catered": {
+      "category": "misiones",
+      "title": "Fully Catered"
+    },
+    "v262-mision-vcia-takedown": {
+      "category": "misiones",
+      "title": "VCIA Takedown"
+    },
+    "v262-mision-sunset": {
+      "category": "misiones",
+      "title": "Sunset"
+    },
+    "v262-mision-bird-in-the-hand": {
+      "category": "misiones",
+      "title": "Bird in the Hand"
+    },
+    "v262-mision-taking-liberties": {
+      "category": "misiones",
+      "title": "Taking Liberties"
+    },
+    "v262-mision-vc-baby": {
+      "category": "misiones",
+      "title": "VC Baby"
+    },
+    "v262-mision-doggie-bag": {
+      "category": "misiones",
+      "title": "Doggie Bag"
+    },
+    "v262-mision-operation-savage-glory": {
+      "category": "misiones",
+      "title": "Operation Savage Glory"
+    },
+    "v262-mision-protective-custody": {
+      "category": "misiones",
+      "title": "Protective Custody"
+    },
+    "v262-mision-opcional-get-shirleys-rum": {
+      "category": "misiones",
+      "title": "Get Shirley’s Rum"
+    },
+    "v262-mision-opcional-steal-the-scooter": {
+      "category": "misiones",
+      "title": "Steal the Scooter"
+    },
+    "v262-coleccion-vice-city-flamingos": {
+      "category": "coleccionables",
+      "title": "Vice City Flamingos"
+    },
+    "v262-coleccion-vice-city-narcos": {
+      "category": "coleccionables",
+      "title": "Vice City Narcos"
+    },
+    "v262-coleccion-vice-city-manatees": {
+      "category": "coleccionables",
+      "title": "Vice City Manatees"
+    },
+    "v262-coleccion-vice-city-club-de-futbol": {
+      "category": "coleccionables",
+      "title": "Vice City Club De Fútbol"
+    },
+    "v262-coleccion-liberty-city-swingers": {
+      "category": "coleccionables",
+      "title": "Liberty City Swingers"
+    },
+    "v262-coleccion-liberty-city-penetrators": {
+      "category": "coleccionables",
+      "title": "Liberty City Penetrators"
+    },
+    "v262-coleccion-liberty-city-wrath": {
+      "category": "coleccionables",
+      "title": "Liberty City Wrath"
+    },
+    "v262-coleccion-los-santos-corkers": {
+      "category": "coleccionables",
+      "title": "Los Santos Corkers"
+    },
+    "v262-coleccion-los-santos-panic": {
+      "category": "coleccionables",
+      "title": "Los Santos Panic"
+    },
+    "v262-coleccion-los-santos-pounders": {
+      "category": "coleccionables",
+      "title": "Los Santos Pounders"
+    },
+    "v262-coleccion-backyard-wrestling": {
+      "category": "coleccionables",
+      "title": "Backyard Wrestling"
+    },
+    "v262-coleccion-americas-next-top-hooker": {
+      "category": "coleccionables",
+      "title": "America’s Next Top Hooker"
+    },
+    "v262-coleccion-delights-dancers": {
+      "category": "coleccionables",
+      "title": "Delights Dancers"
+    },
+    "v262-coleccion-jack-of-hearts-dancers": {
+      "category": "coleccionables",
+      "title": "Jack of Hearts Dancers"
+    },
+    "v262-coleccion-nine1nine-dancers": {
+      "category": "coleccionables",
+      "title": "Nine1Nine Dancers"
+    },
+    "v262-coleccion-the-legends-of-ratface": {
+      "category": "coleccionables",
+      "title": "The Legends of Ratface"
+    },
+    "v262-coleccion-right-wing-americas-hero": {
+      "category": "coleccionables",
+      "title": "Right Wing: America’s Hero"
+    },
+    "v262-coleccion-ed-comics-universe": {
+      "category": "coleccionables",
+      "title": "Ed Comics Universe"
+    },
+    "v262-actividad-golf": {
+      "category": "actividades",
+      "title": "Golf"
+    },
+    "v262-actividad-baloncesto": {
+      "category": "actividades",
+      "title": "Baloncesto"
+    },
+    "v262-actividad-billar": {
+      "category": "actividades",
+      "title": "Billar"
+    },
+    "v262-actividad-carreras": {
+      "category": "actividades",
+      "title": "Carreras"
+    },
+    "v262-golf-king-gator-adventure-golf": {
+      "category": "mapa-lugares",
+      "title": "King Gator Adventure Golf"
+    },
+    "v262-golf-frontier-adventure-golf": {
+      "category": "mapa-lugares",
+      "title": "Frontier Adventure Golf"
+    },
+    "v262-golf-dino-golf-challenge": {
+      "category": "mapa-lugares",
+      "title": "Dino Golf Challenge"
+    },
+    "v262-golf-leaf-links-golf-challenge": {
+      "category": "mapa-lugares",
+      "title": "Leaf Links Golf Challenge"
+    },
+    "v262-golf-mount-hailes-golf-challenge": {
+      "category": "mapa-lugares",
+      "title": "Mount Hailes Golf Challenge"
+    },
+    "v262-personaje-shirley": {
+      "category": "personajes",
+      "title": "Shirley"
+    },
+    "v262-personaje-kirk": {
+      "category": "personajes",
+      "title": "Kirk"
+    },
+    "v262-beneficio-goodtime-gear": {
+      "category": "economia",
+      "title": "Goodtime Gear"
+    },
+    "v262-vehiculo-bravado-youga-xl-79": {
+      "category": "vehiculos",
+      "title": "Bravado Youga XL ’79"
+    },
+    "v262-arma-girardi-az1200": {
+      "category": "armas",
+      "title": "Girardi AZ1200"
+    },
+    "v263-mision-new-look": {
+      "category": "misiones",
+      "title": "New Look"
+    },
+    "wiki-community-001c57435fdec245ecc2c989": {
+      "category": "personajes",
+      "title": "Kenny Brewster"
+    },
+    "wiki-community-009cf1a84d773caba9aff8f1": {
+      "category": "personajes",
+      "title": "Ricky"
+    },
+    "wiki-community-00b5c0a0090dff8d1687a5ba": {
+      "category": "personajes",
+      "title": "Unnamed GTA VI corrections officer"
+    },
+    "wiki-community-01efadf22cba4e94f05882d9": {
+      "category": "vehiculos",
+      "title": "Landstalker XL"
+    },
+    "wiki-community-02a477e162b22c82df28aa67": {
+      "category": "vehiculos",
+      "title": "Cliffhanger"
+    },
+    "wiki-community-0427c8b5ba472b4960a815eb": {
+      "category": "personajes",
+      "title": "Raymond (GTA VI)"
+    },
+    "wiki-community-043f5ca57fa247425736fba7": {
+      "category": "personajes",
+      "title": "Unnamed GTA VI San4San member"
+    },
+    "wiki-community-0471c3a56518c4585a66644f": {
+      "category": "personajes",
+      "title": "Rocco (GTA VI)"
+    },
+    "wiki-community-04fc46ffdf9ab4416e45e420": {
+      "category": "personajes",
+      "title": "Morgan Wallen"
+    },
+    "wiki-community-052a5e721d0f2de9b7dcec38": {
+      "category": "vehiculos",
+      "title": "Blista Compact"
+    },
+    "wiki-community-0666fa808412152c30facbaa": {
+      "category": "vehiculos",
+      "title": "Caddy"
+    },
+    "wiki-community-06ed6bcf7b21cfd972a20643": {
+      "category": "vehiculos",
+      "title": "Faggio"
+    },
+    "wiki-community-072cb4bfbbb66ee250792679": {
+      "category": "vehiculos",
+      "title": "LomBike"
+    },
+    "wiki-community-08d11001d69017d9b1bad3e9": {
+      "category": "vehiculos",
+      "title": "Hustler"
+    },
+    "wiki-community-092af2ba7054a4cf0c1cd29a": {
+      "category": "mapa-lugares",
+      "title": "State of Gloriana"
+    },
+    "wiki-community-094829817f298dc99f5ec504": {
+      "category": "vehiculos",
+      "title": "Buffalo"
+    },
+    "wiki-community-0b46a6875fc558938ecdb587": {
+      "category": "armas",
+      "title": "Golf Driver"
+    },
+    "wiki-community-0b700a8fde5367b0f1e29970": {
+      "category": "vehiculos",
+      "title": "Cruiser (bike)"
+    },
+    "wiki-community-0ba47ca8ec852786e752cc15": {
+      "category": "personajes",
+      "title": "RB Shaw"
+    },
+    "wiki-community-0c0bbb0447467ff851cf2273": {
+      "category": "vehiculos",
+      "title": "Boxville"
+    },
+    "wiki-community-10381f113522bd5bab7f0bb6": {
+      "category": "vehiculos",
+      "title": "Gauntlet Hellfire"
+    },
+    "wiki-community-10513f01e2f3ddb6deca9792": {
+      "category": "personajes",
+      "title": "Dre'Quan Priest"
+    },
+    "wiki-community-10fa200b7c94d9b09ffbbb67": {
+      "category": "vehiculos",
+      "title": "Mixer (4-axle)"
+    },
+    "wiki-community-130185723094f9fe53073b3f": {
+      "category": "vehiculos",
+      "title": "Granger (police)"
+    },
+    "wiki-community-139ee97a2221b3f533d57a18": {
+      "category": "vehiculos",
+      "title": "Dock Trailer"
+    },
+    "wiki-community-15cd437f80a8c4dc82743c2a": {
+      "category": "vehiculos",
+      "title": "Chino"
+    },
+    "wiki-community-18ac7bdf802bea3720237a73": {
+      "category": "vehiculos",
+      "title": "Ganado"
+    },
+    "wiki-community-19cf3a7ccf963d3c63bff41c": {
+      "category": "mapa-lugares",
+      "title": "North Fort Law"
+    },
+    "wiki-community-1a782f7f48465e16acc1b05a": {
+      "category": "vehiculos",
+      "title": "Cavalcade XL"
+    },
+    "wiki-community-1a910969666d474d57455184": {
+      "category": "personajes",
+      "title": "Unnamed GTA VI Macca & Friends frog character"
+    },
+    "wiki-community-1aa12783aa16b31818747f7a": {
+      "category": "vehiculos",
+      "title": "Airtug"
+    },
+    "wiki-community-1b7da6600545043c7e318930": {
+      "category": "mapa-lugares",
+      "title": "North Fort Law Combat Training School"
+    },
+    "wiki-community-1c52eabb5356a3367b197a71": {
+      "category": "vehiculos",
+      "title": "Coquette D10"
+    },
+    "wiki-community-1de768b4041d740e9ec62df7": {
+      "category": "vehiculos",
+      "title": "Locust"
+    },
+    "wiki-community-1eefac881dfcf74f103470a3": {
+      "category": "vehiculos",
+      "title": "Impaler LX"
+    },
+    "wiki-community-236fc9dd340d10fe1de96282": {
+      "category": "personajes",
+      "title": "Krever"
+    },
+    "wiki-community-238a850a766cb2604bb96301": {
+      "category": "personajes",
+      "title": "Lori Heder"
+    },
+    "wiki-community-251f19adc6d4684903945bf7": {
+      "category": "vehiculos",
+      "title": "L35P (police)"
+    },
+    "wiki-community-265518f1643c9cfb401e7b4f": {
+      "category": "personajes",
+      "title": "Kerry King"
+    },
+    "wiki-community-26fa44f0d65e4d89648542f5": {
+      "category": "vehiculos",
+      "title": "Bombora"
+    },
+    "wiki-community-27bae5c1562a8ed7cc1f03eb": {
+      "category": "vehiculos",
+      "title": "Coquette"
+    },
+    "wiki-community-27f4d5118fd212df95e3cce8": {
+      "category": "mapa-lugares",
+      "title": "Gulf of Leonida"
+    },
+    "wiki-community-28264a51f31ad02586720881": {
+      "category": "vehiculos",
+      "title": "Blazer"
+    },
+    "wiki-community-29840dd68cdfea0bee6198de": {
+      "category": "personajes",
+      "title": "Trina"
+    },
+    "wiki-community-298df7f53a2c0d5f782ab830": {
+      "category": "vehiculos",
+      "title": "Manana"
+    },
+    "wiki-community-2a6c0bc1a4cf1d08fecf3efe": {
+      "category": "personajes",
+      "title": "Megamundo CEO"
+    },
+    "wiki-community-2d24349d22fc465fa0c770e4": {
+      "category": "armas",
+      "title": "Pool Cue"
+    },
+    "wiki-community-2d4ff52cb5f119b27179f4a4": {
+      "category": "personajes",
+      "title": "Chunkee the Manatee"
+    },
+    "wiki-community-2da5e259d25ce01e5b88d1b2": {
+      "category": "vehiculos",
+      "title": "Granger 3600LX"
+    },
+    "wiki-community-31c9dc37429126dc728b1207": {
+      "category": "vehiculos",
+      "title": "Dominator GT"
+    },
+    "wiki-community-329b6c768720c7ed5a906994": {
+      "category": "vehiculos",
+      "title": "Contender"
+    },
+    "wiki-community-32d7b9bc34c4d71b4e9defde": {
+      "category": "vehiculos",
+      "title": "Manchez"
+    },
+    "wiki-community-343fbbe08aa5d1d8f552d8f6": {
+      "category": "vehiculos",
+      "title": "Impaler"
+    },
+    "wiki-community-345a85581a4d219479a4e3e0": {
+      "category": "vehiculos",
+      "title": "Jubilee"
+    },
+    "wiki-community-370975327007386c41d69398": {
+      "category": "vehiculos",
+      "title": "Bison 900 (monster truck)"
+    },
+    "wiki-community-382e0151f4d58e515d04f7ac": {
+      "category": "personajes",
+      "title": "AudaCity Contact"
+    },
+    "wiki-community-38ab67983948d1bc415c4d72": {
+      "category": "personajes",
+      "title": "DWNPLY"
+    },
+    "wiki-community-38f98d119ca6e49e5023c474": {
+      "category": "personajes",
+      "title": "Nevaeh"
+    },
+    "wiki-community-395764afea72496f2602725b": {
+      "category": "vehiculos",
+      "title": "Enduro"
+    },
+    "wiki-community-39d61c0e5acd6044bb56181d": {
+      "category": "personajes",
+      "title": "Brittney"
+    },
+    "wiki-community-39f3dd19769356b41b653228": {
+      "category": "vehiculos",
+      "title": "Granger (taxi)"
+    },
+    "wiki-community-3a653a781b96663b3af6a57d": {
+      "category": "vehiculos",
+      "title": "Clarion"
+    },
+    "wiki-community-3ad5223fefd4b6cb3f4cd95c": {
+      "category": "personajes",
+      "title": "Robyn"
+    },
+    "wiki-community-3c8c1c9993ff3b468efba299": {
+      "category": "personajes",
+      "title": "Boobie Ike"
+    },
+    "wiki-community-3d0431483a6d181c7bef2098": {
+      "category": "personajes",
+      "title": "Makenzi"
+    },
+    "wiki-community-3ef850e242585fc39a67c793": {
+      "category": "armas",
+      "title": "Hunter Sniper"
+    },
+    "wiki-community-3fca2aac62e96a51aab69aab": {
+      "category": "vehiculos",
+      "title": "Feroci"
+    },
+    "wiki-community-41226c14f5f301a23bcf85cd": {
+      "category": "vehiculos",
+      "title": "Freight Trailer"
+    },
+    "wiki-community-41d380b473306b0524eabebc": {
+      "category": "vehiculos",
+      "title": "Airboat 09"
+    },
+    "wiki-community-42624d1478d81e746e3e328b": {
+      "category": "vehiculos",
+      "title": "Carbonizzare"
+    },
+    "wiki-community-42defe9a84c4bf89b1ae0257": {
+      "category": "personajes",
+      "title": "Tim Vapid"
+    },
+    "wiki-community-43404cbfb2eea4def9b4ef3b": {
+      "category": "armas",
+      "title": "Micro Submachine Gun"
+    },
+    "wiki-community-43fc3815ad91652ef6592f70": {
+      "category": "armas",
+      "title": "Molotov Cocktails"
+    },
+    "wiki-community-4514381df1483565beaef0e6": {
+      "category": "vehiculos",
+      "title": "Dominator ASP"
+    },
+    "wiki-community-45eaf5e6885444937f7af808": {
+      "category": "vehiculos",
+      "title": "Buffalo (police)"
+    },
+    "wiki-community-45fcd74207d923f568685b40": {
+      "category": "armas",
+      "title": "Pistol"
+    },
+    "wiki-community-465c75439016fa43ec630d9c": {
+      "category": "personajes",
+      "title": "AudaCity Engineer"
+    },
+    "wiki-community-46dccea1a9c15627667a112a": {
+      "category": "personajes",
+      "title": "Unnamed GTA VI Brian's Marina pilot"
+    },
+    "wiki-community-476bcc5cf70570f6f76598ff": {
+      "category": "vehiculos",
+      "title": "Intruder"
+    },
+    "wiki-community-48aa822596a6495da32c6685": {
+      "category": "armas",
+      "title": "Smoke Grenades"
+    },
+    "wiki-community-49d6aeeeba0da7f68af9b8b0": {
+      "category": "vehiculos",
+      "title": "Cypher"
+    },
+    "wiki-community-4a0a406a2a9288356b0be27d": {
+      "category": "armas",
+      "title": "Jerry Can"
+    },
+    "wiki-community-4aa79cc835a570bc9ab8d35c": {
+      "category": "armas",
+      "title": "Unnamed GTA VI mini golf club"
+    },
+    "wiki-community-4ae6e7240a96df38cf8fcd8f": {
+      "category": "vehiculos",
+      "title": "Buzzard (police)"
+    },
+    "wiki-community-4bfff087b1936c165b4a6ea5": {
+      "category": "personajes",
+      "title": "Unnamed GTA VI Macca & Friends sun character"
+    },
+    "wiki-community-4d4a72b29fcc8e301cc9b032": {
+      "category": "vehiculos",
+      "title": "Bobcat XL"
+    },
+    "wiki-community-4d5c871ee3d0808b19d66c94": {
+      "category": "vehiculos",
+      "title": "Baller"
+    },
+    "wiki-community-4e69cbab83ee27c4051eb2ff": {
+      "category": "vehiculos",
+      "title": "Alpha"
+    },
+    "wiki-community-4ef830c5a522fe82ac2ed6dd": {
+      "category": "vehiculos",
+      "title": "Astron"
+    },
+    "wiki-community-4f01a2a6494283d91e614a08": {
+      "category": "personajes",
+      "title": "Unnamed GTA VI Wyman's friend"
+    },
+    "wiki-community-4fbd5fdb0ca7582ce8ef00f6": {
+      "category": "personajes",
+      "title": "Sparky Malarky"
+    },
+    "wiki-community-5029d5091202ee8c0fdaf23c": {
+      "category": "vehiculos",
+      "title": "Maverick"
+    },
+    "wiki-community-50ced8093fcee97274be362d": {
+      "category": "vehiculos",
+      "title": "Elegy Retro Custom"
+    },
+    "wiki-community-5112c623f03111842d84666a": {
+      "category": "vehiculos",
+      "title": "Montagne"
+    },
+    "wiki-community-52dacf2e5f585fade6c72307": {
+      "category": "vehiculos",
+      "title": "DH-7 Iron Mule"
+    },
+    "wiki-community-534cdb64dbcbba2b6a9798c1": {
+      "category": "vehiculos",
+      "title": "Delmar"
+    },
+    "wiki-community-5481cda456d3d051521906c0": {
+      "category": "personajes",
+      "title": "Erin Henshaw"
+    },
+    "wiki-community-55c7fdcf360cb5932c52ef74": {
+      "category": "personajes",
+      "title": "Mud Dog Mike"
+    },
+    "wiki-community-5745b4b3df56619181484fc4": {
+      "category": "personajes",
+      "title": "Shanese"
+    },
+    "wiki-community-58543cf42e6805e31570f05a": {
+      "category": "armas",
+      "title": "Unnamed GTA VI Vom Feuer assault rifle"
+    },
+    "wiki-community-587a786799290aa89fe6bdd3": {
+      "category": "vehiculos",
+      "title": "Dinghy"
+    },
+    "wiki-community-5a1bfb5d153fee5298a4d2c8": {
+      "category": "personajes",
+      "title": "Unnamed GTA VI thug"
+    },
+    "wiki-community-5c328b4675d4b808c150bc70": {
+      "category": "personajes",
+      "title": "Randy (GTA VI)"
+    },
+    "wiki-community-5c3898221112e405907121b1": {
+      "category": "vehiculos",
+      "title": "Hermes"
+    },
+    "wiki-community-5c79a9b1fc5c9092ac2232c2": {
+      "category": "vehiculos",
+      "title": "Buzzard"
+    },
+    "wiki-community-5e1c423d30d73831295d3c76": {
+      "category": "personajes",
+      "title": "Unnamed GTA VI Key Lento female resident"
+    },
+    "wiki-community-5ec79a6c5b8e110ec332ca7c": {
+      "category": "personajes",
+      "title": "Jimmy Canto"
+    },
+    "wiki-community-5fb0eade51ecfc5db0090d8e": {
+      "category": "personajes",
+      "title": "Elonzo's Friend"
+    },
+    "wiki-community-5fdde0a0d6dcb7dcb0166ff8": {
+      "category": "armas",
+      "title": "Baseball Bat"
+    },
+    "wiki-community-6021255b952005dec59d22ce": {
+      "category": "personajes",
+      "title": "Kodak Black"
+    },
+    "wiki-community-63289fe395d542040041e7d5": {
+      "category": "personajes",
+      "title": "Jason Duval"
+    },
+    "wiki-community-64251411902bb145c6a7f737": {
+      "category": "armas",
+      "title": "Unnamed GTA VI Springfield Armory M1A-inspired rifle"
+    },
+    "wiki-community-678b49a761e8b3bf495f5708": {
+      "category": "vehiculos",
+      "title": "Journey II"
+    },
+    "wiki-community-69e788bc014f81c34230556b": {
+      "category": "personajes",
+      "title": "Lucia Caminos"
+    },
+    "wiki-community-69ffe7b0a6f2dab8b8380463": {
+      "category": "vehiculos",
+      "title": "Baller ST-D"
+    },
+    "wiki-community-6a4c81541ab8297b75bff026": {
+      "category": "vehiculos",
+      "title": "Bison 1800 (police)"
+    },
+    "wiki-community-6d0a4831a02251a34bf4cd44": {
+      "category": "armas",
+      "title": "Flashlight"
+    },
+    "wiki-community-6d4c165260b07464e8e56379": {
+      "category": "vehiculos",
+      "title": "Lowline (police)"
+    },
+    "wiki-community-6e89b9946397219ad3ba2830": {
+      "category": "armas",
+      "title": "Golf Balls"
+    },
+    "wiki-community-6f557c85c59edb559f95ba73": {
+      "category": "personajes",
+      "title": "Sam (GTA VI)"
+    },
+    "wiki-community-7059089ec13d65a6184d8dc8": {
+      "category": "vehiculos",
+      "title": "Dubsta"
+    },
+    "wiki-community-70ea885a42c7556c148427c6": {
+      "category": "vehiculos",
+      "title": "Ambulance"
+    },
+    "wiki-community-711d4e2122d52b91145e0a9f": {
+      "category": "vehiculos",
+      "title": "Comet S2 Cabrio"
+    },
+    "wiki-community-711e168717c4111e69ca3cab": {
+      "category": "personajes",
+      "title": "Valentina"
+    },
+    "wiki-community-71536fca0f36f72ee7b019ba": {
+      "category": "vehiculos",
+      "title": "Gauntlet Classic Custom"
+    },
+    "wiki-community-71805feb3a0d7eaa7fe6dbdd": {
+      "category": "armas",
+      "title": "Unnamed GTA VI Brügger & Thomet MP9-inspired submachine gun"
+    },
+    "wiki-community-723e9918a1d21a8a3184ca8e": {
+      "category": "vehiculos",
+      "title": "Furia"
+    },
+    "wiki-community-7245dcb371cdfe2bf5c9a8c0": {
+      "category": "personajes",
+      "title": "Macca the Gator"
+    },
+    "wiki-community-72be9a9a7757a17ace69b8e6": {
+      "category": "personajes",
+      "title": "Deb Odell"
+    },
+    "wiki-community-731c8fdc7b9073d3d04aad9b": {
+      "category": "armas",
+      "title": "Morgan"
+    },
+    "wiki-community-733b5d2e3821065001c015dd": {
+      "category": "vehiculos",
+      "title": "Bison 900"
+    },
+    "wiki-community-7513c72a33bca2cc4669d619": {
+      "category": "armas",
+      "title": "Golf Iron"
+    },
+    "wiki-community-75402ac5c75cd8ec29544d6a": {
+      "category": "personajes",
+      "title": "Burna Boy"
+    },
+    "wiki-community-75deb8b39aaf32a152e9f589": {
+      "category": "personajes",
+      "title": "Tom Araya"
+    },
+    "wiki-community-76003585b42597189e86a7e3": {
+      "category": "armas",
+      "title": "Golf Wedge"
+    },
+    "wiki-community-76668da2673ef7ebda6989eb": {
+      "category": "personajes",
+      "title": "Monali$a"
+    },
+    "wiki-community-76bb9571c6ca64f59f38cdca": {
+      "category": "vehiculos",
+      "title": "Mallard"
+    },
+    "wiki-community-772024d3c0f6c6f6f148d009": {
+      "category": "armas",
+      "title": "Fire Bottle"
+    },
+    "wiki-community-7834de5570caeaa9fc5d4e11": {
+      "category": "vehiculos",
+      "title": "Alvino V1"
+    },
+    "wiki-community-7acd7944113ab4b4ca9e17eb": {
+      "category": "vehiculos",
+      "title": "Aleutian"
+    },
+    "wiki-community-7b18af7988ab3b35faa5a71c": {
+      "category": "personajes",
+      "title": "Unnamed GTA VI Macca & Friends flamingo character"
+    },
+    "wiki-community-7bb5534b3de09e5b5f325571": {
+      "category": "vehiculos",
+      "title": "Lectro"
+    },
+    "wiki-community-7d211d71cb963a45ac2b5c15": {
+      "category": "personajes",
+      "title": "Wyman"
+    },
+    "wiki-community-7d394cc99abaab0f0b086068": {
+      "category": "vehiculos",
+      "title": "Kayak"
+    },
+    "wiki-community-7e34007b1e4279e617a5a642": {
+      "category": "armas",
+      "title": "Unnamed GTA VI Stoeger Longfowler-inspired shotgun"
+    },
+    "wiki-community-81b0ae7fd1a330be20ef3af5": {
+      "category": "armas",
+      "title": "Flashbangs"
+    },
+    "wiki-community-81fe56851a101e0dc8adccb7": {
+      "category": "vehiculos",
+      "title": "5804CP"
+    },
+    "wiki-community-8220ec5ffb4ee61c11d26dcd": {
+      "category": "personajes",
+      "title": "Raul Bautista"
+    },
+    "wiki-community-8225fdf6e4a3c650fa9b2a11": {
+      "category": "personajes",
+      "title": "Brian Heder"
+    },
+    "wiki-community-8323bec1062a46f58fdaa011": {
+      "category": "vehiculos",
+      "title": "Dominator Buggy"
+    },
+    "wiki-community-84417f9b41b36b4138191e66": {
+      "category": "armas",
+      "title": "Sniper Rifle"
+    },
+    "wiki-community-845911948ee2c2d54b608a62": {
+      "category": "vehiculos",
+      "title": "Airboat 09 (police)"
+    },
+    "wiki-community-8514163541ebbcd6669c9f55": {
+      "category": "vehiculos",
+      "title": "Granger"
+    },
+    "wiki-community-854df35e206b40a8ae5dad2b": {
+      "category": "vehiculos",
+      "title": "Carbon RS"
+    },
+    "wiki-community-87f3c6fc04dc956c387c37a8": {
+      "category": "vehiculos",
+      "title": "Dominator GTX"
+    },
+    "wiki-community-88007953834252717a635b55": {
+      "category": "vehiculos",
+      "title": "Caracara 4x4"
+    },
+    "wiki-community-88d2579efdddc348fadf269a": {
+      "category": "vehiculos",
+      "title": "Freight Train (tanker)"
+    },
+    "wiki-community-88d96bec70596bc94c5100e9": {
+      "category": "vehiculos",
+      "title": "Bison 1800"
+    },
+    "wiki-community-89357c2e0474853c399dd7f8": {
+      "category": "vehiculos",
+      "title": "Coquette Classic"
+    },
+    "wiki-community-89f931443e93c60bf3b1e702": {
+      "category": "personajes",
+      "title": "Chester (GTA VI)"
+    },
+    "wiki-community-8a5a6c428d011da26699cec0": {
+      "category": "personajes",
+      "title": "Unnamed GTA VI male friend"
+    },
+    "wiki-community-8a9be4e1d16d84c191908168": {
+      "category": "vehiculos",
+      "title": "Buffalo STX Pursuit"
+    },
+    "wiki-community-8adbb4268b3d20cd91986495": {
+      "category": "mapa-lugares",
+      "title": "Ambrosia County"
+    },
+    "wiki-community-8b0d78d3ef0f7eb4fa007fd8": {
+      "category": "armas",
+      "title": "Speargun"
+    },
+    "wiki-community-8b7be61bde09c807c3a4de2a": {
+      "category": "personajes",
+      "title": "Andrés de León"
+    },
+    "wiki-community-8b7d384bb2231682a448a036": {
+      "category": "personajes",
+      "title": "Unnamed GTA VI female friend"
+    },
+    "wiki-community-8c229e9295683c913c2d805e": {
+      "category": "personajes",
+      "title": "Petra Navarro"
+    },
+    "wiki-community-8c3f4f939fea5840bf228892": {
+      "category": "vehiculos",
+      "title": "Growler"
+    },
+    "wiki-community-8c637fa2141141ef19da63ea": {
+      "category": "vehiculos",
+      "title": "DF8-90"
+    },
+    "wiki-community-8df6f912ae9bcb0543945873": {
+      "category": "vehiculos",
+      "title": "Faction"
+    },
+    "wiki-community-90190091e0c6d7aaea20b82c": {
+      "category": "personajes",
+      "title": "Unnamed GTA VI pet iguana"
+    },
+    "wiki-community-905b0cd363b49408968287bc": {
+      "category": "armas",
+      "title": "Compact Submachine Gun"
+    },
+    "wiki-community-9286b4bade95e543b30163af": {
+      "category": "personajes",
+      "title": "Port Gellhorn Vehicle Fence"
+    },
+    "wiki-community-92f6c83158ed65b7ba163e5a": {
+      "category": "vehiculos",
+      "title": "Arcturus"
+    },
+    "wiki-community-9356b6b689ee45d29cbc6c20": {
+      "category": "mapa-lugares",
+      "title": "Balsero"
+    },
+    "wiki-community-936cc5e8b5ff06ead4035739": {
+      "category": "vehiculos",
+      "title": "Kamacho"
+    },
+    "wiki-community-956ad5c21734ef5f0663f302": {
+      "category": "mapa-lugares",
+      "title": "Ambrosia"
+    },
+    "wiki-community-9672a4bd01c90e42e477bbfd": {
+      "category": "vehiculos",
+      "title": "Jugular"
+    },
+    "wiki-community-975bbc0a4d0dcb1389a353d5": {
+      "category": "vehiculos",
+      "title": "Buffalo STX"
+    },
+    "wiki-community-98bf7a87a9c8f3ebb88c6900": {
+      "category": "armas",
+      "title": "Golf Putter"
+    },
+    "wiki-community-9abdfe89504965f55212056c": {
+      "category": "armas",
+      "title": "Torch Flashlight"
+    },
+    "wiki-community-9ad7511bfc8e1bbe1c4d0361": {
+      "category": "armas",
+      "title": "Unnamed GTA VI Capo pistol"
+    },
+    "wiki-community-9c1b7ed3f387a2a6c39d8f9d": {
+      "category": "armas",
+      "title": "Heavy Machine Gun"
+    },
+    "wiki-community-9c930a90a3cd4dd7aee41f0f": {
+      "category": "personajes",
+      "title": "Unnamed GTA VI Macca & Friends human character"
+    },
+    "wiki-community-9d09e3e1e15f92ba99b0ec76": {
+      "category": "vehiculos",
+      "title": "Boat Trailer"
+    },
+    "wiki-community-9d4b622fa055fae15e1bdf9e": {
+      "category": "personajes",
+      "title": "Trick Daddy"
+    },
+    "wiki-community-9db2d762c85d2f8ed97e9576": {
+      "category": "personajes",
+      "title": "Vicki (GTA VI)"
+    },
+    "wiki-community-9e47084469eef8859b9dd47b": {
+      "category": "personajes",
+      "title": "Lil Ricky Sawdust"
+    },
+    "wiki-community-9e478381314ed3bd53e91b80": {
+      "category": "vehiculos",
+      "title": "Cheetah Classic"
+    },
+    "wiki-community-9e57987fa0e92f02f4d30ccc": {
+      "category": "vehiculos",
+      "title": "Airport Bus"
+    },
+    "wiki-community-9e76d23d169f22a1d00bc070": {
+      "category": "personajes",
+      "title": "Palms Trax"
+    },
+    "wiki-community-9ed6bc9e6b8c1f24af144323": {
+      "category": "armas",
+      "title": "Hammer"
+    },
+    "wiki-community-9f19d6b91dc3a7e4ddbeceda": {
+      "category": "vehiculos",
+      "title": "Container Trailer"
+    },
+    "wiki-community-9fdb254f0581b6f545d3911a": {
+      "category": "vehiculos",
+      "title": "Landstalker XL (police)"
+    },
+    "wiki-community-a01c25e0c7f67d3af879ceeb": {
+      "category": "personajes",
+      "title": "El Martillo"
+    },
+    "wiki-community-a37574d3d8f301faddad310a": {
+      "category": "vehiculos",
+      "title": "Buster"
+    },
+    "wiki-community-a442adf140236405cae64ba9": {
+      "category": "personajes",
+      "title": "Pinche the Crab"
+    },
+    "wiki-community-a44b061fb874bf6a9cb83404": {
+      "category": "vehiculos",
+      "title": "Benson"
+    },
+    "wiki-community-a506d15fa2e19d11927b72a0": {
+      "category": "vehiculos",
+      "title": "Hauler"
+    },
+    "wiki-community-a5287ebbb5ba0805445c6fe7": {
+      "category": "vehiculos",
+      "title": "Dorado"
+    },
+    "wiki-community-a8e653643f9aa02eb6aa3bc3": {
+      "category": "personajes",
+      "title": "Unnamed GTA VI Leonida impertinent"
+    },
+    "wiki-community-aa6ea8ff9cef1c1d7b552789": {
+      "category": "personajes",
+      "title": "Elonzo"
+    },
+    "wiki-community-aa84bb717fe2c0dcda3866a0": {
+      "category": "vehiculos",
+      "title": "Dingus"
+    },
+    "wiki-community-ab5828b4267ebacafea3f087": {
+      "category": "vehiculos",
+      "title": "Itali GTO"
+    },
+    "wiki-community-ab8bc0ed0466af35f1f71dfe": {
+      "category": "vehiculos",
+      "title": "Dashound"
+    },
+    "wiki-community-abbe02730421fa5ea85845bf": {
+      "category": "vehiculos",
+      "title": "Emperor"
+    },
+    "wiki-community-ac7847a80c444b051de0831d": {
+      "category": "vehiculos",
+      "title": "Comet Retro Custom"
+    },
+    "wiki-community-adc10e3a1b06f470254b1931": {
+      "category": "personajes",
+      "title": "Bae-Luxe"
+    },
+    "wiki-community-aeb2d902f8f4d23f929612fb": {
+      "category": "personajes",
+      "title": "Unnamed GTA VI audio engineer"
+    },
+    "wiki-community-af2867f7e3d2895afdded2c1": {
+      "category": "personajes",
+      "title": "Unnamed GTA VI VCPD officer"
+    },
+    "wiki-community-afa88c2b475def943a2b647e": {
+      "category": "personajes",
+      "title": "Edouard Artigue"
+    },
+    "wiki-community-b01786ffd57fda3880d759a5": {
+      "category": "vehiculos",
+      "title": "Infernus Classic"
+    },
+    "wiki-community-b0282e2435e63718ba5ef316": {
+      "category": "vehiculos",
+      "title": "Dominator"
+    },
+    "wiki-community-b186d23efa6a64340384ae88": {
+      "category": "vehiculos",
+      "title": "Itali RSX"
+    },
+    "wiki-community-b40b4d2c3050ade328ce88db": {
+      "category": "personajes",
+      "title": "Kai (GTA VI)"
+    },
+    "wiki-community-b4bdf0daa41cdd2b07a6a2f5": {
+      "category": "armas",
+      "title": "Switchblade"
+    },
+    "wiki-community-b5425adcb73d95bc047cff39": {
+      "category": "personajes",
+      "title": "Billy (GTA VI)"
+    },
+    "wiki-community-b54cb9415d86d32148f78e12": {
+      "category": "vehiculos",
+      "title": "Mamba GT"
+    },
+    "wiki-community-b5af62f5a3b4ff1c24891902": {
+      "category": "vehiculos",
+      "title": "Bison 3800"
+    },
+    "wiki-community-b5efbce064220553cb5d6998": {
+      "category": "armas",
+      "title": "Unnamed GTA VI MAC-11-inspired submachine gun"
+    },
+    "wiki-community-b705780ed1c75dd975de49ae": {
+      "category": "personajes",
+      "title": "La Gata"
+    },
+    "wiki-community-b989041853b263ee17cfff0f": {
+      "category": "personajes",
+      "title": "Zach (GTA VI)"
+    },
+    "wiki-community-b9c2874050ba99f6ab1c6a56": {
+      "category": "vehiculos",
+      "title": "Emerus"
+    },
+    "wiki-community-b9f40802894f5db33fb8099d": {
+      "category": "vehiculos",
+      "title": "Hellion"
+    },
+    "wiki-community-ba1461d3805f5c156c51e409": {
+      "category": "armas",
+      "title": "Grenades"
+    },
+    "wiki-community-bbd27b51bf392c9518472f4b": {
+      "category": "mapa-lugares",
+      "title": "Bayside"
+    },
+    "wiki-community-bc6b80e41bdf76be1a622d51": {
+      "category": "personajes",
+      "title": "Unnamed Megamundo assistant"
+    },
+    "wiki-community-bcfbdb222f28a56453bc2a72": {
+      "category": "vehiculos",
+      "title": "Banshee"
+    },
+    "wiki-community-bd78813ed8914134eb395a1e": {
+      "category": "vehiculos",
+      "title": "Boomazoom"
+    },
+    "wiki-community-bd8d237851eebadca61ac1b2": {
+      "category": "vehiculos",
+      "title": "Mammatus"
+    },
+    "wiki-community-bdb757bee64fe0aed354a1cb": {
+      "category": "mapa-lugares",
+      "title": "Apollo Aggregates Plant"
+    },
+    "wiki-community-c01a6261137c130e30745dfb": {
+      "category": "armas",
+      "title": "Bolt Action Sniper"
+    },
+    "wiki-community-c1c83b910e12d50c5802658b": {
+      "category": "personajes",
+      "title": "Camilo"
+    },
+    "wiki-community-c2700cf26d42fe280a0f977b": {
+      "category": "mapa-lugares",
+      "title": "Allied Crystal Sugar Refinery"
+    },
+    "wiki-community-c7baa1938d32181c62aee26c": {
+      "category": "personajes",
+      "title": "Ernesto"
+    },
+    "wiki-community-c8b13f5af8a27f336a9aad7d": {
+      "category": "personajes",
+      "title": "Phil (GTA VI)"
+    },
+    "wiki-community-c8d2159c0e58f8e1df7a41c0": {
+      "category": "vehiculos",
+      "title": "Endurex Race Bike"
+    },
+    "wiki-community-ca2a7db3364c849c8336e003": {
+      "category": "vehiculos",
+      "title": "Bison"
+    },
+    "wiki-community-cb243bfff3d6353134e8b90b": {
+      "category": "mapa-lugares",
+      "title": "Belville"
+    },
+    "wiki-community-cdc8379933ea156dc7e4410c": {
+      "category": "vehiculos",
+      "title": "Duster"
+    },
+    "wiki-community-ce65ca1c756379a8a8c38d6c": {
+      "category": "vehiculos",
+      "title": "Avarus"
+    },
+    "wiki-community-d34e55156d3ff33b59a085da": {
+      "category": "personajes",
+      "title": "Sam (Mud Club)"
+    },
+    "wiki-community-d3e3eeff56ff3b1d69637aa5": {
+      "category": "vehiculos",
+      "title": "Double T"
+    },
+    "wiki-community-d42a873550eb08444ca6bd47": {
+      "category": "mapa-lugares",
+      "title": "State of Leonida"
+    },
+    "wiki-community-d5620996a822cd5b8f5e86c0": {
+      "category": "armas",
+      "title": "Mustang .357"
+    },
+    "wiki-community-d7778b3fef5b53100d99ab52": {
+      "category": "mapa-lugares",
+      "title": "Area 69 (HD Universe)"
+    },
+    "wiki-community-d7ae45021d725377d798d720": {
+      "category": "vehiculos",
+      "title": "Gauntlet Interceptor"
+    },
+    "wiki-community-d878dbb4501b7a6e185dea8e": {
+      "category": "vehiculos",
+      "title": "Maverick (air ambulance)"
+    },
+    "wiki-community-d9918fbc78722cf6c8c8af2f": {
+      "category": "personajes",
+      "title": "Delta Dawne"
+    },
+    "wiki-community-dae3e315ab743b8f12507227": {
+      "category": "personajes",
+      "title": "Méndez"
+    },
+    "wiki-community-db406a00b6fe50a5249819ba": {
+      "category": "vehiculos",
+      "title": "Freight Train (boxcar)"
+    },
+    "wiki-community-db5a290b6df1d6bed216f065": {
+      "category": "vehiculos",
+      "title": "Freight Train"
+    },
+    "wiki-community-dbf62fb0cdd4528e3de1558d": {
+      "category": "vehiculos",
+      "title": "Asterope GZ"
+    },
+    "wiki-community-dead5aa4dbc5b2fa4cd13d45": {
+      "category": "personajes",
+      "title": "Cal Hampton"
+    },
+    "wiki-community-dfcd46f23fb041c33b9e98a0": {
+      "category": "vehiculos",
+      "title": "Buzzard Attack Chopper"
+    },
+    "wiki-community-e0e6108bdf9c63302b2ff60b": {
+      "category": "armas",
+      "title": "Nipper .38"
+    },
+    "wiki-community-e1cec9e6bcc7aed294bb5739": {
+      "category": "personajes",
+      "title": "Hammer Lady"
+    },
+    "wiki-community-e341ea044741684d5433283c": {
+      "category": "armas",
+      "title": "Unnamed GTA VI Smith & Wesson M&P-inspired pistol"
+    },
+    "wiki-community-e388e506252f71f0b1561f5b": {
+      "category": "vehiculos",
+      "title": "Impaler SZ"
+    },
+    "wiki-community-e3d52c79d47b531f50aec80a": {
+      "category": "vehiculos",
+      "title": "Flatbed Trailer"
+    },
+    "wiki-community-e4359d9e234cd901ede96133": {
+      "category": "personajes",
+      "title": "Aunt Tee"
+    },
+    "wiki-community-e446be8d37cc63f7c5e913d5": {
+      "category": "armas",
+      "title": "Hunting Knife"
+    },
+    "wiki-community-e4cb876423a748b86dcc79f8": {
+      "category": "vehiculos",
+      "title": "Deviant"
+    },
+    "wiki-community-e5451f871781846eeb800560": {
+      "category": "armas",
+      "title": "Crowbar"
+    },
+    "wiki-community-e7f4851d5bac249487328c35": {
+      "category": "vehiculos",
+      "title": "Caddy (K102)"
+    },
+    "wiki-community-e987d3d1bb70291090a6d1a5": {
+      "category": "vehiculos",
+      "title": "Dominator (1967)"
+    },
+    "wiki-community-ea728e2a9e36b6aa3ea4b6c2": {
+      "category": "personajes",
+      "title": "Stefanie"
+    },
+    "wiki-community-eb4e6072fff8206c173d01ac": {
+      "category": "vehiculos",
+      "title": "Lowline"
+    },
+    "wiki-community-eb7b136b1b7d5c600bc5ade8": {
+      "category": "armas",
+      "title": "Grenade Launcher"
+    },
+    "wiki-community-ebe51b2a2488ecd7e484717d": {
+      "category": "personajes",
+      "title": "Bill Anthony"
+    },
+    "wiki-community-ec0749de2b8da491a9f20b19": {
+      "category": "armas",
+      "title": "Knife"
+    },
+    "wiki-community-ec9e202890e6219481875372": {
+      "category": "vehiculos",
+      "title": "Buccaneer"
+    },
+    "wiki-community-ed0faf2ab01a96c39732b3cf": {
+      "category": "armas",
+      "title": "Unnamed GTA VI Remington 700 BDL-inspired rifle"
+    },
+    "wiki-community-edfa49a57beebbe80036850f": {
+      "category": "vehiculos",
+      "title": "Box Trailer"
+    },
+    "wiki-community-ef359849daa77bec618d3aee": {
+      "category": "vehiculos",
+      "title": "Marquis"
+    },
+    "wiki-community-f12e59e1c351e5da26284924": {
+      "category": "vehiculos",
+      "title": "FCR 1000"
+    },
+    "wiki-community-f156b42cfd3cb59f79a15bfc": {
+      "category": "vehiculos",
+      "title": "Minivan"
+    },
+    "wiki-community-f337d0e8eb96135c6a18e33a": {
+      "category": "personajes",
+      "title": "Alex Consani"
+    },
+    "wiki-community-f4f54018f316458b9550ee95": {
+      "category": "personajes",
+      "title": "Jack Howitzer (HD Universe)"
+    },
+    "wiki-community-f537d9f5618c63b20d857541": {
+      "category": "vehiculos",
+      "title": "Burrito"
+    },
+    "wiki-community-f56b84caccca4e7822031ecd": {
+      "category": "vehiculos",
+      "title": "Ingot"
+    },
+    "wiki-community-f6982c533efa0ed85a240bef": {
+      "category": "vehiculos",
+      "title": "Forklift"
+    },
+    "wiki-community-f6e7aa6704927b6c9d574dd7": {
+      "category": "mapa-lugares",
+      "title": "Atlantic Ocean"
+    },
+    "wiki-community-f83d508327d02b6982bb36cd": {
+      "category": "vehiculos",
+      "title": "Luxor"
+    },
+    "wiki-community-faa3412c2e51424bfa6f2e86": {
+      "category": "vehiculos",
+      "title": "8F Drafter"
+    },
+    "wiki-community-fdcced5b71f7eb3f82c98538": {
+      "category": "vehiculos",
+      "title": "Dozer"
+    },
+    "wiki-community-0fdaf6d658424cad4498cf5c": {
+      "category": "vehiculos",
+      "title": "Biff"
+    },
+    "wiki-community-f5047ebd26bd8014d7489cb9": {
+      "category": "vehiculos",
+      "title": "BMX"
+    },
+    "wiki-community-11216c624de0cb84994f4539": {
+      "category": "personajes",
+      "title": "Iris"
+    },
+    "wiki-community-a06c0d4b63be696dc0b9c711": {
+      "category": "personajes",
+      "title": "Ian"
+    },
+    "wiki-community-25c8903401433833a8d380be": {
+      "category": "armas",
+      "title": "ES9"
+    },
+    "wiki-community-5a313d8cd2c0dd274602b70e": {
+      "category": "armas",
+      "title": "556"
+    },
+    "wiki-community-8a81ffd3a58c1f2b6d495ad0": {
+      "category": "armas",
+      "title": "DW9"
+    },
+    "wiki-community-5ccc8a9af34e52e3bd214588": {
+      "category": "armas",
+      "title": "850"
+    },
+    "wiki-community-967d5c35bd4cee8118294973": {
+      "category": "armas",
+      "title": "K17"
+    },
+    "wiki-community-fdbf8191b2040620fb81a3a1": {
+      "category": "armas",
+      "title": "RPG"
+    },
+    "wiki-community-d4939311f88cbc505886e622": {
+      "category": "vehiculos",
+      "title": "Dodo"
+    },
+    "wiki-community-06a0fd76516432aad55ffc7d": {
+      "category": "vehiculos",
+      "title": "FR36"
+    },
+    "wiki-community-1c3c8960a5d2a58e5855be67": {
+      "category": "personajes",
+      "title": "Rudi"
+    },
+    "wiki-community-5b8cd360b7fe93a8f7cbbb2a": {
+      "category": "personajes",
+      "title": "Roxy"
+    },
+    "wiki-community-c774ab906ac66775dbad9758": {
+      "category": "personajes",
+      "title": "Tit"
+    },
+    "wiki-community-f1e5e685ac2efd508b46d83f": {
+      "category": "personajes",
+      "title": "Yago"
+    },
+    "wiki-community-85a1b9440677dc2d8220bc37": {
+      "category": "vehiculos",
+      "title": "Futo"
+    },
+    "wiki-community-e67c0cc93ccef12f2cb74895": {
+      "category": "vehiculos",
+      "title": "Jet"
+    },
+    "wiki-community-aaec8abcc0a1523a108e7325": {
+      "category": "vehiculos",
+      "title": "L35P"
+    },
+    "wiki-community-8e159781f9439d43b56c2bf1": {
+      "category": "vehiculos",
+      "title": "Mesa"
+    },
+    "wiki-community-779b422d5d0d0af35aa65fba": {
+      "category": "vehiculos",
+      "title": "Nightblade"
+    },
+    "wiki-community-7c362f39312f62fb292686a8": {
+      "category": "vehiculos",
+      "title": "Nimbus"
+    },
+    "wiki-community-90a69298797e25ea9de391e9": {
+      "category": "vehiculos",
+      "title": "Neon"
+    },
+    "wiki-community-fd96be83d4c04995e54fd607": {
+      "category": "vehiculos",
+      "title": "Novak"
+    },
+    "wiki-community-18a0096a922051322529aaa7": {
+      "category": "vehiculos",
+      "title": "Outlaw"
+    },
+    "wiki-community-20d3bb839457bf7a58d0e67d": {
+      "category": "vehiculos",
+      "title": "Montagne (police)"
+    },
+    "wiki-community-9667a0a23396c8959dc83c65": {
+      "category": "vehiculos",
+      "title": "Moonbeam"
+    },
+    "wiki-community-54852b24fb86862a788f71c8": {
+      "category": "vehiculos",
+      "title": "Packer"
+    },
+    "wiki-community-ded86b69dcf5668e2848d321": {
+      "category": "vehiculos",
+      "title": "Mule"
+    },
+    "wiki-community-f4dbd35cd4f37e5dd93b8433": {
+      "category": "vehiculos",
+      "title": "Moocher"
+    },
+    "wiki-community-de8eb90c94af084b43f419e1": {
+      "category": "vehiculos",
+      "title": "Phantom"
+    },
+    "wiki-community-1eb5a57d66c661b913c426dc": {
+      "category": "vehiculos",
+      "title": "Police Bike"
+    },
+    "wiki-community-6b7b67d5698a2eedf2a87cfc": {
+      "category": "vehiculos",
+      "title": "Penumbra"
+    },
+    "wiki-community-a8816fcb3f85947056fa6e13": {
+      "category": "vehiculos",
+      "title": "Police Riot"
+    },
+    "wiki-community-e08b088e1ac5778c4783bd63": {
+      "category": "vehiculos",
+      "title": "Paragon R"
+    },
+    "wiki-community-506a8fa09f6b8c64bc3b697f": {
+      "category": "vehiculos",
+      "title": "Penumbra FF"
+    },
+    "wiki-community-0796b077c925783e4e9f9161": {
+      "category": "vehiculos",
+      "title": "Patriot Mil-Spec"
+    },
+    "wiki-community-82dcf5fed0dbea233d76642c": {
+      "category": "vehiculos",
+      "title": "PMP 700"
+    },
+    "wiki-community-51cd818eca8bf9a460576e7b": {
+      "category": "vehiculos",
+      "title": "Police Maverick"
+    },
+    "wiki-community-cc9d47e8c55e74545b31a7e0": {
+      "category": "vehiculos",
+      "title": "Phoenix"
+    },
+    "wiki-community-c8b222d2357bd7adb760ba0d": {
+      "category": "vehiculos",
+      "title": "Rhino"
+    },
+    "wiki-community-e6811078e9deca9617a2e2e4": {
+      "category": "vehiculos",
+      "title": "Rebel"
+    },
+    "wiki-community-93fb555ecab94070fc846d98": {
+      "category": "vehiculos",
+      "title": "Raiden"
+    },
+    "wiki-community-34821acdd960f1d1b9cbc2e8": {
+      "category": "vehiculos",
+      "title": "Rebla GTS"
+    },
+    "wiki-community-a768265e06b98fa4d1e671fe": {
+      "category": "vehiculos",
+      "title": "Reclaimer (first generation)"
+    },
+    "wiki-community-2d03e25114d0f660f3cdbaf2": {
+      "category": "vehiculos",
+      "title": "Primo"
+    },
+    "wiki-community-786f559280115176644e407a": {
+      "category": "vehiculos",
+      "title": "Rancher"
+    },
+    "wiki-community-7dff55da12895b60ffcf24f3": {
+      "category": "vehiculos",
+      "title": "Reclaimer"
+    },
+    "wiki-community-9d2fcece54c540831370e1a6": {
+      "category": "vehiculos",
+      "title": "Regina"
+    },
+    "wiki-community-89dd8d0748e84dc9d20812c8": {
+      "category": "vehiculos",
+      "title": "Reclaimer (tow truck)"
+    },
+    "wiki-community-c57d7a1d9659f00589dcd063": {
+      "category": "vehiculos",
+      "title": "Ruiner"
+    },
+    "wiki-community-2697b25079d05785eb312d7a": {
+      "category": "vehiculos",
+      "title": "Ripley"
+    },
+    "wiki-community-c8f5662608ca64ccce7b54ce": {
+      "category": "vehiculos",
+      "title": "Sadler"
+    },
+    "wiki-community-e3cb0993fb8bd23348fd83c7": {
+      "category": "vehiculos",
+      "title": "Rumpo Custom"
+    },
+    "wiki-community-e0eee68f0f4289cc28edde3e": {
+      "category": "vehiculos",
+      "title": "Sanchez (livery)"
+    },
+    "wiki-community-760975f782ff25feec273b6a": {
+      "category": "vehiculos",
+      "title": "Riata"
+    },
+    "wiki-community-9bbe4b5201a320594347b89c": {
+      "category": "vehiculos",
+      "title": "Riata Classic"
+    },
+    "wiki-community-ae69b2dc1743515ad9498e7e": {
+      "category": "vehiculos",
+      "title": "S23"
+    },
+    "wiki-community-c9191b8dad25e14920dcb19a": {
+      "category": "vehiculos",
+      "title": "Sabre GT"
+    },
+    "wiki-community-d2b2fc8c0c7749c90e040358": {
+      "category": "vehiculos",
+      "title": "Sanchez"
+    },
+    "wiki-community-431e64ca8dbddba600713062": {
+      "category": "vehiculos",
+      "title": "Seashark"
+    },
+    "wiki-community-90f011019794112181b1e849": {
+      "category": "vehiculos",
+      "title": "Scorcher"
+    },
+    "wiki-community-877e281f8fcd670cd93893ca": {
+      "category": "vehiculos",
+      "title": "Sandking XL"
+    },
+    "wiki-community-5c3c46b312ac0e832edb0302": {
+      "category": "vehiculos",
+      "title": "Schafter LWB"
+    },
+    "wiki-community-937c1e34955078c320820a07": {
+      "category": "vehiculos",
+      "title": "Schafter (second generation)"
+    },
+    "wiki-community-e3726e8382105b52c2ac4378": {
+      "category": "vehiculos",
+      "title": "Seashark (second generation)"
+    },
+    "wiki-community-4df32258163009940d561b54": {
+      "category": "vehiculos",
+      "title": "Sandking XT"
+    },
+    "wiki-community-d3e9cd55a353f6c2c9300465": {
+      "category": "vehiculos",
+      "title": "Sea Sparrow"
+    },
+    "wiki-community-95936b5429e5f91d1fd5277c": {
+      "category": "vehiculos",
+      "title": "Sandking XT (monster truck)"
+    },
+    "wiki-community-c670fda64212f1e4f7030f6e": {
+      "category": "vehiculos",
+      "title": "Schafter"
+    },
+    "wiki-community-6542a9a3b7ae07c0aa647452": {
+      "category": "vehiculos",
+      "title": "Speedo"
+    },
+    "wiki-community-db5b1e55be2cea51dc4531ef": {
+      "category": "vehiculos",
+      "title": "Sheriff SUV"
+    },
+    "wiki-community-6934d9f464ca2b401ec96f3e": {
+      "category": "vehiculos",
+      "title": "Sovereign"
+    },
+    "wiki-community-37fa61266285d275d4ad1e1b": {
+      "category": "vehiculos",
+      "title": "Sirius"
+    },
+    "wiki-community-a55464a1e5c78f955d6b1fc2": {
+      "category": "vehiculos",
+      "title": "Securicar"
+    },
+    "wiki-community-be773a5b2453e5fa2b9562b7": {
+      "category": "vehiculos",
+      "title": "Shasa"
+    },
+    "wiki-community-d57dafd431071554478a3613": {
+      "category": "vehiculos",
+      "title": "Squalo"
+    },
+    "wiki-community-78e1785972a0e71e531e8cd0": {
+      "category": "vehiculos",
+      "title": "Slamvan"
+    },
+    "wiki-community-f70e654319e2461b1bc0833c": {
+      "category": "vehiculos",
+      "title": "Shamal"
+    },
+    "wiki-community-372994176c73c8780be5610c": {
+      "category": "vehiculos",
+      "title": "Stallion"
+    },
+    "wiki-community-37a1907e52e6151ef53ed4e0": {
+      "category": "vehiculos",
+      "title": "Swift"
+    },
+    "wiki-community-b65becabce7ba9aaaa660909": {
+      "category": "vehiculos",
+      "title": "Stanier"
+    },
+    "wiki-community-cd7621527eb828d8c734d117": {
+      "category": "vehiculos",
+      "title": "Static Planes"
+    },
+    "wiki-community-1a0e805bd51a2c8962ecc461": {
+      "category": "vehiculos",
+      "title": "SuperVolito"
+    },
+    "wiki-community-8b5490e2b49cecca5b7e67af": {
+      "category": "vehiculos",
+      "title": "Street Blazer"
+    },
+    "wiki-community-8e9172fd7402f140cb20ca27": {
+      "category": "vehiculos",
+      "title": "Sugoi"
+    },
+    "wiki-community-bc60d78357f624ca20d2d8a0": {
+      "category": "vehiculos",
+      "title": "Stanier (1955)"
+    },
+    "wiki-community-1fcf66d744c886f4c4391986": {
+      "category": "vehiculos",
+      "title": "Swamp Blaster"
+    },
+    "wiki-community-3cecd9b7104910b48e2f3866": {
+      "category": "vehiculos",
+      "title": "Sultan"
+    },
+    "wiki-community-a829eab3e82d0c2ea3d6a213": {
+      "category": "vehiculos",
+      "title": "Stratum"
+    },
+    "wiki-community-e60505f9255e95ce381f7197": {
+      "category": "vehiculos",
+      "title": "Tanker"
+    },
+    "wiki-community-c8b79643993e4251a1770ada": {
+      "category": "vehiculos",
+      "title": "Tailgater"
+    },
+    "wiki-community-b8f5123a8436dc734f4f6bea": {
+      "category": "vehiculos",
+      "title": "Tempesta"
+    },
+    "wiki-community-bb0f0724dc4734c6429aa34a": {
+      "category": "vehiculos",
+      "title": "Toros"
+    },
+    "wiki-community-f26c1607872a7dda95c77d4a": {
+      "category": "vehiculos",
+      "title": "Thrax"
+    },
+    "wiki-community-d5828a81c9d4a58f4e3606e0": {
+      "category": "vehiculos",
+      "title": "Tailgater S"
+    },
+    "wiki-community-ed52b8dc1cc1e5a7abdd0fd1": {
+      "category": "vehiculos",
+      "title": "Terminus"
+    },
+    "wiki-community-195dbdc80490068f1db2d21f": {
+      "category": "vehiculos",
+      "title": "Transgressor"
+    },
+    "wiki-community-1950e44946e5a9c34f0f4e16": {
+      "category": "vehiculos",
+      "title": "Tempesta (police)"
+    },
+    "wiki-community-9150239f5fd66a5dac8ad6bb": {
+      "category": "vehiculos",
+      "title": "The Bouncer"
+    },
+    "wiki-community-ed970bc5dfddcdd66425ffaa": {
+      "category": "vehiculos",
+      "title": "Tulip"
+    },
+    "wiki-community-8a479252a96b8d6aec81ba86": {
+      "category": "vehiculos",
+      "title": "Tulip M-100"
+    },
+    "wiki-community-fc4da28127c7536a3675d207": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Audi Q7-inspired SUV"
+    },
+    "wiki-community-b6c1e49b15b3695754947b35": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI 1959 Cadillac-inspired car"
+    },
+    "wiki-community-c9bbdba271e090ee1b182609": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI 6x6 conversion van"
+    },
+    "wiki-community-f66128e70753a8b59ae86083": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Benefactor van"
+    },
+    "wiki-community-11703ba5dba954c5614536a8": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Azimut Atlantis 45-inspired yacht"
+    },
+    "wiki-community-bcf1a40a8ca09847c32f046f": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Azimut 85-inspired yacht"
+    },
+    "wiki-community-cd0c860c0abdbf5407517014": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Benefactor coupe"
+    },
+    "wiki-community-30c3333c4e0031a432bdc180": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI baggage trailer"
+    },
+    "wiki-community-c8a497d7c3104f55f95ab073": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Burrito shuttle bus"
+    },
+    "wiki-community-90f75375f63a1d6b540940af": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI boat trailer"
+    },
+    "wiki-community-275f4dd4c423c0b074767be1": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Bravado minivan"
+    },
+    "wiki-community-39d01c270f644da2b5635aae": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Canis pickup truck"
+    },
+    "wiki-community-3b8a6b847e2a08e857394e61": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Buick Reatta-inspired convertible"
+    },
+    "wiki-community-3e31082e266cf9245d8e4b9b": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Bravado SUV"
+    },
+    "wiki-community-b6062cf4d11ae0edf631b273": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Bravado minivan taxi"
+    },
+    "wiki-community-ea85cd152f705e8726db37a6": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Boeing 767-inspired airplane"
+    },
+    "wiki-community-054c319d1b9738ea7ea24037": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI BF saloon"
+    },
+    "wiki-community-50c28922e99ef7bb33bb72be": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI bike trailer"
+    },
+    "wiki-community-df50033dd900bab4ae684a79": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Declasse compact car"
+    },
+    "wiki-community-e9addbba911bd68a4d596a66": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Carbon RS stock motorcycle"
+    },
+    "wiki-community-c21a0829fea56ae32df2c964": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Deere 350D-inspired excavator"
+    },
+    "wiki-community-a2def4d885e3902726a97721": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Contender 39ST-inspired boat"
+    },
+    "wiki-community-025b6c14ad51e9dba7c4571a": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Contender 39ST-inspired police boat"
+    },
+    "wiki-community-bd4200bab763587ddadc0700": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Defender class-inspired boat"
+    },
+    "wiki-community-1cbc179fe4754f0ccb866f30": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI cruise ship"
+    },
+    "wiki-community-9082a9a681420396ed0e7b23": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Del Perro electric bike"
+    },
+    "wiki-community-41787aabf332710766dfe909": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI classic car"
+    },
+    "wiki-community-29802f540519912f2361ab2a": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI car trailer"
+    },
+    "wiki-community-2f5c8b8ef956820c472e8bd8": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI dive boat"
+    },
+    "wiki-community-13975a320246ec795d34a703": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Dinka sedan"
+    },
+    "wiki-community-910362aa13ce5098c651ce40": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Dodge Stratus-inspired sedan"
+    },
+    "wiki-community-f25009e8be864eaa2d960ae6": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Dodge Dakota-inspired pickup truck"
+    },
+    "wiki-community-4608d8edf871899b589eb92e": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI fishing boat"
+    },
+    "wiki-community-89d633847a70457005ac825b": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Eurocopter EC135-inspired police helicopter"
+    },
+    "wiki-community-2d6c4864f9bf1ea4308e208f": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Ford F-Series-inspired medium duty truck"
+    },
+    "wiki-community-0e85cde08c8ab2323a164b25": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI ferry"
+    },
+    "wiki-community-8f598d8e8d51e125d22e6479": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Dodge Ram-inspired van"
+    },
+    "wiki-community-6093fbae4273a78564f84b7f": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Eurocopter EC135-inspired helicopter"
+    },
+    "wiki-community-42a1ec407f9abc03368c6730": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Horizon PC60-inspired yacht"
+    },
+    "wiki-community-5600df0c5509b22d3c38fd6f": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Frauscher 1017 GT-inspired boat"
+    },
+    "wiki-community-86d5f21cd2f10737006a0d34": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Isuzu Elf-inspired truck"
+    },
+    "wiki-community-23468fada114baf645186fe9": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Hitachi Rail-inspired train"
+    },
+    "wiki-community-5d9df040abbda7d21d7c1aa8": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI GE Genesis-inspired locomotive"
+    },
+    "wiki-community-ee24af90682b6be11b38fc5d": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Ford F-Series-inspired pickup truck"
+    },
+    "wiki-community-6b11909591da5170ec91315b": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI GMC TopKick-inspired truck"
+    },
+    "wiki-community-6d7561acf893837275af3ca1": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Freightliner M2-inspired truck"
+    },
+    "wiki-community-eb623fdaea6c66ec155c1a4c": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI International 4700-inspired truck"
+    },
+    "wiki-community-0e0483c279f54b1930f81423": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI International S-1700-inspired truck"
+    },
+    "wiki-community-fe16ece06c44ab8726f9be29": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Lürssen 73m Coral Ocean-inspired yacht"
+    },
+    "wiki-community-1873c0be80bdaf1f81a46b2a": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Karin SUV"
+    },
+    "wiki-community-0cb82e07ba7a7f26baf8680b": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI jet ski trailer"
+    },
+    "wiki-community-f8188a057414a1575d2b1021": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Maverick civilian helicopter"
+    },
+    "wiki-community-d68e05a105432f98aaac2f23": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Mercedes-Benz CLE-inspired convertible"
+    },
+    "wiki-community-da8902d37ffd1467a0cf0583": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Kellison J4 Coupe \"Experimental\"-inspired car"
+    },
+    "wiki-community-34a275b1fbf23a23467c7c7e": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Lincoln Mark VIII-inspired coupe"
+    },
+    "wiki-community-736c39c12a9b44c9debd1c93": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Kenworth T800-inspired truck"
+    },
+    "wiki-community-c869fa811bb89522b2e7c33d": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Karin SUV taxi"
+    },
+    "wiki-community-e9a034658c12f5d44ea8f7d5": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Mercury Comet-inspired car"
+    },
+    "wiki-community-d37c354afb6d1fcab4592fcd": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Pegassi sports car"
+    },
+    "wiki-community-b3492711f23772fb0efbafe3": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Obey saloon"
+    },
+    "wiki-community-efc027d0c806267d97e64acc": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Nagasaki boat"
+    },
+    "wiki-community-c36f511bdc512aeeb949f537": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Pierce Arrow XT-inspired fire truck"
+    },
+    "wiki-community-add3c02cb54cb8bb4a2c887b": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Phantom chassis cab truck"
+    },
+    "wiki-community-76ce50ca655056c0c260cd1e": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Nagasaki scooter"
+    },
+    "wiki-community-20cc12053eaad6d86f807f66": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Polaris Ranger-inspired buggy"
+    },
+    "wiki-community-88288f56360a7e972241ba09": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI rally trailer"
+    },
+    "wiki-community-3a02d238ef96715f1adb1cf7": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI passenger stair trailer"
+    },
+    "wiki-community-d9a6dd2fbbae66e846bb5f1e": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI motocross bike"
+    },
+    "wiki-community-7e0da3100fc934da04077d4a": {
+      "category": "personajes",
+      "title": "Thaddeus Waxman"
+    },
+    "wiki-community-8244d49d70cb38790f94ec4d": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Sea-Doo RXT-X 300-inspired boat"
+    },
+    "wiki-community-127eafcdb55f9f40a70d569e": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Shipyard De Hoop Brion-inspired barge"
+    },
+    "wiki-community-78e3ed61399c8eeca31cef7a": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI self-propelled barge"
+    },
+    "wiki-community-9c68045f73375313ce1d98ba": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI RB-S II-inspired coast guard boat"
+    },
+    "wiki-community-d293f81305d3c428781449f4": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Schyster station wagon"
+    },
+    "wiki-community-e74c48de617bc79ccfb53c98": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Sentinel Classic cabriolet"
+    },
+    "wiki-community-a3afd5eed95dfe8b37f62f2c": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Rexhall RoseAir-inspired motorhome"
+    },
+    "wiki-community-6a7dfc29282b8c6fc10d2bda": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI sailing yacht"
+    },
+    "wiki-community-9e4e63a003baebbf1a27136f": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI SERA minivan"
+    },
+    "wiki-community-645011944074f1ce94a82f2e": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI shrimp boat"
+    },
+    "wiki-community-808aaebd1c2279680de593de": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Skater 388-inspired boat"
+    },
+    "wiki-community-b0387e0fe9be15290d3eb890": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Vapid lifeguard truck"
+    },
+    "wiki-community-2a8b6d55ea2c5cf4e3a7742c": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Vapid cargo van (second generation)"
+    },
+    "wiki-community-9b95de57ef66aabb1e3e10d6": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Tethered Aerostat Radar System-inspired aircraft"
+    },
+    "wiki-community-bd6b5d163b43b8fa6853f173": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI utility trailer"
+    },
+    "wiki-community-0cc7627d172f19c16efdb578": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Vapid cargo van"
+    },
+    "wiki-community-cd60907b3716a87921eef6dd": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Vapid passenger van"
+    },
+    "wiki-community-fc6056902aa9546a69b25e58": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Suzuki GSX-R1000-inspired bike"
+    },
+    "wiki-community-23c72d300da4ec42b7acf6a4": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Vapid mid-size pickup truck"
+    },
+    "wiki-community-8b2a73573e4f48663cb674a5": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI telehandler"
+    },
+    "wiki-community-22b3b382c4ed0f80e7bc48fa": {
+      "category": "vehiculos",
+      "title": "Valkyrie"
+    },
+    "wiki-community-da9a6d9cdc9142ca57c6cb77": {
+      "category": "vehiculos",
+      "title": "V-STR"
+    },
+    "wiki-community-4b6266786beb6f19d829fece": {
+      "category": "vehiculos",
+      "title": "Vectre"
+    },
+    "wiki-community-3463cd30f981568b9a931b6c": {
+      "category": "vehiculos",
+      "title": "Utility Truck"
+    },
+    "wiki-community-a884807b13713b7cf90e0583": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI VCIA train"
+    },
+    "wiki-community-5fc56d971fce3e8b9ae94c0f": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI VCMM train"
+    },
+    "wiki-community-04c1d481995a91f8f137a160": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Willard sedan"
+    },
+    "wiki-community-9c3497b9918f3fadf6686004": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI Viewliner-inspired railroad car"
+    },
+    "wiki-community-41bee2b70d4364e037149ef5": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI ZOOT electric scooter"
+    },
+    "wiki-community-29b36a00037cabec3827b2d4": {
+      "category": "vehiculos",
+      "title": "Unnamed GTA VI water taxi"
+    },
+    "wiki-community-c9e39841fefe2c98b413f239": {
+      "category": "vehiculos",
+      "title": "Virgo Classic"
+    },
+    "wiki-community-3714c51c3080d3863ab7fc22": {
+      "category": "vehiculos",
+      "title": "Volatus"
+    },
+    "wiki-community-362f965b9f1a1d795c07e22e": {
+      "category": "vehiculos",
+      "title": "Windsor Drop"
+    },
+    "wiki-community-915d92a7bd0e5309036c1683": {
+      "category": "vehiculos",
+      "title": "Verus"
+    },
+    "wiki-community-d8b64530b02971ef76ffd7bb": {
+      "category": "vehiculos",
+      "title": "Walton L35"
+    },
+    "wiki-community-c2c2184e201a99af9286329d": {
+      "category": "vehiculos",
+      "title": "Vitello"
+    },
+    "wiki-community-22f54b83017572cca1d4e0f2": {
+      "category": "vehiculos",
+      "title": "Vigero ZX Convertible"
+    },
+    "wiki-community-ff9f69c0cc7a664adc191737": {
+      "category": "vehiculos",
+      "title": "Vivanite"
+    },
+    "wiki-community-b060b419fb85d920e4884d69": {
+      "category": "vehiculos",
+      "title": "Verus (lifeguard)"
+    },
+    "wiki-community-8a7c0cdbe54f4f77d117a5d5": {
+      "category": "vehiculos",
+      "title": "Vivanite (taxi)"
+    },
+    "wiki-community-c98a238c6abf90fd72fde3a0": {
+      "category": "vehiculos",
+      "title": "Zombie"
+    },
+    "wiki-community-974da77c134cdbd60fb48272": {
+      "category": "vehiculos",
+      "title": "Youga"
+    },
+    "wiki-community-13614e05984d7d91947d9e48": {
+      "category": "vehiculos",
+      "title": "Zion Cabrio"
+    },
+    "wiki-community-cd7468d47f959c5942c70b38": {
+      "category": "vehiculos",
+      "title": "XLS"
+    },
+    "wiki-community-f5bd762add91db70798e8de2": {
+      "category": "vehiculos",
+      "title": "Youga Classic"
+    },
+    "wiki-community-117abfd82601aaadef801aa7": {
+      "category": "vehiculos",
+      "title": "Zorrusso"
+    },
+    "wiki-community-aeb7c8a909b87c84aebd18fc": {
+      "category": "vehiculos",
+      "title": "Yosemite 1500"
+    },
+    "wiki-community-4d724d000ef59bac60e2d0be": {
+      "category": "vehiculos",
+      "title": "Yakuruna"
+    },
+    "wiki-community-5f2f16cc9ab192254b4dbfac": {
+      "category": "personajes",
+      "title": "Darlene May and The Rotten Tooth Twins"
+    },
+    "wiki-community-a58f25afb11e8f7766e16407": {
+      "category": "personajes",
+      "title": "Dobbs"
+    },
+    "wiki-community-ccc0a70d4707391705e194f8": {
+      "category": "personajes",
+      "title": "Don Percival"
+    },
+    "wiki-community-f9b806db01fae833c3990e06": {
+      "category": "personajes",
+      "title": "Donnie"
+    },
+    "wiki-community-a2bd3fa24a51cbc73e2dacf7": {
+      "category": "personajes",
+      "title": "Fisher"
+    },
+    "wiki-community-cd8bf95b689806b002b3d7b9": {
+      "category": "personajes",
+      "title": "Fede the Flamingo"
+    },
+    "wiki-community-bec46da3820310b3b08f1bfa": {
+      "category": "personajes",
+      "title": "Hardin"
+    },
+    "wiki-community-5c556d63467d1eef21fa14cd": {
+      "category": "personajes",
+      "title": "Joey"
+    },
+    "wiki-community-d7900e2f5b11430dcedc55dc": {
+      "category": "personajes",
+      "title": "Jimmy Peddle & The Salty Souls"
+    },
+    "wiki-community-a749311a198c1221fbff5957": {
+      "category": "personajes",
+      "title": "Jimmy Peddle"
+    },
+    "wiki-community-71eaf933baf14fb01c3dccf3": {
+      "category": "personajes",
+      "title": "Kenton Rees"
+    },
+    "wiki-community-b8f2ac0b4b43521f6a77bdc8": {
+      "category": "mapa-lugares",
+      "title": "State of New Austin"
+    },
+    "wiki-community-57818ef014d100951279da92": {
+      "category": "vehiculos",
+      "title": "Akane"
+    },
+    "wiki-community-031c618133109ca27cd9f8a6": {
+      "category": "vehiculos",
+      "title": "Allander"
+    },
+    "wiki-community-0d4f6d42fc0a886a2500b0c4": {
+      "category": "vehiculos",
+      "title": "Allander (taxi)"
+    },
+    "wiki-community-96caf4bce4fa460bbb53cf95": {
+      "category": "vehiculos",
+      "title": "Animus"
+    },
+    "wiki-community-75094a532cd84bbe764f6c55": {
+      "category": "vehiculos",
+      "title": "B3000 Excavator"
+    },
+    "wiki-community-dc89b9f717027d06f43ed1a8": {
+      "category": "vehiculos",
+      "title": "Bogan"
+    },
+    "wiki-community-895f6984bd791d6bee68166f": {
+      "category": "vehiculos",
+      "title": "Bobcat 500"
+    },
+    "wiki-community-ca2fee9c2ff2708dcae4c28b": {
+      "category": "vehiculos",
+      "title": "Blast"
+    },
+    "wiki-community-0289027f66ead0ca30b4801f": {
+      "category": "personajes",
+      "title": "Mattia"
+    },
+    "wiki-community-35ead3aa7d24cd3d9219af75": {
+      "category": "personajes",
+      "title": "Mandy"
+    },
+    "wiki-community-35bc368aefdfbf8c1b887fc4": {
+      "category": "personajes",
+      "title": "Stefanie Gates"
+    },
+    "wiki-community-2cdc8e82f8ffd415b3b85823": {
+      "category": "personajes",
+      "title": "Sunny (GTA VI)"
+    },
+    "wiki-community-f407d9bfde830f4050a9c1e1": {
+      "category": "personajes",
+      "title": "Skunk Ape"
+    },
+    "wiki-community-f8d9bb6dd35d9ef073ed36db": {
+      "category": "personajes",
+      "title": "Sir Todd Bancroft"
+    },
+    "wiki-community-443d28820cd9b4ef05bc211a": {
+      "category": "personajes",
+      "title": "Tyrone"
+    },
+    "wiki-community-f787ea14a4f7e75ee2d1e0cd": {
+      "category": "personajes",
+      "title": "Tomás Caminos"
+    },
+    "wiki-community-619bf23a3573160bd8f8796a": {
+      "category": "vehiculos",
+      "title": "Chavos XS"
+    },
+    "wiki-community-4611bec823a00474947ff307": {
+      "category": "vehiculos",
+      "title": "Crawler"
+    },
+    "wiki-community-3d9caf557a8468788ac714b2": {
+      "category": "vehiculos",
+      "title": "D7700"
+    },
+    "wiki-community-5ca0bc916aeb721dfb65e1f3": {
+      "category": "vehiculos",
+      "title": "Erode"
+    },
+    "rockstar-fea4c5f6ab9f6d9cd75c85d5": {
+      "category": "actualizaciones",
+      "title": "Grand Theft Auto VI Pre-Load Begins on November 10"
+    },
+    "rockstar-9a9d4ada98e26368389fdb68": {
+      "category": "actualizaciones",
+      "title": "Explore the Grand Theft Auto VI Launch Gallery"
+    },
+    "rockstar-a49b39d680cc55ad3867b642": {
+      "category": "actualizaciones",
+      "title": "Grand Theft Auto VI: Original Score by Justice"
+    },
+    "rockstar-17b24285bcf1e3f5db4c9f7e": {
+      "category": "actualizaciones",
+      "title": "Watch the Grand Theft Auto VI Launch Trailer"
+    },
+    "rockstar-dfa9a82e566096499bd5907a": {
+      "category": "actualizaciones",
+      "title": "Grand Theft Auto VI Collection Now at the Rockstar Store"
+    },
+    "rockstar-53596280d07a0fd9b30b3fc9": {
+      "category": "actualizaciones",
+      "title": "The Music of Grand Theft Auto VI: In-Game Radio Stations"
+    },
+    "rockstar-6f83b39ae1aee250dea2bda6": {
+      "category": "actualizaciones",
+      "title": "Announcing Grand Theft Auto VI: The Album, Coming November 19"
+    },
+    "rockstar-1e54c49ff6f733cc1d331f9e": {
+      "category": "actualizaciones",
+      "title": "Grand Theft Auto VI: An Extended Look — Now Playing"
+    },
+    "rockstar-49d7dff24a570fadec9bf659": {
+      "category": "actualizaciones",
+      "title": "Grand Theft Auto VI: An Extended Look"
+    },
+    "rockstar-af0811e25d2ee493f787e6ab": {
+      "category": "actualizaciones",
+      "title": "Pre-Order Grand Theft Auto VI on June 25"
+    },
+    "rockstar-46637c472f7bb82692bd6620": {
+      "category": "actualizaciones",
+      "title": "Grand Theft Auto VI Pre-Orders Begin on June 25"
+    },
+    "community-wiki-38a1d061a58be277d8eb62": {
+      "category": "actualizaciones",
+      "title": "Rumour: Grand Theft Auto VI/Leaks"
+    },
+    "rockstar-39c5133f33285dd9ad8ca922": {
+      "category": "actualizaciones",
+      "title": "Grand Theft Auto VI: The Festival"
+    },
+    "rockstar-1afda179345ac9c004a9a57d": {
+      "category": "actualizaciones",
+      "title": "Pre-Load Grand Theft Auto VI Now"
+    }
+  }
+}

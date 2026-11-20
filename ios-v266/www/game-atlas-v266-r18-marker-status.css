@@ -1,0 +1,77 @@
+/* V266 R18 — narrowly scoped fix to marker editor and detail status controls.
+   Does not change base map, map tiles, routes, filters or news. */
+@media(max-width:979px){
+ /* The dialog is now OUTSIDE #mapCanvas. Otherwise the map swallows finger
+    scrolling, clips the form and rebuilds a select below a synthetic click. */
+ #root #mapApp>.atlas-v119.ga-r18-editor-open{
+   position:relative!important;z-index:10000!important;isolation:isolate;
+ }
+ #root #mapApp>.atlas-v119>.ga-r18-editor-scrim{
+   position:fixed!important;inset:0!important;z-index:201!important;
+   background:#081521ba!important;touch-action:none!important;
+ }
+ #root #mapApp>.atlas-v119>.ga-r18-float-editor{
+   box-sizing:border-box!important;position:fixed!important;display:block!important;
+   top:max(104px, calc(env(safe-area-inset-top,0px) + 76px))!important;
+   bottom:max(86px, calc(env(safe-area-inset-bottom,0px) + 80px))!important;
+   left:50%!important;right:auto!important;
+   width:min(650px,calc(100vw - 22px))!important;
+   transform:translateX(-50%)!important;
+   height:auto!important;min-height:0!important;
+   max-height:calc(100dvh - 194px)!important;
+   margin:0!important;padding:14px 15px 17px!important;
+   overflow-y:auto!important;overflow-x:hidden!important;
+   overscroll-behavior:contain!important;
+   -webkit-overflow-scrolling:touch!important;touch-action:pan-y!important;
+   user-select:text!important;z-index:202!important;
+   border:1px solid #7adccc!important;border-radius:16px!important;
+   background:#112535!important;box-shadow:0 18px 60px #000d!important;
+ }
+ #root #mapApp>.atlas-v119>.ga-r18-float-editor .atlas-pin-editor-head{
+   position:sticky!important;top:-14px!important;z-index:3!important;
+   background:#112535fa!important;padding:4px 0 8px!important;
+ }
+ #root #mapApp>.atlas-v119>.ga-r18-float-editor .atlas-pin-editor-row{grid-template-columns:1fr!important}
+ #root #mapApp>.atlas-v119>.ga-r18-float-editor label{font-size:13px!important;line-height:1.4!important}
+ #root #mapApp>.atlas-v119>.ga-r18-float-editor input,
+ #root #mapApp>.atlas-v119>.ga-r18-float-editor textarea,
+ #root #mapApp>.atlas-v119>.ga-r18-float-editor select{
+   font-size:16px!important;min-height:44px!important;touch-action:auto!important;
+ }
+ #root #mapApp>.atlas-v119>.ga-r18-float-editor textarea{min-height:80px!important}
+ #root #mapApp>.atlas-v119>.ga-r18-float-editor .atlas-pin-editor-actions{position:relative!important;z-index:1!important}
+ /* When fullscreen landscape is short, scroll the DIALOG rather than the map. */
+ #root #mapApp>.atlas-v119.vi-fullscreen-map>.ga-r18-float-editor{
+   top:max(63px,calc(env(safe-area-inset-top,0px) + 55px))!important;
+   bottom:12px!important;max-height:calc(100dvh - 76px)!important;
+ }
+ html.vi-v222-marker-keyboard #root #mapApp>.atlas-v119>.ga-r18-float-editor{
+   top:var(--vi-v222-editor-top,12px)!important;bottom:auto!important;
+   max-height:var(--vi-v222-editor-height,320px)!important;
+   height:var(--vi-v222-editor-height,320px)!important;
+ }
+}
+/* Detail pages: colors describe the ACTION, not the previous state.
+   Save progress -> green; undo progress -> amber; favorite on -> gold. */
+#root .detail-card .progress-panel .actions button.ga-r18-detail-favorite{
+  color:#e2e8ee!important;background:#243044!important;
+  border:1px solid #67798e!important;font-weight:750!important;
+}
+#root .detail-card .progress-panel .actions button.ga-r18-detail-favorite.ga-r18-fav-on{
+  color:#ffe8a5!important;background:#54401e!important;
+  border-color:#fac66c!important;
+}
+#root .detail-card .progress-panel .actions button.progress-action.ga-r18-do-progress{
+  color:#d9fff0!important;background:#185345!important;
+  border:1px solid #57d7b4!important;
+}
+#root .detail-card .progress-panel .actions button.progress-action.ga-r18-undo-progress{
+  color:#ffe5c0!important;background:#4b362b!important;
+  border:1px solid #dda569!important;
+}
+#root .detail-card .progress-panel .progress-badge.progress-complete{
+  color:#c0ffe1!important;background:#1d483c!important;border-color:#56cba6!important;
+}
+#root .detail-card .progress-panel .progress-badge.progress-pending{
+  color:#f5dfc3!important;background:#3b322e!important;border-color:#8f765b!important;
+}

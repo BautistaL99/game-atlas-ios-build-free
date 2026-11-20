@@ -1,0 +1,56 @@
+/* V259 — restrained usability improvements; retain existing Game Atlas palette. */
+#root .v259-open-card{cursor:pointer;transition:border-color .17s ease,box-shadow .17s ease,background-color .17s ease,transform .17s ease}
+#root .v259-open-card:hover,#root .v259-open-card:focus-within{border-color:#5babb2!important;background-color:#1b2838!important;box-shadow:0 9px 24px #0003!important}
+#root .v259-open-card:focus-visible{outline:2px solid #69ded2;outline-offset:3px}
+#root .v259-open-card .content-card-link{cursor:pointer}
+#root .v259-open-card .content-card-link strong,#root .v259-open-card .content-card-link .content-title{transition:color .17s ease}
+#root .v259-open-card:hover .content-card-link strong,#root .v259-open-card:hover .content-card-link .content-title{color:#a9fff2}
+#root .v259-open-card:hover .content-card-link>.arrow{color:#7be2d5;opacity:1;transform:translate(2px,-2px);transition:transform .17s ease}
+#root .item-stack > .content-card .content-text .pill{position:static!important;inset:auto!important;float:none!important;transform:none!important;z-index:auto!important;align-self:flex-start;max-width:100%!important;white-space:normal!important;overflow-wrap:anywhere}
+#root .item-stack>.content-card>.content-card-link{align-items:flex-start!important}
+#root .item-stack>.content-card>.content-card-link .content-text{max-width:100%;overflow:hidden}
+#root .v258-compare-selection-item,#root .v258-compare-heading{color:inherit!important;text-decoration:none!important}
+#root .v258-compare-selection-item>span:first-child,#root .v258-compare-heading>span:first-child{display:block;text-decoration:none!important;overflow-wrap:anywhere;line-height:1.3}
+#root .v258-compare-selection-item:hover>span:first-child,#root .v258-compare-heading:hover>span:first-child{color:#9ff0e8}
+#root .v258-compare-selection-item .search-thumb,#root .v258-compare-heading .search-thumb{object-fit:contain}
+#root .v258-compare-heading:hover,#root .v258-compare-selection-item:hover{text-decoration:none!important}
+/* Render the official/origin photograph first, and the map crop second. */
+#root .v257-place-media-tabs{display:flex;gap:8px;flex-wrap:wrap}
+#root .v257-place-media-tabs button{white-space:normal;line-height:1.2;min-height:42px}
+/* Tiles are a visually crisp overlay in *precisely the same* original map geometry. */
+#root .atlas-stage .v259-map-tile-layer{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:hidden;z-index:0;contain:paint}
+#root .atlas-stage .v259-map-tile-layer .v259-map-tile{position:absolute;display:block;border:0;pointer-events:none;max-width:none;transition:opacity .15s linear;image-rendering:auto;user-select:none}
+@media(max-width:700px){
+ #root .item-stack>.content-card>.content-card-link .content-text .pill{font-size:9px!important;width:max-content!important;max-width:calc(100% - 3px)!important;line-height:1.25;padding:5px 7px!important}
+ #root .item-stack>.content-card>.content-card-link{padding-right:0!important;min-width:0!important}
+ #root .item-stack>.content-card>.content-card-link>.arrow{display:none!important}
+ #root .v259-open-card:active{background-color:#234452!important;transform:scale(.997)}
+ #root .v257-place-media-tabs button{padding:9px 10px}
+ #root .v258-compare-selection-item,#root .v258-compare-heading{font-size:11px!important}
+}
+@media(max-width:360px){
+ #root .item-stack>.content-card>.content-card-link .search-thumb{width:76px!important;height:76px!important;flex:0 0 76px!important}
+ #root .item-stack>.content-card>.content-card-link .content-text .pill{font-size:8.7px!important}
+}
+@media(prefers-reduced-motion:reduce){#root .v259-open-card,#root .v259-open-card .content-card-link *{transition:none!important}}
+
+#root .v257-world-card{transition:border-color .17s ease,box-shadow .17s ease,background-color .17s ease}
+#root .v257-world-card:hover,#root .v257-world-card:focus-within{border-color:#5babb2;box-shadow:0 7px 22px #0003}
+#root .v257-world-card button:active,#root .v258-place-actions button:active{filter:brightness(1.14)}
+@media(prefers-reduced-motion:reduce){#root .v257-world-card{transition:none!important}}
+
+/* V260: tiles only show after every visible tile is loaded; never display collage. */
+#root #v259MapTiles{visibility:hidden}
+
+/* V260 progress milestones - Game Atlas achievements, not in-game trophies. */
+#root .ga-v260-achievements{margin:16px 0 24px;padding:18px;border:1px solid #27576b;border-radius:17px;background:#0e2032;color:#e8f4fc}
+#root .ga-v260-achievements h3{margin:0 0 6px;font-size:19px}
+#root .ga-v260-achievements>p{margin:0 0 13px;color:#b8cad6;font-size:12px}
+#root .ga-v260-achievement-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+#root .ga-v260-achievement{border:1px solid #30485c;border-radius:12px;background:#122338;min-height:93px;padding:11px;opacity:.62;display:flex;flex-direction:column;gap:5px}
+#root .ga-v260-achievement.unlocked{border-color:#54bcae;background:#123d3b;opacity:1}
+#root .ga-v260-achievement-icon{font-size:21px;color:#a6e8df}
+#root .ga-v260-achievement strong{font-size:12px;line-height:1.3}
+#root .ga-v260-achievement small{color:#b6d2df;margin-top:auto;font-size:11px}
+#root .category-tile[data-ga-category="flora-fauna"] .category-art{background-position:15% 76%}
+@media(max-width:760px){#root .ga-v260-achievement-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#root .ga-v260-achievements{padding:14px}}

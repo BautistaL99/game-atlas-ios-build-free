@@ -1,0 +1,32 @@
+/* V266 R8 — add DETAIL filters without changing R7 HUD geometry.
+   All rules scoped inside the EXISTING filter scrollable rail. */
+#root .atlas-v119 .ga-r8-type-group,
+#root .atlas-v119 .ga-r8-source-group{border:1px solid #315263;background:#112d40;border-radius:12px;margin:8px 0 10px;overflow:hidden}
+#root .atlas-v119 .ga-r8-type-group>summary,
+#root .atlas-v119 .ga-r8-source-group>summary{display:flex;align-items:center;gap:9px;min-height:44px;padding:9px 10px;cursor:pointer;list-style:none;color:#e0f7f9;font-size:12px;font-weight:800}
+#root .atlas-v119 .ga-r8-type-group>summary::-webkit-details-marker,
+#root .atlas-v119 .ga-r8-source-group>summary::-webkit-details-marker{display:none}
+#root .atlas-v119 .ga-r8-type-group .atlas-group-count{margin-left:auto;background:#22546a;border-radius:7px;padding:4px 7px;white-space:nowrap}
+#root .atlas-v119 .ga-r8-type-group .atlas-group-chevron{font-size:15px;color:#79dfd9}
+#root .atlas-v119 .ga-r8-types-body{padding:8px 9px 10px;border-top:1px solid #345367}
+#root .atlas-v119 .ga-r8-types-body>p{font-size:11px;line-height:1.4;color:#b6cfd6;margin:0 0 9px}
+#root .atlas-v119 .ga-r8-type-row{min-height:39px;margin:3px 0;border-radius:9px;background:#12283a;display:flex;align-items:center;gap:8px;padding:4px 7px}
+#root .atlas-v119 .ga-r8-type-row .atlas-filter-name{flex:1;min-width:0;overflow-wrap:anywhere;font-size:11px;line-height:1.3}
+#root .atlas-v119 .ga-r8-type-row .atlas-legend-icon{min-width:22px;text-align:center;color:#69e9d7;font-size:15px}
+#root .atlas-v119 .ga-r8-type-row em{margin-left:auto;font-size:11px;font-weight:700;border-radius:7px;background:#274456;color:#d9f2ff;padding:2px 6px;font-style:normal}
+#root .atlas-v119 .ga-r8-type-row input{accent-color:#4ad6c9;min-width:18px;min-height:18px}
+#root .atlas-v119 .ga-r8-clear{padding:7px 9px;border:1px solid #68bdb7;border-radius:8px;background:#23475a;color:white;font-size:11px;margin:0 0 7px;cursor:pointer}
+#root .atlas-v119 .ga-r8-source-checks{padding:8px 10px;border-top:1px solid #375b66;display:grid;gap:10px}
+#root .atlas-v119 .ga-r8-source-checks label{display:flex;gap:10px;align-items:start;font-size:11px;line-height:1.4;color:#d7eaf0;cursor:pointer}
+#root .atlas-v119 .ga-r8-source-checks input{accent-color:#4ad6c9;margin-top:2px;min-width:17px;min-height:17px}
+/* Fixed pin labels remain outside the image's GPU scaling. */
+#root .atlas-v119 .ga-r6-sharp-pins>.atlas-cluster{font-kerning:normal!important;text-rendering:optimizeLegibility!important}
+
+#root .atlas-v119 .ga-r8-photo-pending{display:flex;align-items:center;justify-content:center;min-width:55px;min-height:55px;text-align:center;padding:8px;background:#163443;color:#c6d9e6;border:1px solid #346173;border-radius:9px;line-height:1.25;font-size:10px;font-weight:650}
+#root .atlas-v119 .v257-popup .ga-r8-photo-pending{width:94px;height:86px;flex:0 0 94px}
+#root .v258-world-photo .ga-r8-photo-pending,#root .v257-place-photo .ga-r8-photo-pending{width:100%;min-height:180px;font-size:13px}
+
+#root .atlas-v119 .ga-r8-photo-frame{position:relative;flex:0 0 94px;width:94px;height:86px;border-radius:10px;overflow:hidden;background:#173e47;display:block}
+#root .atlas-v119 .ga-r8-photo-frame>img{display:block;width:100%;height:100%;object-fit:cover}
+#root .atlas-v119 .ga-r8-photo-frame>small{position:absolute;left:0;right:0;bottom:0;padding:3px 2px;text-align:center;background:#071b25dd;color:#dcf2f8;font-size:8px;line-height:1.2}
+@media(max-width:700px){#root .atlas-v119 .ga-r8-photo-frame{width:75px;height:77px;flex-basis:75px}}
