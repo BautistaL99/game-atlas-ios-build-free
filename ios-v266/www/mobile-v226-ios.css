@@ -51,3 +51,64 @@
   display:none!important;
  }
 }
+
+/* iOS V266 R18 fullscreen map: status-bar / Dynamic Island clearance.
+   The map HUD was absolutely anchored at 8px by R10/R15, independent of
+   the previous flex-row fix. Reserve actual iOS safe insets with a fallback
+   for WKWebView variants returning env(safe-area-inset-*)=0. Scoped ONLY to
+   iOS fullscreen on phones. Preserve popup hiding, map pan, filters and routes. */
+@media (max-width:979px){
+ html.vi-ios-app #root #mapApp .atlas-v119.vi-fullscreen-map{
+  --ga-ios-map-hud-top:max(64px,calc(env(safe-area-inset-top,0px) + 8px));
+  --ga-ios-map-chip-top:calc(var(--ga-ios-map-hud-top) + 64px);
+  --ga-ios-map-hud-left:12px;
+  --ga-ios-map-exit-right:10px;
+  --ga-ios-map-toolbar-right:78px;
+ }
+ /* All three top controls must share one CLEAR line below system status. */
+ html.vi-ios-app #root #mapApp .atlas-v119.vi-fullscreen-map>.atlas-toolbar{
+  position:absolute!important;
+  top:var(--ga-ios-map-hud-top)!important;
+  bottom:auto!important;
+  left:var(--ga-ios-map-hud-left)!important;
+  right:var(--ga-ios-map-toolbar-right)!important;
+  width:auto!important;
+  max-width:none!important;
+  height:54px!important;
+  min-height:54px!important;
+  max-height:54px!important;
+  display:flex!important;
+  flex-flow:row nowrap!important;
+  align-items:center!important;
+  overflow:visible!important;
+ }
+ html.vi-ios-app #root #mapApp .atlas-v119.vi-fullscreen-map .atlas-map>.vi-map-fullscreen-btn{
+  position:absolute!important;
+  top:var(--ga-ios-map-hud-top)!important;
+  right:var(--ga-ios-map-exit-right)!important;
+  bottom:auto!important;
+ }
+ /* The quick filters start BELOW the search / route / fullscreen row. */
+ html.vi-ios-app #root #mapApp .atlas-v119.vi-fullscreen-map .atlas-map>.vi-map-filter-chips{
+  top:var(--ga-ios-map-chip-top)!important;
+  bottom:auto!important;
+ }
+ html.vi-ios-app #root #mapApp .atlas-v119.vi-fullscreen-map.ga-r11-filter-sheet-open>.atlas-toolbar{
+  display:none!important;
+ }
+ /* Filter sheet replaces the HUD rather than covering the status bar. */
+ html.vi-ios-app #root #mapApp .atlas-v119.vi-fullscreen-map .atlas-layout>#atlas-map-filter-panel.mobile-open{
+  top:var(--ga-ios-map-chip-top)!important;
+  bottom:10px!important;
+  height:calc(100% - var(--ga-ios-map-chip-top) - 10px)!important;
+  max-height:calc(100% - var(--ga-ios-map-chip-top) - 10px)!important;
+ }
+}
+@media (max-width:979px) and (orientation:landscape) and (max-height:620px){
+ html.vi-ios-app #root #mapApp .atlas-v119.vi-fullscreen-map{
+  --ga-ios-map-hud-top:max(16px,calc(env(safe-area-inset-top,0px) + 8px));
+  --ga-ios-map-hud-left:max(56px,calc(env(safe-area-inset-left,0px) + 8px));
+  --ga-ios-map-exit-right:max(56px,calc(env(safe-area-inset-right,0px) + 8px));
+  --ga-ios-map-toolbar-right:calc(var(--ga-ios-map-exit-right) + 66px);
+ }
+}
