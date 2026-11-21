@@ -103,3 +103,15 @@ test('Home News now selects the same verified article photo as the dedicated New
  assert(app.includes('exactNews=entry.kind===\'official\'&&linked&&window.viSameRockstarNewsPostV266?.('));
  assert(app.includes('photo=exactNews||linked?.image?.remote||linked?.image?.data'));
 });
+
+test('iOS-only fullscreen route control stays in one search-toolbar row without covering map filters',()=>{
+ const css=readFileSync(join(src,'mobile-v226-ios.css'),'utf8');
+ const app=readFileSync(join(src,'app-v137.js'),'utf8');
+ const native=readFileSync(join(src,'mobile-v226-ios.js'),'utf8');
+ assert(css.includes('html.vi-ios-app #root .atlas-v119.vi-fullscreen-map>.atlas-toolbar'));
+ assert(css.includes('flex-flow:row nowrap!important'));
+ assert(css.includes('>.atlas-search-label')&&css.includes('>.vi-v250-route-only-ios'));
+ assert(css.includes('ga-r11-filter-sheet-open>.atlas-toolbar'));
+ assert(app.includes('class="vi-v250-route-only-ios" data-map="route-only"'));
+ assert(native.includes('window.viNativeHandleBackR4?.()'), 'iPhone edge-back retained without a floating arrow');
+});
