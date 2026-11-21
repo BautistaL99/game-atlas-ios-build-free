@@ -328,7 +328,7 @@
   },
   "ios_only_resources": {
     "mobile-v226-ios.js": "9668c8e03d2f2c47946ddb8d0d5f45d0b5bc42ad7e56ddb3117849b5006d3d3c",
-    "mobile-v226-ios.css": "37d7d887d3f5f85b1958f29aff46451cd6e707c919634ca92eedec906508dc63"
+    "mobile-v226-ios.css": "a1e49029e78ad8cadc8c58bb4fa22eedfb01efb4b69f927d855314a71e8e9b58"
   },
   "ios_only_resource_count": 2,
   "native_resource_count": 150,
