@@ -115,3 +115,17 @@ test('iOS-only fullscreen route control stays in one search-toolbar row without 
  assert(app.includes('class="vi-v250-route-only-ios" data-map="route-only"'));
  assert(native.includes('window.viNativeHandleBackR4?.()'), 'iPhone edge-back retained without a floating arrow');
 });
+
+// Physical iPhone QA: r10/r15 fullscreen styles use absolute top:8px; the
+// iOS-only override MUST move all controls beyond the status bar and filters.
+test('iOS fullscreen map status area is reserved for the notch and filter controls remain separate',()=>{
+ const css=readFileSync(join(src,'mobile-v226-ios.css'),'utf8');
+ const snippet=css.slice(css.indexOf('iOS V266 R18 fullscreen map: status-bar / Dynamic Island clearance.'));
+ assert(snippet.includes('--ga-ios-map-hud-top:max(64px,calc(env(safe-area-inset-top,0px) + 8px))'));
+ assert(snippet.includes('--ga-ios-map-chip-top:calc(var(--ga-ios-map-hud-top) + 64px)'));
+ assert(snippet.includes('top:var(--ga-ios-map-hud-top)!important'));
+ assert(snippet.includes('top:var(--ga-ios-map-chip-top)!important'));
+ assert(snippet.includes('ga-r11-filter-sheet-open>.atlas-toolbar'));
+ assert(snippet.includes('--ga-ios-map-hud-left:max(56px,calc(env(safe-area-inset-left,0px) + 8px))'));
+ assert(snippet.includes('--ga-ios-map-exit-right:max(56px,calc(env(safe-area-inset-right,0px) + 8px))'));
+});
